@@ -7,6 +7,7 @@ export type HeadingProps = {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   size?: 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
   transform?: 'uppercase' | 'lowercase' | 'capitalize';
+  align?: 'left' | 'center' | 'right';
 };
 
 export const Heading: FC<HeadingProps> = ({
@@ -14,9 +15,10 @@ export const Heading: FC<HeadingProps> = ({
   as = 'h1',
   size = 'md',
   transform = 'lowercase',
+  align = 'left',
 }) => {
   return (
-    <S.Container as={as} size={size} transform={transform}>
+    <S.Container as={as} size={size} transform={transform} align={align}>
       {children}
     </S.Container>
   );
