@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should render to match snapshot 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+.c1 {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+.c2 {
+  outline: none;
+  font-size: 1.6rem;
+  padding: 1.6rem;
+  border-radius: .8rem;
+  border: 1px solid #131118;
+  transition: all 150ms ease-in-out;
+}
+
+.c2:focus {
+  box-shadow: 0 0 0 2px #131118;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <label
+      class="c1"
+      for="text"
+    >
+      text
+    </label>
+    <input
+      class="c2"
+      id="text"
+      name="text"
+      type="text"
+    />
+  </div>
+</div>
+`;
