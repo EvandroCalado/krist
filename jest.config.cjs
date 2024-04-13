@@ -6,6 +6,8 @@ module.exports = {
   testMatch: ['**/?(*.)(test).ts?(x)'],
   collectCoverageFrom: [
     'src/**/*.ts(x)?',
+    '!src/App.tsx',
+    '!src/main.tsx',
     '!src/**/index.ts',
     '!src/**/*.stories.tsx',
     '!src/styles/**/*.ts',
