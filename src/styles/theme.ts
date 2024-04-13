@@ -1,6 +1,6 @@
 export default {
   colors: {
-    primary: '#1d4ed8',
+    primary: '#131118',
     secondary: '#dc2626',
     warning: '#e11d48',
     success: '#16a34a',
@@ -12,20 +12,20 @@ export default {
   },
   font: {
     family: {
-      primary: "'Inter', sans-serif;",
+      primary: "'Jost', sans-serif",
     },
     sizes: {
       xs: '.8rem',
-      sm: '1.4rem',
-      md: '2.4rem',
-      lg: '3.2rem',
-      xl: '4rem',
-      '2xl': '4.8rem',
-      '3xl': '5.6rem',
-      '4xl': '6.4rem',
-      '5xl': '7.2rem',
-      '6xl': '8.0rem',
-      '7xl': '9.6rem',
+      sm: '1rem',
+      md: '1.6rem',
+      lg: '2.4rem',
+      xl: '3.2rem',
+      '2xl': '4rem',
+      '3xl': '4.8rem',
+      '4xl': '5.6rem',
+      '5xl': '6.4rem',
+      '6xl': '7.2rem',
+      '7xl': '8rem',
     },
   },
   media: {

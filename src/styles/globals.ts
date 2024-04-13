@@ -14,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-size: 1.6rem;
+    font-family: ${({ theme }) => theme.font.family.primary};
   }
 
   a {
