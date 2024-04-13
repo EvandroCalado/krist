@@ -1,15 +1,8 @@
-import { render, RenderOptions } from '@testing-library/react';
-import { ReactElement } from 'react';
+import { RenderResult, render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 
 import theme from 'styles/theme';
 
-type CustomRenderProps = Omit<RenderOptions, 'queries'>;
-
-const customRender = (
-  ui: ReactElement,
-  { ...renderOptions }: CustomRenderProps = {},
-) => render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>, renderOptions);
-
-export * from '@testing-library/react';
-export { customRender as render };
+export const customRender = (children: React.ReactNode): RenderResult => {
+  return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
+};
