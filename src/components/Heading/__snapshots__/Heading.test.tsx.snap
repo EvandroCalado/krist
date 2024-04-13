@@ -4,10 +4,12 @@ exports[`Heading should render to match snapshot 1`] = `
 .c0 {
   font-size: 1.6rem;
   text-transform: lowercase;
+  text-align: left;
 }
 
 <div>
   <h3
+    align="left"
     class="c0"
     transform="lowercase"
   >

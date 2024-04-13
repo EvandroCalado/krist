@@ -18,6 +18,7 @@ describe('Heading', () => {
     expect(heading).toHaveStyle({
       'font-size': theme.font.sizes.md,
       'text-transform': 'lowercase',
+      'text-align': 'left',
     });
   });
 
@@ -139,6 +140,28 @@ describe('Heading', () => {
     const h3 = container.querySelector('h3')!;
 
     expect(h3.tagName.toLowerCase()).toBe('h3');
+  });
+
+  it('should render with align correct', () => {
+    const { rerender } = customRender(
+      <Heading align="center">Heading</Heading>,
+    );
+
+    const heading = screen.getByRole('heading');
+
+    expect(heading).toHaveStyle({
+      'text-align': 'center',
+    });
+
+    rerender(
+      <ThemeProvider theme={theme}>
+        <Heading align="right">Heading</Heading>
+      </ThemeProvider>,
+    );
+
+    expect(heading).toHaveStyle({
+      'text-align': 'right',
+    });
   });
 
   it('should render to match snapshot', () => {
