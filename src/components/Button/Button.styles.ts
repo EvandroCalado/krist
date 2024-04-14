@@ -44,6 +44,7 @@ export const Button = styled.button<ButtonProps>`
     border: 1px solid ${theme.colors.primary};
     border-radius: ${theme.spacings.xs};
     font-weight: 600;
+    text-transform: capitalize;
     outline: none;
     cursor: pointer;
     transition: ${theme.transitions.faster};

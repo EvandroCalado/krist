@@ -6,14 +6,14 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   icon?: React.ReactNode;
   variant?: 'primary' | 'secondary';
-  width?: '100%' | 'auto';
+  width?: '100%' | 'max-content';
 }
 
 export const Button: FC<ButtonProps> = ({
   children,
   icon,
   variant = 'primary',
-  width = 'auto',
+  width = 'max-content',
   ...rest
 }) => {
   return (
