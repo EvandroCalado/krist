@@ -8,7 +8,7 @@ export default {
 } as Meta;
 
 export const Headings: StoryFn<HeadingProps> = () => (
-  <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+  <div style={{ display: 'flex', gap: '6rem', flexWrap: 'wrap' }}>
     <div>
       <Heading size="6xl" transform="capitalize">
         Heading
