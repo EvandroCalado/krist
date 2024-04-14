@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should render a snapshot 1`] = `
+.c0 {
+  display: flex;
+  align-items: start;
+  gap: .8rem;
+}
+
+.c2 {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+.c1 {
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: #131118;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <input
+      class="c1"
+      id="checkbox"
+      name="checkbox"
+      type="checkbox"
+    />
+    <label
+      class="c2"
+      for="checkbox"
+    >
+      checkbox
+    </label>
+  </div>
+</div>
+`;
