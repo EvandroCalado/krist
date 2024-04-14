@@ -7,18 +7,11 @@ export default {
   component: Input,
 } as Meta;
 
-export const Text: StoryFn<InputProps> = () => (
-  <Input type="text" label="text" name="text" />
-);
-
-export const Password: StoryFn<InputProps> = () => (
-  <Input type="password" label="password" name="password" />
-);
-
-export const Number: StoryFn<InputProps> = () => (
-  <Input type="number" label="number" name="number" />
-);
-
-export const Disabled: StoryFn<InputProps> = () => (
-  <Input type="text" label="disabled" name="disabled" disabled />
+export const Inputs: StoryFn<InputProps> = () => (
+  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <Input type="text" label="text" name="text" />
+    <Input type="password" label="password" name="password" />
+    <Input type="number" label="number" name="number" />
+    <Input type="text" label="disabled" name="disabled" disabled />
+  </div>
 );
