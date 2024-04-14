@@ -6,37 +6,22 @@ import { Button, ButtonProps } from '.';
 export default {
   title: 'Components/Button',
   component: Button,
-  args: {
-    children: 'Button',
-  },
 } as Meta;
 
-export const Default: StoryFn<ButtonProps> = (args) => <Button {...args} />;
-
-export const Secondary: StoryFn<ButtonProps> = (args) => (
-  <Button variant="secondary" {...args} />
-);
-
-export const WithIcon: StoryFn<ButtonProps> = (args) => (
-  <Button icon={<MoveRight size={16} />} {...args} />
-);
-
-export const FullWidth: StoryFn<ButtonProps> = (args) => (
-  <Button width="100%" {...args} />
-);
-
-export const OnlyIcon: StoryFn<ButtonProps> = () => (
-  <Button>
-    <MoveRight size={16} />
-  </Button>
-);
-
-export const OnlyIconSecondary: StoryFn<ButtonProps> = () => (
-  <Button variant="secondary">
-    <Heart size={16} />
-  </Button>
-);
-
-export const Disabled: StoryFn<ButtonProps> = (args) => (
-  <Button disabled {...args} />
+export const Buttons: StoryFn<ButtonProps> = () => (
+  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+    <Button>primary</Button>
+    <Button variant="secondary">secondary</Button>
+    <Button variant="secondary">
+      <MoveRight size={16} />
+    </Button>
+    <Button>
+      <MoveRight size={16} />
+    </Button>
+    <Button variant="secondary">
+      <Heart size={16} />
+    </Button>
+    <Button disabled>disabled</Button>
+    <Button width="100%">full width</Button>
+  </div>
 );
