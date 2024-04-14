@@ -8,7 +8,7 @@ export default {
 } as Meta;
 
 export const Inputs: StoryFn<InputProps> = () => (
-  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+  <div style={{ display: 'flex', gap: '6rem', flexWrap: 'wrap' }}>
     <Input type="text" label="text" name="text" />
     <Input type="password" label="password" name="password" />
     <Input type="number" label="number" name="number" />
