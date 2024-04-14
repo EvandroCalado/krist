@@ -2,7 +2,7 @@
 
 exports[`Button should match a snapshot 1`] = `
 .c0 {
-  width: auto;
+  width: max-content;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +11,7 @@ exports[`Button should match a snapshot 1`] = `
   border: 1px solid #131118;
   border-radius: .8rem;
   font-weight: 600;
+  text-transform: capitalize;
   outline: none;
   cursor: pointer;
   transition: all 150ms ease-in-out;
@@ -36,7 +37,7 @@ exports[`Button should match a snapshot 1`] = `
     class="c0"
     disabled=""
     variant="primary"
-    width="auto"
+    width="max-content"
   >
     Button
      

@@ -16,7 +16,7 @@ describe('Button', () => {
     expect(button).toHaveTextContent('Button');
     expect(button).toHaveStyle({
       'background-color': theme.colors.primary,
-      width: 'auto',
+      width: 'max-content',
     });
   });
 
