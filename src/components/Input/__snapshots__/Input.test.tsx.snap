@@ -25,6 +25,11 @@ exports[`Input should render to match snapshot 1`] = `
   box-shadow: 0 0 0 2px #131118;
 }
 
+.c2:disabled {
+  opacity: 0.1;
+  cursor: not-allowed;
+}
+
 <div>
   <div
     class="c0"

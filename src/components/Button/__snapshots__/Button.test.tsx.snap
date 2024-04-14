@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should match a snapshot 1`] = `
+.c0 {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  padding: 1.6rem;
+  border: 1px solid #131118;
+  border-radius: .8rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  background-color: #131118;
+  color: #ffffff;
+}
+
+.c0:hover {
+  opacity: 0.85;
+}
+
+.c0:focus {
+  transform: scale(1.03);
+}
+
+.c0:disabled {
+  opacity: 0.1;
+  cursor: not-allowed;
+}
+
+<div>
+  <button
+    class="c0"
+    disabled=""
+    variant="primary"
+    width="auto"
+  >
+    Button
+     
+  </button>
+</div>
+`;
