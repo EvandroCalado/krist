@@ -55,7 +55,7 @@ export const Button = styled.button<ButtonProps>`
 
     ${hoverVariant[variant!]};
 
-    &:focus {
+    &:active {
       transform: scale(1.03);
     }
 
