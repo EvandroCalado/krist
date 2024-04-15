@@ -9,9 +9,7 @@ exports[`Heading should render to match snapshot 1`] = `
 
 <div>
   <h3
-    align="left"
     class="c0"
-    transform="lowercase"
   >
     Heading
   </h3>

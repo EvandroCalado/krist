@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import { customRender } from 'utils/test-utils';
@@ -35,7 +36,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading transform="lowercase">Heading</Heading>
+        <MemoryRouter>
+          <Heading transform="lowercase">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
@@ -45,7 +48,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading transform="capitalize">Heading</Heading>
+        <MemoryRouter>
+          <Heading transform="capitalize">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
@@ -65,7 +70,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading size="xl">Heading</Heading>
+        <MemoryRouter>
+          <Heading size="xl">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
@@ -75,7 +82,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading size="2xl">Heading</Heading>
+        <MemoryRouter>
+          <Heading size="2xl">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
@@ -85,7 +94,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading size="3xl">Heading</Heading>
+        <MemoryRouter>
+          <Heading size="3xl">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
@@ -95,7 +106,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading size="4xl">Heading</Heading>
+        <MemoryRouter>
+          <Heading size="4xl">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
@@ -105,7 +118,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading size="5xl">Heading</Heading>
+        <MemoryRouter>
+          <Heading size="5xl">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
@@ -115,7 +130,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading size="6xl">Heading</Heading>
+        <MemoryRouter>
+          <Heading size="6xl">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
@@ -125,7 +142,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading size="7xl">Heading</Heading>
+        <MemoryRouter>
+          <Heading size="7xl">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
@@ -155,7 +174,9 @@ describe('Heading', () => {
 
     rerender(
       <ThemeProvider theme={theme}>
-        <Heading align="right">Heading</Heading>
+        <MemoryRouter>
+          <Heading align="right">Heading</Heading>
+        </MemoryRouter>
       </ThemeProvider>,
     );
 
