@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo should render a snapshot 1`] = `
+.c0 {
+  width: 143px;
+  height: 59px;
+  object-fit: contain;
+}
+
+<div>
+  <img
+    class="c0"
+  />
+</div>
+`;
