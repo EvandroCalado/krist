@@ -34,7 +34,7 @@ const hoverVariant = {
 };
 
 export const Button = styled.button<ButtonProps>`
-  ${({ theme, variant, width }) => css`
+  ${({ theme, variant = 'primary', width = 'max-content' }) => css`
     width: ${width};
     display: flex;
     align-items: center;

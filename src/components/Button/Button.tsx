@@ -12,8 +12,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: FC<ButtonProps> = ({
   children,
   icon,
-  variant = 'primary',
-  width = 'max-content',
+  variant,
+  width,
   ...rest
 }) => {
   return (
