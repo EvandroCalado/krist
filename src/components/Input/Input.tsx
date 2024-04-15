@@ -3,7 +3,7 @@ import { FC, InputHTMLAttributes } from 'react';
 import * as S from './Input.styles';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  type: 'text' | 'password' | 'number';
+  type: 'text' | 'email' | 'password' | 'number';
   label: string;
   name: string;
 }
