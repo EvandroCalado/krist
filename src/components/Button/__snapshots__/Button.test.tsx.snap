@@ -23,7 +23,7 @@ exports[`Button should match a snapshot 1`] = `
   opacity: 0.85;
 }
 
-.c0:focus {
+.c0:active {
   transform: scale(1.03);
 }
 
@@ -36,8 +36,6 @@ exports[`Button should match a snapshot 1`] = `
   <button
     class="c0"
     disabled=""
-    variant="primary"
-    width="max-content"
   >
     Button
      
