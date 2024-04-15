@@ -3,19 +3,21 @@
 exports[`Checkbox should render a snapshot 1`] = `
 .c0 {
   display: flex;
-  align-items: start;
+  align-items: center;
   gap: .8rem;
 }
 
 .c2 {
   font-size: 1.6rem;
   text-transform: capitalize;
+  cursor: pointer;
 }
 
 .c1 {
   width: 1.5rem;
   height: 1.5rem;
   accent-color: #131118;
+  cursor: pointer;
 }
 
 <div>
