@@ -1,4 +1,4 @@
-import { Login } from 'pages';
+import { Login, Register } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/register',
-    element: <div>register</div>,
+    element: <Register />,
     errorElement: <div>Register</div>,
   },
   {
