@@ -12,7 +12,7 @@ export const Container = styled.div`
   `}
 `;
 
-export const Logo = styled.div`
+export const LogoContainer = styled.div`
   ${({ theme }) => css`
     position: fixed;
     padding: ${theme.paddings['5xl']};
@@ -75,6 +75,7 @@ export const LoginForm = styled.div`
         & > a {
           text-decoration: none;
           color: ${theme.colors.primary};
+          text-transform: capitalize;
 
           &:hover {
             text-decoration: underline;

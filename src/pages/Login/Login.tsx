@@ -1,37 +1,37 @@
 import { Form, Link } from 'react-router-dom';
 
-import { Button, Checkbox, Heading, Input } from 'components';
+import { Button, Checkbox, Heading, Input, Logo } from 'components';
 
 import * as S from './Login.styles';
 
 export const Login = () => {
   return (
     <S.Container>
-      <S.Logo>
-        <img src="/logo.png" alt="logo" />
-      </S.Logo>
+      <S.LogoContainer>
+        <Logo />
+      </S.LogoContainer>
       <S.LoginImage>
         <img src="/auth/login-image.png" alt="login image" />
       </S.LoginImage>
       <S.LoginForm>
         <Form>
-          <Heading as="h2" size="2xl" transform="capitalize">
-            welcome
+          <Heading as="h2" size="xl" transform="capitalize">
+            bem vindo
           </Heading>
 
-          <p>please login here</p>
+          <p>acessar conta</p>
 
-          <Input type="email" label="email address" name="email" />
+          <Input type="email" label="email" name="email" />
 
-          <Input type="password" label="password" name="password" />
+          <Input type="password" label="senha" name="password" />
 
           <span>
-            <Checkbox label="remember me" name="remember" />
-            <Link to="/forgot-password">forgot password?</Link>
+            <Checkbox label="lembrar" name="remember" />
+            <Link to="/forgot-password">esqueceu a senha?</Link>
           </span>
 
           <Button type="submit" width="100%">
-            login
+            entrar
           </Button>
         </Form>
       </S.LoginForm>
