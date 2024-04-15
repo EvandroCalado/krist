@@ -13,9 +13,9 @@ export interface HeadingProps {
 export const Heading: FC<HeadingProps> = ({
   children,
   as = 'h1',
-  size = 'md',
-  transform = 'lowercase',
-  align = 'left',
+  size,
+  transform,
+  align,
 }) => {
   return (
     <S.Container as={as} size={size} transform={transform} align={align}>
