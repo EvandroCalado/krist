@@ -1,12 +1,12 @@
 import { Heart, ShoppingBag } from 'lucide-react';
 
-import { Button } from 'components/Button';
+import { Button } from 'components';
 
 import * as S from './MenuUser.styles';
 
 export const MenuUser = () => {
   return (
-    <S.Container>
+    <S.Container className="menu-user">
       <span>Search</span>
       <Heart />
       <ShoppingBag />

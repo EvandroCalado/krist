@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    display: none;
+    display: flex;
     align-items: center;
     gap: ${theme.spacings.md};
 
-    @media ${theme.media.gteOrEqMedium} {
-      display: flex;
+    @media ${theme.media.lteOrEqMedium} {
+      flex-direction: column;
     }
 
     & > svg {
@@ -20,6 +20,12 @@ export const Container = styled.div`
 
       &:hover {
         background-color: ${theme.colors.secondary};
+      }
+
+      @media ${theme.media.lteOrEqMedium} {
+        &:hover {
+          background-color: ${theme.colors.white};
+        }
       }
     }
   `}
