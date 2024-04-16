@@ -69,16 +69,18 @@ export const LoginForm = styled.div`
       & > span {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 1rem;
         margin-bottom: 2rem;
 
         & > a {
           text-decoration: none;
           color: ${theme.colors.primary};
           text-transform: capitalize;
+          text-decoration: underline;
+          transition: ${theme.transitions.faster};
 
           &:hover {
-            text-decoration: underline;
+            opacity: 0.7;
           }
         }
       }
