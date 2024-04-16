@@ -10,7 +10,6 @@
     "lint:fix": "eslint src --fix",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "jest --maxWorkers=50% --passWithNoTests --coverage",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -20,7 +19,7 @@
   "lint-staged": {
     "src/**/*": [
       "npm run lint -- --fix",
-      "npm run test -- --run --findRelatedTests --passWithNoTests --bail"
+      "npm run test -- --run --passWithNoTests --bail"
     ]
   },
   "dependencies": {
