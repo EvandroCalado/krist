@@ -2,9 +2,15 @@ import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 export const Nav = styled.nav`
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  ${({ theme }) => css`
+    display: none;
+    align-items: center;
+    gap: ${theme.spacings.md};
+
+    @media ${theme.media.gteOrEqMedium} {
+      display: flex;
+    }
+  `}
 `;
 
 export const Navlink = styled(NavLink)`
