@@ -20,7 +20,7 @@ const navLinks = [
 
 export const MenuNav = () => {
   return (
-    <S.Nav>
+    <S.Nav className="menu-nav">
       {navLinks.map((link) => (
         <S.Navlink key={link.id} to={link.path}>
           {link.label}

@@ -3,24 +3,38 @@ import styled, { css } from 'styled-components';
 
 export const Nav = styled.nav`
   ${({ theme }) => css`
-    display: none;
+    display: flex;
     align-items: center;
     gap: ${theme.spacings.md};
-
-    @media ${theme.media.gteOrEqMedium} {
-      display: flex;
-    }
   `}
 `;
 
 export const Navlink = styled(NavLink)`
   ${({ theme }) => css`
+    position: relative;
     color: ${theme.colors.primary};
     text-transform: capitalize;
+    border-bottom: 2px solid transparent;
     transition: ${theme.transitions.faster};
 
-    &:hover {
-      opacity: 0.7;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 0.2rem;
+      background-color: ${theme.colors.primary};
+      transition: ${theme.transitions.faster};
+    }
+
+    &:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    &.active {
+      border-bottom: 2px solid ${theme.colors.primary};
     }
   `}
 `;
