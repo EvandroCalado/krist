@@ -6,6 +6,10 @@ export const Nav = styled.nav`
     display: flex;
     align-items: center;
     gap: ${theme.spacings.md};
+
+    @media ${theme.media.lteOrEqMedium} {
+      flex-direction: column;
+    }
   `}
 `;
 
