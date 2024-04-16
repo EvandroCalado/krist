@@ -8,18 +8,36 @@ exports[`MenuNav should render a snapshot 1`] = `
 }
 
 .c1 {
+  position: relative;
   color: #131118;
   text-transform: capitalize;
+  border-bottom: 2px solid transparent;
   transition: all 150ms ease-in-out;
 }
 
-.c1:hover {
-  opacity: 0.7;
+.c1::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 0.2rem;
+  background-color: #131118;
+  transition: all 150ms ease-in-out;
+}
+
+.c1:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.c1.active {
+  border-bottom: 2px solid #131118;
 }
 
 <div>
   <nav
-    class="c0"
+    class="c0 menu-nav"
   >
     <a
       aria-current="page"
