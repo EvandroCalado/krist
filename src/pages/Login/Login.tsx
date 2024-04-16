@@ -1,6 +1,6 @@
 import { Form, Link } from 'react-router-dom';
 
-import { Button, Checkbox, Heading, Input, Logo } from 'components';
+import { Button, Heading, Input, Logo } from 'components';
 
 import * as S from './Login.styles';
 
@@ -26,8 +26,8 @@ export const Login = () => {
           <Input type="password" label="senha" name="password" />
 
           <span>
-            <Checkbox label="lembrar" name="remember" />
-            <Link to="/forgot-password">esqueceu a senha?</Link>
+            Não tem conta?
+            <Link to="/register">Registrar</Link>
           </span>
 
           <Button type="submit" width="100%">

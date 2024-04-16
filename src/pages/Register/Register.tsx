@@ -1,6 +1,6 @@
 import { Form, Link } from 'react-router-dom';
 
-import { Button, Checkbox, Heading, Input, Logo } from 'components';
+import { Button, Heading, Input, Logo } from 'components';
 
 import * as S from './Register.styles';
 
@@ -28,8 +28,8 @@ export const Register = () => {
           <Input type="password" label="senha" name="password" />
 
           <span>
-            <Checkbox label="aceitar" name="remember" />
-            <Link to="/terms">termos & condições</Link>
+            Já tem conta?
+            <Link to="/login">Entrar</Link>
           </span>
 
           <Button type="submit" width="100%">
