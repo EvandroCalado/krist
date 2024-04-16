@@ -4,5 +4,6 @@ export * from './Header';
 export * from './Heading';
 export * from './Input';
 export * from './Logo';
+export * from './MenuMobile';
 export * from './MenuNav';
 export * from './MenuUser';
