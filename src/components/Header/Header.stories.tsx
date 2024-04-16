@@ -3,7 +3,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import { Header } from '.';
 
 export default {
-  title: 'Components/ Header',
+  title: 'Components/Header',
   component: Header,
   parameters: {
     layout: 'fullscreen',

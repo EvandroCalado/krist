@@ -2,7 +2,7 @@ import { fireEvent, screen } from '@testing-library/react';
 
 import { customRender } from 'utils/test-utils';
 
-import { Checkbox } from './Checkbox';
+import { Checkbox } from '.';
 
 describe('Checkbox', () => {
   it('should render default', () => {

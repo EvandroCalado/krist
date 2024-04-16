@@ -1,4 +1,4 @@
-import { Logo, MenuNav, MenuUser } from 'components';
+import { Logo, MenuMobile, MenuNav, MenuUser } from 'components';
 
 import * as S from './Header.styles';
 
@@ -8,6 +8,8 @@ export const Header = () => {
       <Logo />
       <MenuNav />
       <MenuUser />
+
+      <MenuMobile />
     </S.Header>
   );
 };
