@@ -5,3 +5,4 @@ export * from './Heading';
 export * from './Input';
 export * from './Logo';
 export * from './MenuNav';
+export * from './MenuUser';
