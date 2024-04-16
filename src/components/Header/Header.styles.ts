@@ -8,11 +8,19 @@ export const Header = styled.header`
     padding: ${theme.spacings.md} ${theme.spacings['5xl']};
 
     @media ${theme.media.lteOrEqMedium} {
-      .menu-nav {
+      padding: ${theme.spacings.md} ${theme.spacings.xl};
+
+      & > .menu-nav {
         display: none;
       }
 
-      .menu-user {
+      & > .menu-user {
+        display: none;
+      }
+    }
+
+    @media ${theme.media.gteOrEqMedium} {
+      .menu-mobile {
         display: none;
       }
     }
