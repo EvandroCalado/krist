@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Heading should render to match snapshot 1`] = `
+exports[`Heading > should render to match snapshot 1`] = `
 .c0 {
   font-size: 1.6rem;
   text-transform: lowercase;

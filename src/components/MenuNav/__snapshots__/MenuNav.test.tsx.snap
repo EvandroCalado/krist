@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MenuNav should render a snapshot 1`] = `
+exports[`MenuNav > should render a snapshot 1`] = `
 .c0 {
   display: flex;
   align-items: center;
@@ -33,6 +33,12 @@ exports[`MenuNav should render a snapshot 1`] = `
 
 .c1.active {
   border-bottom: 2px solid #131118;
+}
+
+@media (max-width: 768px) {
+  .c0 {
+    flex-direction: column;
+  }
 }
 
 <div>
