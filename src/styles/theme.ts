@@ -13,7 +13,7 @@ export default {
   },
   font: {
     family: {
-      primary: "'Jost', sans-serif",
+      primary: "'Montserrat', sans-serif",
     },
     sizes: {
       xs: '.8rem',
@@ -42,19 +42,6 @@ export default {
     gteOrEqXLarge: '(min-width: 1200px)',
   },
   spacings: {
-    xs: '.8rem',
-    sm: '1rem',
-    md: '1.6rem',
-    lg: '2.4rem',
-    xl: '3.2rem',
-    '2xl': '4rem',
-    '3xl': '4.8rem',
-    '4xl': '5.6rem',
-    '5xl': '6.4rem',
-    '6xl': '7.2rem',
-    '7xl': '8rem',
-  },
-  paddings: {
     xs: '.8rem',
     sm: '1rem',
     md: '1.6rem',
