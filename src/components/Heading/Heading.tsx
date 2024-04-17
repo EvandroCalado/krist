@@ -8,6 +8,20 @@ export interface HeadingProps {
   size?: 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
   transform?: 'uppercase' | 'lowercase' | 'capitalize';
   align?: 'left' | 'center' | 'right';
+  fontWeight?:
+    | 'normal'
+    | 'bold'
+    | 'bolder'
+    | 'lighter'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
 }
 
 export const Heading: FC<HeadingProps> = ({
@@ -16,10 +30,17 @@ export const Heading: FC<HeadingProps> = ({
   size,
   transform,
   align,
+  fontWeight,
 }) => {
   return (
-    <S.Container as={as} size={size} transform={transform} align={align}>
+    <S.Title
+      as={as}
+      size={size}
+      transform={transform}
+      align={align}
+      fontWeight={fontWeight}
+    >
       {children}
-    </S.Container>
+    </S.Title>
   );
 };
