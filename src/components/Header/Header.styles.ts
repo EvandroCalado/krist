@@ -8,7 +8,7 @@ export const Header = styled.header`
     padding: ${theme.spacings.md} ${theme.spacings['5xl']};
 
     @media ${theme.media.lteOrEqMedium} {
-      padding: ${theme.spacings.md} ${theme.spacings.xl};
+      padding: ${theme.spacings.md} ${theme.spacings.lg};
 
       & > .menu-nav {
         display: none;
