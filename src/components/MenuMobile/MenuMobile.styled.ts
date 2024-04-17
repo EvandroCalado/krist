@@ -34,6 +34,7 @@ export const MenuContainer = styled.div<OpenProps>`
     gap: 1.5rem;
     position: fixed;
     top: 0;
+    z-index: 30;
     width: 320px;
     height: 100%;
     background-color: ${theme.colors.secondary};
