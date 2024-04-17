@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const LogoContainer = styled.div`
   ${({ theme }) => css`
     position: fixed;
-    padding: ${theme.paddings['5xl']};
+    padding: ${theme.spacings['5xl']};
   `}
 `;
 
@@ -41,7 +41,7 @@ export const LoginForm = styled.div`
       display: flex;
       flex-direction: column;
       gap: ${theme.spacings['md']};
-      margin: ${theme.paddings['2xl']} 0;
+      margin: ${theme.spacings['2xl']} 0;
 
       @media ${theme.media.gteOrEqXLarge} {
         width: 50%;
