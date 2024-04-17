@@ -1,10 +1,10 @@
-import { Login, Register } from 'pages';
+import { Home, Login, Register } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>Hello world!</div>,
+    element: <Home />,
     errorElement: <div>Error</div>,
     children: [],
   },
