@@ -1,7 +1,7 @@
 import { Home, Login, Register } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import { CategoriesCarousel, Hero } from 'components';
+import { CategoriesCarousel, Hero, ProductsList } from 'components';
 
 const categories = [
   {
@@ -31,6 +31,89 @@ const categories = [
   },
 ];
 
+const products = [
+  {
+    id: 1,
+    cover: '/products/camiseta/1.webp',
+    title: 'camiseta',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+  {
+    id: 2,
+    cover: '/products/blusa/1.webp',
+    title: 'blusa',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+  {
+    id: 3,
+    cover: '/products/cropped/1.webp',
+    title: 'cropped',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+  {
+    id: 4,
+    cover: '/products/regata/1.webp',
+    title: 'regata',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+  {
+    id: 5,
+    cover: '/products/top/1.webp',
+    title: 'top',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+  {
+    id: 6,
+    cover: '/products/vestido/1.webp',
+    title: 'vestido',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+  {
+    id: 7,
+    cover: '/products/camiseta/1.webp',
+    title: 'camiseta',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+  {
+    id: 8,
+    cover: '/products/camiseta/1.webp',
+    title: 'camiseta',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+  {
+    id: 9,
+    cover: '/products/top/1.webp',
+    title: 'camiseta',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+  {
+    id: 10,
+    cover: '/products/cropped/1.webp',
+    title: 'cropped',
+    resume: 'camiseta cinza manga curta',
+    price: 59.99,
+    discount: 15,
+  },
+];
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -42,6 +125,7 @@ const router = createBrowserRouter([
         element: [
           <Hero key={1} />,
           <CategoriesCarousel categories={categories} key={2} />,
+          <ProductsList key={3} products={products} />,
         ],
         errorElement: <div>Home error</div>,
       },
