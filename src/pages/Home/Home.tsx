@@ -1,10 +1,12 @@
-import { Header, Hero } from 'components';
+import { Outlet } from 'react-router-dom';
+
+import { Header } from 'components';
 
 export const Home = () => {
   return (
     <>
       <Header />
-      <Hero />
+      <Outlet />
     </>
   );
 };
