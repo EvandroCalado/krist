@@ -22,7 +22,8 @@ exports[`Input > should render to match snapshot 1`] = `
 }
 
 .c2:focus {
-  box-shadow: 0 0 0 2px #131118;
+  outline: 3px solid #131118;
+  outline-offset: 1px;
 }
 
 .c2:disabled {
