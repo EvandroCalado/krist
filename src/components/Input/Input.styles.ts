@@ -25,7 +25,8 @@ export const Input = styled.input`
     transition: ${theme.transitions.faster};
 
     &:focus {
-      box-shadow: 0 0 0 2px ${theme.colors.primary};
+      outline: 3px solid ${theme.colors.primary};
+      outline-offset: 1px;
     }
 
     &:disabled {
