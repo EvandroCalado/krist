@@ -10,3 +10,5 @@ export * from './Logo';
 export * from './MenuMobile';
 export * from './MenuNav';
 export * from './MenuUser';
+export * from './ProductCard';
+export * from './ProductsList';
