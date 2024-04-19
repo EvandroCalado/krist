@@ -14,3 +14,4 @@ export * from './ProductCard';
 export * from './ProductsList';
 export * from './RatingCard';
 export * from './RatingsCarousel';
+export * from './Services';
