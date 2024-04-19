@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import {
   CategoriesCarousel,
+  FlashSale,
   Hero,
   ProductsList,
   RatingsCarousel,
@@ -24,8 +25,9 @@ const router = createBrowserRouter([
           <Hero key={1} />,
           <CategoriesCarousel key={2} categories={categories} />,
           <ProductsList key={3} products={products} />,
-          <RatingsCarousel key={4} ratings={ratings} />,
-          <Services key={5} />,
+          <FlashSale key={4} />,
+          <RatingsCarousel key={5} ratings={ratings} />,
+          <Services key={6} />,
         ],
         errorElement: <div>Home error</div>,
       },
