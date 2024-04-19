@@ -6,6 +6,7 @@ import {
   Hero,
   ProductsList,
   RatingsCarousel,
+  Services,
 } from 'components';
 import { categories } from 'components/CategoriesCarousel/CategoriesCarousel.stories';
 import { products } from 'components/ProductsList/ProductsList.stories';
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
           <CategoriesCarousel key={2} categories={categories} />,
           <ProductsList key={3} products={products} />,
           <RatingsCarousel key={4} ratings={ratings} />,
+          <Services key={5} />,
         ],
         errorElement: <div>Home error</div>,
       },
