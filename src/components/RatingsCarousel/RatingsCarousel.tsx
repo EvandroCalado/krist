@@ -1,0 +1,46 @@
+import { FC } from 'react';
+
+import { Heading, RatingCard, RatingCardProps } from 'components';
+
+import * as S from './RatingsCarousel.styles';
+
+export interface RatingsCarouselProps {
+  ratings: RatingCardProps[];
+}
+
+export const RatingsCarousel: FC<RatingsCarouselProps> = ({ ratings }) => {
+  return (
+    <S.Container>
+      <Heading as="h2" transform="capitalize" size="2xl" fontWeight="700">
+        o que os clientes dizem ?
+      </Heading>
+
+      <S.Carousel
+        options={{
+          type: 'loop',
+          perMove: 1,
+          perPage: 1,
+          gap: '6rem',
+          mediaQuery: 'min',
+          breakpoints: {
+            576: {
+              perPage: 2,
+            },
+            992: {
+              perPage: 3,
+            },
+            1200: {
+              perPage: 4,
+            },
+          },
+        }}
+      >
+        {ratings.map((rating) => (
+          <S.CarouselSlide key={rating.id}>
+            <RatingCard {...rating} />
+          </S.CarouselSlide>
+        ))}
+      </S.Carousel>
+    </S.Container>
+  );
+};
