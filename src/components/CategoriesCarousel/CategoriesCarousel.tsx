@@ -22,18 +22,18 @@ export const CategoriesCarousel: FC<CategoriesCarouselProps> = ({
         options={{
           type: 'loop',
           perMove: 1,
-          perPage: 1,
+          perPage: 2,
           gap: '3rem',
           mediaQuery: 'min',
           breakpoints: {
             576: {
-              perPage: 2,
-            },
-            992: {
               perPage: 3,
             },
-            1200: {
+            992: {
               perPage: 4,
+            },
+            1200: {
+              perPage: 5,
             },
           },
         }}
