@@ -12,7 +12,7 @@ export const RatingsCarousel: FC<RatingsCarouselProps> = ({ ratings }) => {
   return (
     <S.Container>
       <Heading as="h2" transform="capitalize" size="2xl" fontWeight="700">
-        o que os clientes dizem ?
+        clientes dizem
       </Heading>
 
       <S.Carousel
@@ -20,6 +20,7 @@ export const RatingsCarousel: FC<RatingsCarouselProps> = ({ ratings }) => {
           type: 'loop',
           perMove: 1,
           perPage: 1,
+          pagination: false,
           gap: '6rem',
           mediaQuery: 'min',
           breakpoints: {
