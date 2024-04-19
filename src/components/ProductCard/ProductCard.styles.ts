@@ -23,18 +23,15 @@ export const Container = styled.div`
         opacity: 1;
 
         &:nth-child(2) {
-          top: 1rem;
-          right: 1rem;
+          top: 2rem;
         }
 
         &:nth-child(3) {
-          top: 7rem;
-          right: 1rem;
+          top: 8.5rem;
         }
 
         &:nth-child(4) {
-          top: 13rem;
-          right: 1rem;
+          top: 15rem;
         }
       }
     }
@@ -42,7 +39,8 @@ export const Container = styled.div`
     & > button {
       position: absolute;
       bottom: 6.5rem;
-      left: 1.6rem;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 10;
       width: 90%;
       visibility: hidden;
@@ -55,7 +53,7 @@ export const Container = styled.div`
       font-weight: 700;
       border-radius: ${theme.spacings.xs};
       border: none;
-      outline: none;
+      outline: transparent;
       cursor: pointer;
       transition: ${theme.transitions.faster};
 
@@ -65,7 +63,7 @@ export const Container = styled.div`
       }
 
       &:active {
-        transform: scale(1.05);
+        outline: 2px solid ${theme.colors.primary};
       }
     }
 
@@ -81,21 +79,22 @@ export const Container = styled.div`
       opacity: 0;
       padding: 1rem;
       border-radius: 50%;
-      cursor: pointer;
       transition: ${theme.transitions.faster};
+      cursor: pointer;
 
       &:hover {
         background-color: ${theme.colors.white};
       }
 
       &:nth-child(2) {
-        top: 5rem;
-        right: 1rem;
+        top: 6rem;
+        right: 2rem;
 
         &:hover::after {
           position: absolute;
-          left: -17px;
+          left: 50%;
           bottom: -23px;
+          transform: translateX(-50%);
           content: 'avaliações';
           background-color: ${theme.colors.primary};
           color: ${theme.colors.white};
@@ -107,13 +106,14 @@ export const Container = styled.div`
       }
 
       &:nth-child(3) {
-        top: 11rem;
-        right: 1rem;
+        top: 12rem;
+        right: 2rem;
 
         &:hover::after {
           position: absolute;
-          left: -12px;
+          left: 50%;
           bottom: -23px;
+          transform: translateX(-50%);
           content: 'favoritos';
           background-color: ${theme.colors.primary};
           color: ${theme.colors.white};
@@ -125,13 +125,14 @@ export const Container = styled.div`
       }
 
       &:nth-child(4) {
-        top: 17rem;
-        right: 1rem;
+        top: 18rem;
+        right: 2rem;
 
         &:hover::after {
           position: absolute;
-          left: -12px;
+          left: 50%;
           bottom: -23px;
+          transform: translateX(-50%);
           content: 'detalhes';
           background-color: ${theme.colors.primary};
           color: ${theme.colors.white};
