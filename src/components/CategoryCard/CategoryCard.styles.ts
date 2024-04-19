@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 
 export const LinkContainer = styled(Link)`
   overflow: hidden;
+  width: 25rem;
+  height: 30rem;
 
   &:hover {
     & img {
@@ -31,9 +33,11 @@ export const Title = styled.h4`
 
 export const Image = styled.img`
   ${({ theme }) => css`
+    width: 100%;
     height: 100%;
     margin-left: 7rem;
-    object-fit: cover;
+    padding-top: 2rem;
+    object-fit: contain;
     transition: ${theme.transitions.faster};
   `}
 `;
