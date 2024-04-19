@@ -6,10 +6,10 @@ import styled, { css } from 'styled-components';
 export const Container = styled.section`
   ${({ theme }) => css`
     position: relative;
-    padding: ${theme.spacings.lg} ${theme.spacings['5xl']};
+    padding: ${theme.spacings['5xl']};
 
     @media ${theme.media.lteOrEqMedium} {
-      padding: ${theme.spacings.lg} ${theme.spacings.lg};
+      padding: ${theme.spacings.lg};
     }
 
     & > h2 {
