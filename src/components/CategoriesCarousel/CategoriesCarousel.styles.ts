@@ -3,10 +3,10 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.section`
   ${({ theme }) => css`
     position: relative;
-    padding: ${theme.spacings.lg} ${theme.spacings['4xl']};
+    padding: ${theme.spacings.lg} ${theme.spacings['5xl']};
 
     @media ${theme.media.lteOrEqMedium} {
       padding: ${theme.spacings.lg} ${theme.spacings.lg};
