@@ -2,6 +2,8 @@ export * from './Button';
 export * from './CategoriesCarousel';
 export * from './CategoryCard';
 export * from './Checkbox';
+export * from './Countdown';
+export * from './FlashSale';
 export * from './Header';
 export * from './Heading';
 export * from './Hero';
