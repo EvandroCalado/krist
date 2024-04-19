@@ -67,22 +67,6 @@ export const products = [
     price: 59.99,
     discount: 15,
   },
-  {
-    id: 9,
-    cover: '/products/top/1.webp',
-    title: 'top',
-    resume: 'camiseta cinza manga curta',
-    price: 59.99,
-    discount: 15,
-  },
-  {
-    id: 10,
-    cover: '/products/camiseta/1.webp',
-    title: 'camiseta',
-    resume: 'camiseta cinza manga curta',
-    price: 59.99,
-    discount: 15,
-  },
 ];
 
 export default {
