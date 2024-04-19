@@ -13,5 +13,7 @@ export default {
 } as Meta;
 
 export const Default: StoryFn<CategoryCardProps> = (args) => (
-  <CategoryCard {...args} />
+  <div style={{ width: '250px' }}>
+    <CategoryCard {...args} />
+  </div>
 );
