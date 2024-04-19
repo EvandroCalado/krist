@@ -42,7 +42,7 @@ export const Container = styled.div`
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
-      width: 90%;
+      width: max-content;
       visibility: hidden;
       opacity: 0;
       background-color: ${theme.colors.white};
