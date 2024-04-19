@@ -28,6 +28,11 @@ export const Title = styled.h4`
     left: 0;
     top: 0;
     z-index: -1;
+
+    @media ${theme.media.lteOrEqMedium} {
+      font-size: ${theme.font.sizes['2xl']};
+      font-weight: 900;
+    }
   `}
 `;
 
@@ -39,6 +44,10 @@ export const Image = styled.img`
     padding-top: 2rem;
     object-fit: contain;
     transition: ${theme.transitions.faster};
+
+    @media ${theme.media.lteOrEqMedium} {
+      margin-left: 5rem;
+    }
   `}
 `;
 
@@ -58,5 +67,9 @@ export const Span = styled.span`
     border: none;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+
+    @media ${theme.media.lteOrEqMedium} {
+      bottom: 1rem;
+    }
   `}
 `;
