@@ -2,7 +2,7 @@ import { Meta, StoryFn } from '@storybook/react';
 
 import { CategoriesCarousel, CategoriesCarouselProps } from '.';
 
-const categories = [
+export const categories = [
   {
     title: 'masculino',
     image: '/products/camiseta/1.webp',
@@ -10,7 +10,7 @@ const categories = [
   },
   {
     title: 'femenino',
-    image: '/products/camiseta/1.webp',
+    image: '/products/vestido/1.webp',
     buttonLabel: 'femenino',
   },
   {
@@ -20,12 +20,22 @@ const categories = [
   },
   {
     title: 'kids',
-    image: '/products/camiseta/1.webp',
+    image: '/products/blusa/1.webp',
     buttonLabel: 'kids',
   },
   {
     title: 'esportivo',
-    image: '/products/camiseta/1.webp',
+    image: '/products/regata/1.webp',
+    buttonLabel: 'esportivo',
+  },
+  {
+    title: 'esportivo',
+    image: '/products/cropped/1.webp',
+    buttonLabel: 'esportivo',
+  },
+  {
+    title: 'esportivo',
+    image: '/products/top/1.webp',
     buttonLabel: 'esportivo',
   },
 ];
