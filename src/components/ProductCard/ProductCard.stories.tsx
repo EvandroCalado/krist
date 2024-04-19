@@ -20,5 +20,7 @@ export default {
 } as Meta;
 
 export const Default: StoryFn<ProductCardProps> = (args) => (
-  <ProductCard {...args} />
+  <div style={{ width: '350px' }}>
+    <ProductCard {...args} />
+  </div>
 );
