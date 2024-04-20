@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   ${({ theme }) => css`
     width: 100%;
+    height: 100dvh;
     height: 100vh;
     display: flex;
 
@@ -20,13 +21,19 @@ export const LogoContainer = styled.div`
 `;
 
 export const LoginImage = styled.div`
-  flex: 1;
+  ${({ theme }) => css`
+    flex: 1;
 
-  & img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+    @media ${theme.media.lteOrEqMedium} {
+      display: none;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  `}
 `;
 
 export const LoginForm = styled.div`
