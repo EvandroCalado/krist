@@ -3,13 +3,21 @@ import styled, { css } from 'styled-components';
 export const Container = styled.section`
   ${({ theme }) => css`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
     gap: ${theme.spacings['2xl']};
     padding: ${theme.spacings['5xl']};
 
+    @media ${theme.media.lteOrEqLarge} {
+      grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    }
+
     @media ${theme.media.lteOrEqMedium} {
       padding: ${theme.spacings.lg};
-      grid-template-columns: repeat(auto-fill, minmax(300, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    }
+
+    @media ${theme.media.lteOrEqSmall} {
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     }
   `}
 `;
