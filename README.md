@@ -29,17 +29,18 @@ Bem-vindo ao repositório do projeto Krist! Krist é uma loja online desenvolvid
 
 ```
 my-react-app/
-├── .test/
+├── .husky/
 ├── .storybook/
+├── .test/
 ├── public/
 ├── src/
-│   ├── App.tsx
-│   └── main.tsx
-│   └── /assets
 │   └── /components
+│   └── /pages
 │   └── /styles
 │   └── /types
 │   └── /utils
+│   ├── App.tsx
+│   └── main.tsx
 ├── .babelrc
 ├── .editorconfig
 ├── .eslintignore
