@@ -9,6 +9,7 @@ Bem-vindo ao repositório do projeto Krist! Krist é uma loja online desenvolvid
 - **TypeScript**: Adiciona suporte para TypeScript ao projeto React.
 - **Styled Components**: Integra o Styled Components para estilização CSS-in-JS.
 - **Storybook**: Configura o Storybook para desenvolvimento de componentes isolados.
+- **Husky**: Um conjunto de ganchos do Git para automatizar os commits.
 - **Vitest**: Configura o vitest para testes unitários.
 - **ESLint**: Configura o ESLint com configurações recomendadas para React e TypeScript.
 - **Prettier**: Configura o Prettier para formatar automaticamente o código.
@@ -28,7 +29,7 @@ Bem-vindo ao repositório do projeto Krist! Krist é uma loja online desenvolvid
 ## Estrutura do diretório
 
 ```
-my-react-app/
+krist/
 ├── .husky/
 ├── .storybook/
 ├── .test/
