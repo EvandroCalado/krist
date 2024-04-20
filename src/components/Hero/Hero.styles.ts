@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
   ${({ theme }) => css`
-    height: 100%;
+    height: 100vh;
     margin: 0 ${theme.spacings.lg};
     background-color: ${theme.colors.secondary};
 
@@ -35,6 +35,7 @@ export const InfoContainer = styled.div`
     padding: ${theme.spacings['5xl']};
 
     & > h1 {
+      font-size: ${theme.font.sizes.xl};
       text-align: center;
     }
 
@@ -69,9 +70,17 @@ export const ImageContainer = styled.div`
       z-index: 5;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
 
-      @media ${theme.media.gteOrEqLarge} {
+      @media ${theme.media.lteOrEqBig} {
+        object-fit: cover;
+      }
+
+      @media ${theme.media.lteOrEqXLarge} {
+        object-fit: cover;
+      }
+
+      @media ${theme.media.lteOrEqLarge} {
         object-fit: contain;
       }
     }
