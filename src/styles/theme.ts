@@ -35,11 +35,13 @@ export default {
     lteOrEqMedium: '(max-width: 768px)',
     lteOrEqLarge: '(max-width: 992px)',
     lteOrEqXLarge: '(max-width: 1200px)',
+    lteOrEqBig: '(max-width: 1400px)',
     gteOrEqSmallest: '(min-width: 320px)',
     gteOrEqSmall: '(min-width: 576px)',
     gteOrEqMedium: '(min-width: 768px)',
     gteOrEqLarge: '(min-width: 992px)',
     gteOrEqXLarge: '(min-width: 1200px)',
+    gteOrEqBig: '(min-width: 1400px)',
   },
   spacings: {
     xs: '.8rem',
