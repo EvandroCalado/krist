@@ -1,44 +1,26 @@
-# Vite React Template com TypeScript, ESLint, Prettier, Styled Components, Jest e Storybook
-
-Este é um template para iniciar rapidamente projetos React usando Vite. Ele já vem configurado com várias ferramentas essenciais para desenvolvimento, incluindo TypeScript, ESLint, Prettier, Styled Components, Jest e Storybook.
-
-## Pré-requisitos
-
-- Node.js (versão >= 12.0.0)
-- npm ou Yarn
-
-## Como usar este template
-
-Para usar esse template você pode clonar ou até mesmo criar o seu próprio template
-usando esse como um guia/base.
-
-``` bash
-git clone https://github.com/EvandroCalado/vite_template
-cd vite_template
-npm install ou yarn
-npm run dev ou yarn dev
-```
+# ![icon](https://github.com/EvandroCalado/krist/assets/110628201/1c270b59-aa86-499a-816c-90ed2b4c26a7) Projeto loja online Krist
 
 
-Este projeto está configurado para subir o servidor de desenvolvimento no http://localhost:3000 ao invés da porta padrão do vite.
+Bem-vindo ao repositório do projeto Krist! Krist é uma loja online desenvolvida com tecnologias modernas para oferecer uma experiência de compra excepcional. Este projeto utiliza React, TypeScript, Styled-components e outras tecnologias de ponta para criar uma aplicação robusta e elegante.
+
 
 ## Ferramentas incluídas
 
 - **TypeScript**: Adiciona suporte para TypeScript ao projeto React.
+- **Styled Components**: Integra o Styled Components para estilização CSS-in-JS.
+- **Storybook**: Configura o Storybook para desenvolvimento de componentes isolados.
+- **Vitest**: Configura o vitest para testes unitários.
 - **ESLint**: Configura o ESLint com configurações recomendadas para React e TypeScript.
 - **Prettier**: Configura o Prettier para formatar automaticamente o código.
-- **Styled Components**: Integra o Styled Components para estilização CSS-in-JS.
-- **Jest**: Configura o Jest para testes unitários.
-- **Storybook**: Configura o Storybook para desenvolvimento de componentes isolados.
 - **EditorConfig**: Define convenções de formatação de código para vários editores de texto.
 
 ## Scripts disponíveis
 
-- `dev`: Inicia o servidor de desenvolvimento Vite.
+- `dev`: Inicia o servidor de desenvolvimento Vite na porta 3000.
 - `build`: Compila o aplicativo para produção.
 - `lint`: Executa o ESLint para verificar o código.
 - `lint:fix`: Corrige os erros de lint.
-- `test`: Executa os testes usando o Jest.
+- `test`: Executa os testes usando o vitext usando vitestUi.
 - `test:coverage`: Executa os testes com report de cobertura.
 - `storybook`: Inicia o servidor Storybook para desenvolvimento de componentes.
 - `build-storybook`: Compila o Storybook para produção.
@@ -47,7 +29,7 @@ Este projeto está configurado para subir o servidor de desenvolvimento no http:
 
 ```
 my-react-app/
-├── .jest/
+├── .test/
 ├── .storybook/
 ├── public/
 ├── src/
@@ -63,9 +45,9 @@ my-react-app/
 ├── .eslintignore
 ├── .eslintrc.json
 ├── .prettierrc.json
-├── jest.config.cjs
 ├── tsconfig.json
 ├── vite.config.ts
+├── vitest.config.ts
 ```
 
 ## Contribuindo
@@ -75,7 +57,3 @@ Se você encontrar problemas ou tiver sugestões para melhorias, sinta-se à von
 ## Licença
 
 Este projeto está licenciado sob a licença [MIT](LICENSE).
-
----
-
-Você pode personalizar e adicionar mais detalhes conforme necessário. Espero que isso ajude!
