@@ -4,6 +4,7 @@ export * from './CategoryCard';
 export * from './Checkbox';
 export * from './Countdown';
 export * from './FlashSale';
+export * from './Footer';
 export * from './Header';
 export * from './Heading';
 export * from './Hero';
