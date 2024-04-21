@@ -55,6 +55,9 @@ export default {
     '5xl': '6.4rem',
     '6xl': '7.2rem',
     '7xl': '8rem',
+    '8xl': '8.8rem',
+    '9xl': '9.6rem',
+    '10xl': '10.4rem',
   },
   frameSizes: {
     xs: '8rem',
