@@ -24,14 +24,11 @@ export const RatingsCarousel: FC<RatingsCarouselProps> = ({ ratings }) => {
           gap: '6rem',
           mediaQuery: 'min',
           breakpoints: {
-            576: {
+            992: {
               perPage: 2,
             },
-            992: {
-              perPage: 3,
-            },
             1200: {
-              perPage: 4,
+              perPage: 3,
             },
           },
         }}
