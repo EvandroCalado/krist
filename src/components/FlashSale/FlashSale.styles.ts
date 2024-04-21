@@ -4,7 +4,7 @@ export const Container = styled.section`
   ${({ theme }) => css`
     display: flex;
     gap: ${theme.spacings['5xl']};
-    padding: ${theme.spacings['5xl']};
+    padding: ${theme.spacings['10xl']};
 
     @media ${theme.media.lteOrEqMedium} {
       flex-direction: column;

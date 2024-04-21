@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 export const Container = styled.section`
   ${({ theme }) => css`
     position: relative;
-    padding: ${theme.spacings['5xl']};
+    padding: ${theme.spacings['10xl']};
 
     @media ${theme.media.lteOrEqMedium} {
       padding: ${theme.spacings.lg};

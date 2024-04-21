@@ -32,7 +32,7 @@ export const InfoContainer = styled.div`
     align-items: center;
     justify-content: center;
     gap: ${theme.spacings.lg};
-    padding: ${theme.spacings['5xl']};
+    padding: ${theme.spacings['7xl']};
 
     & > h1 {
       font-size: ${theme.font.sizes.xl};

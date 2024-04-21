@@ -13,6 +13,7 @@ export const Carousel = styled(Splide)`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 ${({ theme }) => theme.spacings['10xl']};
 `;
 
 export const CarouselSlide = styled(SplideSlide)`

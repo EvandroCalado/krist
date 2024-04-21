@@ -5,7 +5,7 @@ export const Container = styled.section`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
     gap: ${theme.spacings['2xl']};
-    padding: ${theme.spacings['5xl']};
+    padding: ${theme.spacings['10xl']};
 
     @media ${theme.media.lteOrEqLarge} {
       grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));

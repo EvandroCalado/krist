@@ -5,7 +5,7 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: ${theme.spacings.md} ${theme.spacings['5xl']};
+    padding: ${theme.spacings.md} ${theme.spacings['10xl']};
 
     @media ${theme.media.lteOrEqMedium} {
       padding: ${theme.spacings.md} ${theme.spacings.lg};

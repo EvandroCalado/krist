@@ -10,7 +10,7 @@ export const Container = styled.section`
 
 export const GridContainer = styled.div`
   ${({ theme }) => css`
-    padding: ${theme.spacings['5xl']};
+    padding: ${theme.spacings['10xl']};
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 6rem;
