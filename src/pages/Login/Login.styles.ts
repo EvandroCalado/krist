@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const LogoContainer = styled.div`
   ${({ theme }) => css`
     position: fixed;
-    padding: ${theme.spacings['5xl']};
+    padding: ${theme.spacings['5xl']} ${theme.spacings['10xl']};
   `}
 `;
 
@@ -44,7 +44,7 @@ export const LoginForm = styled.div`
     flex: 1;
 
     & > form {
-      width: 80%;
+      width: 85%;
       display: flex;
       flex-direction: column;
       gap: ${theme.spacings['md']};
