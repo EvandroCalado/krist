@@ -7,7 +7,7 @@ export const Section = styled.section`
     background-color: ${theme.colors.secondary};
 
     @media ${theme.media.gteOrEqLarge} {
-      height: 840px;
+      height: 84rem;
       flex-direction: column;
     }
   `}
@@ -37,6 +37,10 @@ export const InfoContainer = styled.div`
     & > h1 {
       font-size: ${theme.font.sizes.xl};
       text-align: center;
+    }
+
+    @media ${theme.media.lteOrEqMedium} {
+      padding: ${theme.spacings.lg};
     }
 
     @media ${theme.media.gteOrEqLarge} {
