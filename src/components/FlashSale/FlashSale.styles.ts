@@ -22,7 +22,7 @@ export const SaleContainer = styled.div`
     justify-content: space-between;
     padding: ${theme.spacings['2xl']} 0;
 
-    @media ${theme.media.lteOrEqLarge} {
+    @media ${theme.media.lteOrEqXLarge} {
       flex: 1;
 
       & > h2 {
