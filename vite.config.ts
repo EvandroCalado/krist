@@ -14,8 +14,10 @@ export default defineConfig({
     alias: {
       actions: `${__dirname}/src/actions`,
       components: `${__dirname}/src/components`,
+      hooks: `${__dirname}/src/hooks`,
       loaders: `${__dirname}/src/loaders`,
       pages: `${__dirname}/src/pages`,
+      slices: `${__dirname}/src/slices`,
       styles: `${__dirname}/src/styles`,
       types: `${__dirname}/src/types`,
       utils: `${__dirname}/src/utils`,
