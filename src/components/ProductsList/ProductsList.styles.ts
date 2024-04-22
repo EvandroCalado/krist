@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.section`
-  ${({ theme }) => css`
-    & > h2 {
-      margin: ${theme.spacings['2xl']} 0;
-    }
-  `}
+  display: flex;
+  flex-direction: column;
+
+  & > h2 {
+    margin: 0 auto;
+  }
 `;
 
 export const GridContainer = styled.div`

@@ -12,13 +12,7 @@ export interface ProductsListProps {
 export const ProductsList: FC<ProductsListProps> = ({ products }) => {
   return (
     <S.Container>
-      <Heading
-        as="h2"
-        transform="capitalize"
-        size="2xl"
-        align="center"
-        fontWeight="600"
-      >
+      <Heading as="h2" transform="capitalize" size="2xl" fontWeight="600">
         em destaque
       </Heading>
       <S.GridContainer>
