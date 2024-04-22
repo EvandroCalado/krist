@@ -45,16 +45,14 @@ export const Countdown: FC<CountdownProps> = () => {
 
   const timerComponents: JSX.Element[] = [];
 
-  Object.keys(timeLeft).forEach((interval) => {
+  Object.keys(timeLeft).forEach((interval, index) => {
     if (!timeLeft[interval as keyof TimeLeft]) {
       return;
     }
 
     timerComponents.push(
-      <S.DateContainer>
-        <S.Counter key={interval}>
-          {timeLeft[interval as keyof TimeLeft]}
-        </S.Counter>
+      <S.DateContainer key={interval + index}>
+        <S.Counter>{timeLeft[interval as keyof TimeLeft]}</S.Counter>
         <S.Name>{interval}</S.Name>
       </S.DateContainer>,
     );
