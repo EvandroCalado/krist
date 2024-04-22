@@ -8,7 +8,6 @@ export const Header = () => {
       <Logo />
       <MenuNav />
       <MenuUser />
-
       <MenuMobile />
     </S.Header>
   );

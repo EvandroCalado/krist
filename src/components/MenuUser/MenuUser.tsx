@@ -1,4 +1,5 @@
-import { Heart, ShoppingBag } from 'lucide-react';
+import { useAppSelector } from 'hooks/redux-hook';
+import { Heart, ShoppingBag, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from 'components';
@@ -6,6 +7,8 @@ import { Button } from 'components';
 import * as S from './MenuUser.styles';
 
 export const MenuUser = () => {
+  const { user } = useAppSelector((state) => state.userState);
+
   const navigate = useNavigate();
 
   return (
@@ -13,7 +16,12 @@ export const MenuUser = () => {
       <span>Search</span>
       <Heart />
       <ShoppingBag />
-      <Button onClick={() => navigate('/login')}>Entrar</Button>
+
+      {user ? (
+        <User />
+      ) : (
+        <Button onClick={() => navigate('/login')}>Entrar</Button>
+      )}
     </S.Container>
   );
 };

@@ -14,14 +14,14 @@ export const Login = () => {
         <img src="/auth/login-image.png" alt="login image" />
       </S.LoginImage>
       <S.LoginForm>
-        <Form>
+        <Form method="post">
           <Heading as="h2" size="xl" transform="capitalize">
             bem vindo
           </Heading>
 
           <p>acessar conta</p>
 
-          <Input type="email" label="email" name="email" />
+          <Input type="email" label="email" name="identifier" />
 
           <Input type="password" label="senha" name="password" />
 

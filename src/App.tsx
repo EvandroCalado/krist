@@ -1,4 +1,4 @@
-import { registerAction } from 'actions';
+import { loginAction, registerAction } from 'actions';
 import { Home, Login, Register } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -13,6 +13,8 @@ import {
 import { categories } from 'components/CategoriesCarousel/CategoriesCarousel.stories';
 import { products } from 'components/ProductsList/ProductsList.stories';
 import { ratings } from 'components/RatingsCarousel/RatingsCarousel.stories';
+
+import { store } from './store';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,7 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
     errorElement: <div>Login error</div>,
+    action: loginAction(store),
   },
   {
     path: '/register',
