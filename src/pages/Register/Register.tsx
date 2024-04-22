@@ -14,14 +14,14 @@ export const Register = () => {
         <img src="/auth/register-image.png" alt="login image" />
       </S.RegisterImage>
       <S.RegisterForm>
-        <Form>
+        <Form method="post">
           <Heading as="h2" size="xl" transform="capitalize">
             criar conta
           </Heading>
 
           <p>entre com os detalhes</p>
 
-          <Input type="text" label="usuário" name="identifier" />
+          <Input type="text" label="usuário" name="username" />
 
           <Input type="email" label="email" name="email" />
 

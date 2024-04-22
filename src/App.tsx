@@ -1,3 +1,4 @@
+import { registerAction } from 'actions';
 import { Home, Login, Register } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
     path: '/register',
     element: <Register />,
     errorElement: <div>Register error</div>,
+    action: registerAction,
   },
   {
     path: '*',
