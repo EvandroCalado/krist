@@ -12,7 +12,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      actions: `${__dirname}/src/actions`,
       components: `${__dirname}/src/components`,
+      loaders: `${__dirname}/src/loaders`,
       pages: `${__dirname}/src/pages`,
       styles: `${__dirname}/src/styles`,
       types: `${__dirname}/src/types`,
