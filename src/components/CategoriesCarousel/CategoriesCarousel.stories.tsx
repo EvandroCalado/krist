@@ -28,16 +28,6 @@ export const categories = [
     image: '/products/regata/1.webp',
     buttonLabel: 'esportivo',
   },
-  {
-    title: 'esportivo',
-    image: '/products/cropped/1.webp',
-    buttonLabel: 'esportivo',
-  },
-  {
-    title: 'esportivo',
-    image: '/products/top/1.webp',
-    buttonLabel: 'esportivo',
-  },
 ];
 
 export default {
