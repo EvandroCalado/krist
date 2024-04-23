@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <HelmetProvider>
         <ThemeProvider theme={theme}>
-          <Toaster position="top-right" />
+          <Toaster />
           <App />
           <GlobalStyles />
         </ThemeProvider>
