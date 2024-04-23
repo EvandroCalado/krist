@@ -15,6 +15,11 @@ export const MenuUser = () => {
 
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    dispatch(userLogout());
+    navigate('/');
+  };
+
   return (
     <S.Container className="menu-user">
       <span>Search</span>
@@ -25,7 +30,7 @@ export const MenuUser = () => {
         <>
           <User onClick={() => setOpen(!open)} />
           <div className={`menu-hover ${open ? 'open' : ''}`}>
-            <button onClick={() => dispatch(userLogout())}>sair</button>
+            <button onClick={handleLogout}>sair</button>
           </div>
         </>
       ) : (
