@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
@@ -6,6 +7,7 @@ import { customRender } from 'utils/test-utils';
 
 import theme from 'styles/theme';
 
+import { store } from '../../store';
 import { Heading } from './Heading';
 
 describe('Heading', () => {
@@ -35,11 +37,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading transform="lowercase">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading transform="lowercase">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
@@ -47,11 +51,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading transform="capitalize">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading transform="capitalize">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
@@ -69,11 +75,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading size="xl">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading size="xl">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
@@ -81,11 +89,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading size="2xl">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading size="2xl">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
@@ -93,11 +103,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading size="3xl">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading size="3xl">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
@@ -105,11 +117,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading size="4xl">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading size="4xl">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
@@ -117,11 +131,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading size="5xl">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading size="5xl">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
@@ -129,11 +145,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading size="6xl">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading size="6xl">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
@@ -141,11 +159,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading size="7xl">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading size="7xl">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
@@ -173,11 +193,13 @@ describe('Heading', () => {
     });
 
     rerender(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Heading align="right">Heading</Heading>
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <MemoryRouter>
+            <Heading align="right">Heading</Heading>
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
     );
 
     expect(heading).toHaveStyle({
