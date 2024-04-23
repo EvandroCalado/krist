@@ -1,4 +1,5 @@
 import { loginAction, registerAction } from 'actions';
+import { homeLoader } from 'loaders';
 import { Home, Login, Register, Shop } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
           <Services key={6} />,
         ],
         errorElement: <div>Home error</div>,
+        loader: homeLoader,
       },
       {
         path: 'shop',

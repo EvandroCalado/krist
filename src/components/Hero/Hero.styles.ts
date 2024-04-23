@@ -1,14 +1,58 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
   ${({ theme }) => css`
-    height: 100vh;
+    height: 87.5vh;
     margin: 0 ${theme.spacings.lg};
     background-color: ${theme.colors.secondary};
 
-    @media ${theme.media.gteOrEqLarge} {
-      height: 84rem;
-      flex-direction: column;
+    @media ${theme.media.lteOrEqMedium} {
+      height: 100%;
+    }
+
+    & .splide__arrow.splide__arrow--next {
+      background-color: ${theme.colors.secondary};
+      border-radius: ${theme.spacings.xs};
+      color: ${theme.colors.primary};
+      padding: 2rem;
+      transition: ${theme.transitions.faster};
+
+      &:hover {
+        background-color: ${theme.colors.primary};
+        color: ${theme.colors.white};
+      }
+
+      &::after {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        content: '⃗';
+        font-size: 4rem;
+      }
+    }
+
+    & .splide__arrow.splide__arrow--prev {
+      background-color: ${theme.colors.secondary};
+      border-radius: ${theme.spacings.xs};
+      color: ${theme.colors.primary};
+      padding: 2rem;
+      transition: ${theme.transitions.faster};
+
+      &:hover {
+        background-color: ${theme.colors.primary};
+        color: ${theme.colors.white};
+      }
+
+      &::after {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        content: '⃖';
+        font-size: 4rem;
+      }
     }
   `}
 `;
@@ -16,39 +60,42 @@ export const Section = styled.section`
 export const Container = styled.div`
   ${({ theme }) => css`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 100%;
 
-    @media ${theme.media.gteOrEqLarge} {
-      flex-direction: row;
+    @media ${theme.media.lteOrEqMedium} {
+      height: 87.5vh;
+      flex-direction: column;
     }
   `}
 `;
 
 export const InfoContainer = styled.div`
   ${({ theme }) => css`
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     gap: ${theme.spacings.lg};
     padding: ${theme.spacings['7xl']};
 
-    & > h1 {
-      font-size: ${theme.font.sizes.xl};
-      text-align: center;
-    }
-
-    @media ${theme.media.lteOrEqMedium} {
+    @media ${theme.media.lteOrEqLarge} {
       padding: ${theme.spacings.lg};
     }
 
-    @media ${theme.media.gteOrEqLarge} {
-      flex: 1;
-      align-items: start;
+    @media ${theme.media.lteOrEqMedium} {
+      flex: none;
+      height: 50%;
+      align-items: center;
+      padding: ${theme.spacings.lg};
 
       & > h1 {
-        text-align: left;
+        font-size: ${theme.font.sizes.xl};
+        text-align: center;
+      }
+
+      & > h2 {
+        font-size: ${theme.font.sizes.lg};
       }
     }
   `}
@@ -56,17 +103,22 @@ export const InfoContainer = styled.div`
 
 export const ImageContainer = styled.div`
   ${({ theme }) => css`
-    height: 50%;
+    flex: 1;
+    height: 87vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: ${theme.spacings.xl};
 
-    @media ${theme.media.gteOrEqLarge} {
-      flex: 1;
-      padding: 0 ${theme.spacings['5xl']};
-      height: 100%;
+    @media ${theme.media.lteOrEqBig} {
+      flex: 2;
+      padding: ${theme.spacings.lg};
+    }
+
+    @media ${theme.media.lteOrEqMedium} {
+      flex: none;
+      height: 50%;
     }
 
     & > img {
@@ -77,56 +129,63 @@ export const ImageContainer = styled.div`
       object-fit: contain;
 
       @media ${theme.media.lteOrEqBig} {
-        object-fit: cover;
+        oject-fit: cover;
       }
 
-      @media ${theme.media.lteOrEqXLarge} {
-        object-fit: cover;
-      }
-
-      @media ${theme.media.lteOrEqLarge} {
+      @media ${theme.media.lteOrEqSmall} {
         object-fit: contain;
+      }
+
+      @media ${theme.media.lteOrEqSmallest} {
+        object-fit: cover;
       }
     }
 
     & > .back {
+      height: 74rem;
       background-color: transparent;
       position: absolute;
+      z-index: 2;
       inset: 0;
-      border: 1.5rem solid ${theme.colors.white};
-      margin: 3rem;
+      border: 3rem solid ${theme.colors.white};
+      margin: 6rem;
 
-      @media ${theme.media.gteOrEqSmall} {
-        border: 2rem solid ${theme.colors.white};
-        margin: 4rem;
+      @media ${theme.media.lteOrEqLarge} {
+        margin: ${theme.spacings.lg};
       }
 
-      @media ${theme.media.gteOrEqLarge} {
-        border: 3rem solid ${theme.colors.white};
-        margin: 6rem;
+      @media ${theme.media.lteOrEqMedium} {
+        height: auto;
+        border: 2rem solid ${theme.colors.white};
+        margin: 2rem;
       }
     }
 
     & > .front {
+      height: 74rem;
       background-color: transparent;
       position: absolute;
-      z-index: 10;
+      z-index: 20;
       inset: 0;
       margin: 3rem;
-      border-bottom: 1.5rem solid ${theme.colors.white};
-      border-right: 1.5rem solid ${theme.colors.white};
+      border-bottom: 3rem solid ${theme.colors.white};
+      border-right: 3rem solid ${theme.colors.white};
+      margin: 6rem;
 
-      @media ${theme.media.gteOrEqSmall} {
-        border-bottom: 2rem solid ${theme.colors.white};
-        border-right: 2rem solid ${theme.colors.white};
-        margin: 4rem;
+      @media ${theme.media.lteOrEqLarge} {
+        margin: ${theme.spacings.lg};
       }
 
-      @media ${theme.media.gteOrEqLarge} {
-        border-bottom: 3rem solid ${theme.colors.white};
-        border-right: 3rem solid ${theme.colors.white};
-        margin: 6rem;
+      @media ${theme.media.lteOrEqMedium} {
+        height: auto;
+        border-bottom: 2rem solid ${theme.colors.white};
+        border-right: 2rem solid ${theme.colors.white};
+        margin: 2rem;
       }
     }
   `}
 `;
+
+export const Carousel = styled(Splide)``;
+
+export const CarouselSlide = styled(SplideSlide)``;
