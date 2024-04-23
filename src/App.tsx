@@ -1,5 +1,5 @@
 import { loginAction, registerAction } from 'actions';
-import { Home, Login, Register } from 'pages';
+import { Home, Login, Register, Shop } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import {
@@ -33,6 +33,11 @@ const router = createBrowserRouter([
           <Services key={6} />,
         ],
         errorElement: <div>Home error</div>,
+      },
+      {
+        path: 'shop',
+        element: <Shop />,
+        errorElement: <div>Shop error</div>,
       },
     ],
   },
