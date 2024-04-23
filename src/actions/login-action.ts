@@ -22,6 +22,8 @@ export const loginAction =
         toast.success('Login realizado com sucesso!');
       }
 
+      localStorage.setItem('userToken', response.data.jwt);
+
       store.dispatch(userLogin(response.data.user));
 
       return redirect(transfer || '/');
