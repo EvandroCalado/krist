@@ -1,16 +1,20 @@
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+
+import { StrapiConfigType } from 'types/strapi-config-type';
 
 import * as S from './Logo.styles';
 
-export interface LogoProps {
-  isWhite?: boolean;
-}
+export const Logo = () => {
+  const { config } = useLoaderData() as { config: StrapiConfigType };
 
-export const Logo: FC<LogoProps> = ({ isWhite }) => {
+  const { black, white, isBlack } = config.data.attributes.logo;
+
   return (
     <Link to="/">
-      <S.Logo src={isWhite ? '/logo-white.png' : '/logo.png'} alt="logo" />
+      <S.Logo
+        src={isBlack ? black.data.attributes.url : white.data.attributes.url}
+        alt="logo"
+      />
     </Link>
   );
 };
