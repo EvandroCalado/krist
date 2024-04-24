@@ -42,7 +42,7 @@ export const Hero = () => {
 
                 <Button
                   icon={<MoveRight size={16} />}
-                  onClick={() => navigate('/store')}
+                  onClick={() => navigate('/shop')}
                 >
                   {heroItem.button.label}
                 </Button>
@@ -56,33 +56,6 @@ export const Hero = () => {
           </S.CarouselSlide>
         ))}
       </S.Carousel>
-      {/* <S.Container>
-        <S.InfoContainer>
-          <Heading transform="capitalize" size="lg" as="h2">
-            exclusivo
-          </Heading>
-
-          <Heading size="3xl" transform="capitalize" fontWeight="800">
-            coleção feminina
-          </Heading>
-
-          <Heading transform="uppercase" size="lg" as="h2">
-            até 40% off
-          </Heading>
-
-          <Button
-            icon={<MoveRight size={16} />}
-            onClick={() => navigate('/store')}
-          >
-            compre já
-          </Button>
-        </S.InfoContainer>
-        <S.ImageContainer>
-          <span className="back"></span>
-          <img src="/hero1.png" alt="Hero" />
-          <span className="front"></span>
-        </S.ImageContainer>
-      </S.Container> */}
     </S.Section>
   );
 };
