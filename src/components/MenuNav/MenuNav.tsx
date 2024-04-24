@@ -1,29 +1,19 @@
+import { useLoaderData } from 'react-router-dom';
+
+import { StrapiConfigType } from 'types/strapi-config-type';
+
 import * as S from './MenuNav.styles';
 
-const navLinks = [
-  {
-    id: 1,
-    label: 'home',
-    path: '/',
-  },
-  {
-    id: 2,
-    label: 'loja',
-    path: '/shop',
-  },
-  {
-    id: 3,
-    label: 'contato',
-    path: '/contact',
-  },
-];
-
 export const MenuNav = () => {
+  const { config } = useLoaderData() as { config: StrapiConfigType };
+
+  const { navLinks } = config.data.attributes;
+
   return (
     <S.Nav className="menu-nav">
       {navLinks.map((link) => (
-        <S.Navlink key={link.id} to={link.path}>
-          {link.label}
+        <S.Navlink key={link.id} to={link.link}>
+          {link.name}
         </S.Navlink>
       ))}
     </S.Nav>
