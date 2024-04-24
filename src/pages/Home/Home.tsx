@@ -1,9 +1,12 @@
 import { Helmet } from 'react-helmet-async';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigation } from 'react-router-dom';
 
 import { Footer, Header } from 'components';
 
 export const Home = () => {
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === 'loading';
+
   return (
     <>
       <Helmet>
@@ -11,7 +14,7 @@ export const Home = () => {
         <meta name="description" content="Loja online de roupas" />
       </Helmet>
       <Header />
-      <Outlet />
+      {isPageLoading ? <h1>Carregando...</h1> : <Outlet />}
       <Footer />
     </>
   );
