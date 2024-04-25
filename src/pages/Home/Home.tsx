@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useNavigation } from 'react-router-dom';
 
-import { Footer, Header } from 'components';
+import { Footer, Header, MainLoading } from 'components';
 
 export const Home = () => {
   const navigation = useNavigation();
@@ -14,7 +14,11 @@ export const Home = () => {
         <meta name="description" content="Loja online de roupas" />
       </Helmet>
       <Header />
-      {isPageLoading ? <h1>Carregando...</h1> : <Outlet />}
+      <main
+        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+      >
+        {isPageLoading ? <MainLoading /> : <Outlet />}
+      </main>
       <Footer />
     </>
   );
