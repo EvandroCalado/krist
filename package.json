@@ -8,9 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --fix",
-    "test": "jest --maxWorkers=50%  --coverage=false --passWithNoTests --watch",
-    "test:coverage": "jest --maxWorkers=50%  --coverage=true --passWithNoTests --watch",
-    "test:ui": "vitest --ui",
+    "test": "jest --maxWorkers=50%",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -20,7 +18,7 @@
   "lint-staged": {
     "src/**/*": [
       "npm run lint -- --fix",
-      "npm run test -- --run --passWithNoTests --bail"
+      "npm test -- --findRelatedTests --passWithNoTests --bail"
     ]
   },
   "dependencies": {
