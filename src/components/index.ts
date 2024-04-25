@@ -10,6 +10,7 @@ export * from './Heading';
 export * from './Hero';
 export * from './Input';
 export * from './Logo';
+export * from './MainLoading';
 export * from './MenuMobile';
 export * from './MenuNav';
 export * from './MenuUser';
