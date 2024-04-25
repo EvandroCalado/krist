@@ -34,7 +34,7 @@
     "src/**/*.tsx",
     "./.eslintrc.*",
     "./vite.config.ts",
-    "./.test/setup.ts",
+    "./.jest/setup.ts",
   ],
   "references": [
     {
