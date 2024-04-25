@@ -1,6 +1,6 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button > should match a snapshot 1`] = `
+exports[`Button should match a snapshot 1`] = `
 .c0 {
   width: max-content;
   display: flex;
