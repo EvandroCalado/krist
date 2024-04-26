@@ -1,18 +1,13 @@
-import { FC } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-import { CategoryCard, CategoryCardProps, Heading } from 'components';
+import { CategoryCard, Heading } from 'components';
 import { StrapiCategoriesType } from 'types/strapi-categories-type';
 
 import * as S from './CategoriesCarousel.styles';
 
 import '@splidejs/react-splide/css';
 
-export interface CategoriesCarouselProps {
-  categories: CategoryCardProps[];
-}
-
-export const CategoriesCarousel: FC<CategoriesCarouselProps> = () => {
+export const CategoriesCarousel = () => {
   const { categories } = useLoaderData() as {
     categories: StrapiCategoriesType;
   };
