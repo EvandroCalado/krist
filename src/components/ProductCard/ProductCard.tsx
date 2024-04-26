@@ -2,29 +2,24 @@ import { Eye, Heart, Star } from 'lucide-react';
 import { FC } from 'react';
 
 import { Heading } from 'components';
+import { StrapiProduct } from 'types/strapi-featured-type';
 
 import * as S from './ProductCard.styles';
 
 export interface ProductCardProps {
-  id: number;
-  cover: string;
-  title: string;
-  resume: string;
-  price: number;
-  discount: number;
+  product: StrapiProduct;
 }
 
-export const ProductCard: FC<ProductCardProps> = ({
-  cover,
-  title,
-  resume,
-  price,
-  discount,
-}) => {
+export const ProductCard: FC<ProductCardProps> = ({ product }) => {
+  const { cover, title, subTitle, price, discountPercentage } =
+    product.attributes;
+
+  const { url } = cover.data.attributes.formats.large;
+
   return (
     <S.Container>
       <S.ImageContainer>
-        <img src={cover} alt={title} />
+        <img src={url} alt={title} />
       </S.ImageContainer>
 
       <span>
@@ -42,13 +37,13 @@ export const ProductCard: FC<ProductCardProps> = ({
         {title}
       </Heading>
 
-      <Heading as="h6" transform="capitalize">
-        {resume}
+      <Heading as="h6" size="sm" fontWeight="600">
+        {subTitle}
       </Heading>
 
       <S.PriceContainer>
         <S.Price>R${price}</S.Price>
-        <S.Discount>R${discount}</S.Discount>
+        <S.Discount>R${discountPercentage}</S.Discount>
       </S.PriceContainer>
     </S.Container>
   );

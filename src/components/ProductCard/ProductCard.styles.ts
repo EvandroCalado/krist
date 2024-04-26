@@ -7,6 +7,10 @@ export const Container = styled.div`
     flex-direction: column;
     gap: ${theme.spacings.sm};
 
+    & > h6::first-letter {
+      text-transform: capitalize;
+    }
+
     &:hover {
       & ${ImageContainer} {
         background-color: ${theme.colors.secondary};
@@ -172,7 +176,9 @@ export const PriceContainer = styled.div`
   `}
 `;
 
-export const Price = styled.div``;
+export const Price = styled.div`
+  font-weight: 700;
+`;
 
 export const Discount = styled.span`
   ${({ theme }) => css`

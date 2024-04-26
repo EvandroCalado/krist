@@ -1,23 +1,22 @@
-import { FC } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 import { Heading } from 'components';
-import { ProductCard, ProductCardProps } from 'components/ProductCard';
+import { ProductCard } from 'components/ProductCard';
+import { StrapiFeaturedType } from 'types/strapi-featured-type';
 
 import * as S from './ProductsList.styles';
 
-export interface ProductsListProps {
-  products: ProductCardProps[];
-}
+export const ProductsList = () => {
+  const { products } = useLoaderData() as { products: StrapiFeaturedType };
 
-export const ProductsList: FC<ProductsListProps> = ({ products }) => {
   return (
     <S.Container>
       <Heading as="h2" transform="capitalize" size="2xl" fontWeight="600">
         em destaque
       </Heading>
       <S.GridContainer>
-        {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
+        {products.data.map((product) => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </S.GridContainer>
     </S.Container>

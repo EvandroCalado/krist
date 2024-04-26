@@ -11,7 +11,6 @@ import {
   RatingsCarousel,
   Services,
 } from 'components';
-import { products } from 'components/ProductsList/ProductsList.stories';
 import { ratings } from 'components/RatingsCarousel/RatingsCarousel.stories';
 
 import { store } from './store';
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
         element: [
           <Hero key={1} />,
           <CategoriesCarousel key={2} />,
-          <ProductsList key={3} products={products} />,
+          <ProductsList key={3} />,
           <FlashSale key={4} />,
           <RatingsCarousel key={5} ratings={ratings} />,
           <Services key={6} />,
