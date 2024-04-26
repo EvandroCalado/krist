@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 export const LinkContainer = styled(Link)`
   overflow: hidden;
   width: 25rem;
-  height: 30rem;
+  height: 35rem;
 
   &:hover {
     & img {
