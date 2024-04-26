@@ -1,20 +1,25 @@
 import { AxiosError } from 'axios';
 
+import { StrapiCategoriesType } from 'types/strapi-categories-type';
 import { StrapiConfigType } from 'types/strapi-config-type';
 import { customFetch } from 'utils/custom-fetch';
 
 export const homeLoader = async () => {
   try {
-    const response = await customFetch.get<StrapiConfigType>(
+    const config = await customFetch.get<StrapiConfigType>(
       '/config?populate=deep,3',
     );
+    const categories = await customFetch.get<StrapiCategoriesType>(
+      'categories?populate[0]=cover',
+    );
 
-    if (response.status !== 200) {
-      throw new Error('Config not found');
+    if (config.status !== 200 || categories.status !== 200) {
+      throw new Error('not found');
     }
 
     return {
-      config: response.data,
+      config: config.data,
+      categories: categories.data,
     };
   } catch (error) {
     if (error instanceof AxiosError) {
