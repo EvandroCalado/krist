@@ -1,8 +1,11 @@
 import { AxiosError } from 'axios';
 
-import { StrapiCategoriesType } from 'types/strapi-categories-type';
-import { StrapiConfigType } from 'types/strapi-config-type';
-import { StrapiFeaturedType } from 'types/strapi-featured-type';
+import {
+  StrapiCategoriesType,
+  StrapiConfigType,
+  StrapiFeaturedType,
+  StrapiFlashSaleType,
+} from 'types';
 import { customFetch } from 'utils/custom-fetch';
 
 export const homeLoader = async () => {
@@ -16,11 +19,15 @@ export const homeLoader = async () => {
     const featured = await customFetch.get<StrapiFeaturedType>(
       '/products?populate=deep,3&filters[isFeatured][$eq]=true',
     );
+    const flashSale = await customFetch.get<StrapiFlashSaleType>(
+      '/flash-sales?populate=deep,3',
+    );
 
     if (
       config.status !== 200 ||
       categories.status !== 200 ||
-      featured.status !== 200
+      featured.status !== 200 ||
+      flashSale.status !== 200
     ) {
       throw new Error('not found');
     }
@@ -29,6 +36,7 @@ export const homeLoader = async () => {
       config: config.data,
       categories: categories.data,
       products: featured.data,
+      flashSale: flashSale.data,
     };
   } catch (error) {
     if (error instanceof AxiosError) {
