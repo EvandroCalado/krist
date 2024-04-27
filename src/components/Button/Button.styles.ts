@@ -61,7 +61,7 @@ export const Button = styled.button<ButtonProps>`
 
     &:disabled {
       opacity: 0.1;
-      cursor: not-allowed;
+      pointer-events: none;
     }
   `}
 `;
