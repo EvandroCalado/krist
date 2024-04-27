@@ -47,12 +47,14 @@ const router = createBrowserRouter([
     element: <Login />,
     errorElement: <div>Login error</div>,
     action: loginAction(store),
+    loader: homeLoader,
   },
   {
     path: '/register',
     element: <Register />,
     errorElement: <div>Register error</div>,
     action: registerAction,
+    loader: homeLoader,
   },
   {
     path: '*',
