@@ -2,7 +2,7 @@ import { MoveRight } from 'lucide-react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import { Button, Heading } from 'components';
-import { StrapiConfigType } from 'types/strapi-config-type';
+import { StrapiConfigType } from 'types';
 
 import '@splidejs/react-splide/css';
 

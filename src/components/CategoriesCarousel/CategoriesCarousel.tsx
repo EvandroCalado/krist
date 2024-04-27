@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 
 import { CategoryCard, Heading } from 'components';
-import { StrapiCategoriesType } from 'types/strapi-categories-type';
+import { StrapiCategoriesType } from 'types';
 
 import * as S from './CategoriesCarousel.styles';
 

@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 
 import { Heading } from 'components';
 import { ProductCard } from 'components/ProductCard';
-import { StrapiFeaturedType } from 'types/strapi-featured-type';
+import { StrapiFeaturedType } from 'types';
 
 import * as S from './ProductsList.styles';
 
