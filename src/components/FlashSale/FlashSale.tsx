@@ -9,17 +9,19 @@ import * as S from './FlashSale.styles';
 
 export const FlashSale = () => {
   const [isFinish, setIsFinish] = useState(false);
+
   const { flashSale } = useLoaderData() as { flashSale: StrapiFlashSaleType };
 
   const navigate = useNavigate();
-  if (flashSale.data.length === 0) return null;
+
+  if (!flashSale || !flashSale.data || flashSale.data.length === 0) return null;
 
   const { title, description, product, date, button } =
     flashSale.data[0].attributes;
 
   const { cover } = product.data.attributes;
 
-  const isIcon = button[0].icon ? <MoveRight size={16} /> : '';
+  const isIcon = button[0]?.icon ? <MoveRight size={16} /> : '';
 
   return (
     <S.Container>
@@ -34,14 +36,18 @@ export const FlashSale = () => {
           icon={isIcon}
           disabled={isFinish}
         >
-          {isFinish ? 'esgotado' : button[0].label}
+          {isFinish ? 'esgotado' : button[0]?.label}
         </Button>
       </S.SaleContainer>
 
       <S.ImageContainer>
-        <img src={cover.data.attributes.url} alt={title} />
-        <span className="front"></span>
-        <span className="back"></span>
+        {cover?.data?.attributes && (
+          <>
+            <img src={cover.data.attributes.url} alt={title} />
+            <span className="front"></span>
+            <span className="back"></span>
+          </>
+        )}
       </S.ImageContainer>
     </S.Container>
   );

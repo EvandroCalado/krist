@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 
 import * as S from './Countdown.styles';
 
@@ -15,7 +15,7 @@ interface TimeLeft {
 }
 
 export const Countdown: FC<CountdownProps> = ({ date, setIsFinish }) => {
-  const calculateTimeLeft = (): TimeLeft => {
+  const calculateTimeLeft = useCallback((): TimeLeft => {
     const difference = +new Date(date) - +new Date();
     if (difference <= 0) {
       return { dias: 0, horas: 0, minutos: 0, segundos: 0 };
@@ -29,7 +29,7 @@ export const Countdown: FC<CountdownProps> = ({ date, setIsFinish }) => {
     };
 
     return timeLeft;
-  };
+  }, [date]);
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
 
@@ -38,16 +38,18 @@ export const Countdown: FC<CountdownProps> = ({ date, setIsFinish }) => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => clearTimeout(timer);
-  });
+    const isFinished =
+      timeLeft.dias === 0 &&
+      timeLeft.horas === 0 &&
+      timeLeft.minutos === 0 &&
+      timeLeft.segundos === 0;
 
-  if (
-    timeLeft.dias === 0 &&
-    timeLeft.horas === 0 &&
-    timeLeft.minutos === 0 &&
-    timeLeft.segundos === 0
-  )
-    setIsFinish(true);
+    if (isFinished) {
+      setIsFinish(true);
+    }
+
+    return () => clearTimeout(timer);
+  }, [calculateTimeLeft, date, setIsFinish, timeLeft]);
 
   const timerComponents: JSX.Element[] = Object.keys(timeLeft).map(
     (interval, index) => (
