@@ -1,6 +1,6 @@
 import { loginAction, registerAction } from 'actions';
 import { homeLoader } from 'loaders';
-import { Home, Login, Register, Shop } from 'pages';
+import { Home, Login, Products, Register, Shop } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import {
@@ -39,6 +39,11 @@ const router = createBrowserRouter([
         path: 'shop',
         element: <Shop />,
         errorElement: <div>Shop error</div>,
+      },
+      {
+        path: 'products/:id',
+        element: <Products />,
+        errorElement: <div>Products error</div>,
       },
     ],
   },
