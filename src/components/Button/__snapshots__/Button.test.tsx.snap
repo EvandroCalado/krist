@@ -29,7 +29,7 @@ exports[`Button should match a snapshot 1`] = `
 
 .c0:disabled {
   opacity: 0.1;
-  cursor: not-allowed;
+  pointer-events: none;
 }
 
 <div>
