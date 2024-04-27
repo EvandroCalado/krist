@@ -1,5 +1,6 @@
 import { Eye, Heart, Star } from 'lucide-react';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Heading } from 'components';
 import { StrapiProduct } from 'types/strapi-featured-type';
@@ -11,6 +12,8 @@ export interface ProductCardProps {
 }
 
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
+  const navigate = useNavigate();
+
   const { cover, title, subTitle, price, discountPercentage } =
     product.attributes;
 
@@ -19,7 +22,11 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
     <S.Container>
       <S.ImageContainer>
-        <img src={url} alt={title} />
+        <img
+          src={url}
+          alt={title}
+          onClick={() => navigate(`/products/${product.id}`)}
+        />
       </S.ImageContainer>
 
       <span>
@@ -28,7 +35,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
       <span>
         <Heart />
       </span>
-      <span>
+      <span onClick={() => navigate(`/products/${product.id}`)}>
         <Eye />
       </span>
       <button>adicionar à sacola</button>
