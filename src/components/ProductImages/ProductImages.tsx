@@ -65,7 +65,7 @@ export const ProductImages: FC<ProductImagesProps> = () => {
           fixedHeight: 90,
           cover: true,
           isNavigation: true,
-          focus: 'center',
+          focus: 'left',
           arrows: false,
         }}
       >
