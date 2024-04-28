@@ -18,6 +18,7 @@ export * from './MenuUser';
 export * from './ProductCard';
 export * from './ProductDetails';
 export * from './ProductImages';
+export * from './ProductPrice';
 export * from './ProductStock';
 export * from './ProductsList';
 export * from './RatingCard';
