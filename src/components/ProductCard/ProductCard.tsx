@@ -25,7 +25,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <img
           src={url}
           alt={title}
-          onClick={() => navigate(`/products/${product.id}`)}
+          onClick={() => navigate(`/product/${product.id}`)}
         />
       </S.ImageContainer>
 

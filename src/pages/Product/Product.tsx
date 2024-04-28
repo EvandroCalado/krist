@@ -8,9 +8,9 @@ import {
   ProductStock,
 } from 'components';
 
-import * as S from './Products.styles';
+import * as S from './Product.styles';
 
-export const Products = () => {
+export const Product = () => {
   return (
     <S.Container>
       <BreadCrumb productName="camiseta" />
