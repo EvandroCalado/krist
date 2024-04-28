@@ -18,21 +18,6 @@ const test = [
   {
     src: '/hero1.png',
   },
-  {
-    src: '/hero1.png',
-  },
-  {
-    src: '/hero1.png',
-  },
-  {
-    src: '/hero1.png',
-  },
-  {
-    src: '/hero1.png',
-  },
-  {
-    src: '/hero1.png',
-  },
 ];
 
 export const ProductImages: FC<ProductImagesProps> = () => {
