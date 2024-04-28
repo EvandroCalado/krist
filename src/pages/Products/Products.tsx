@@ -1,7 +1,16 @@
+import { BreadCrumb, ProductImages } from 'components';
+
+import * as S from './Products.styles';
+
 export const Products = () => {
   return (
-    <section>
-      <h1>Products</h1>
-    </section>
+    <S.Container>
+      <BreadCrumb productName="camiseta" />
+
+      <S.Details>
+        <ProductImages />
+        <div style={{ width: '100%' }}>info</div>
+      </S.Details>
+    </S.Container>
   );
 };
