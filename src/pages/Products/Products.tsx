@@ -1,6 +1,7 @@
 import {
   BreadCrumb,
   Heading,
+  ProductDescription,
   ProductDetails,
   ProductImages,
   ProductPrice,
@@ -32,7 +33,8 @@ export const Products = () => {
 
           <ProductPrice price={100} discount={15} />
 
-          <div>description</div>
+          <ProductDescription description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis perferendis placeat rem culpa est nulla ab. Dolorem exercitationem ut eaque nobis minima unde, nulla reiciendis, repudiandae amet labore, sit voluptates?" />
+
           <div>colors</div>
           <div>sizes</div>
           <div>quantity</div>
