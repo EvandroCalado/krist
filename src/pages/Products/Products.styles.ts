@@ -21,5 +21,9 @@ export const Details = styled.div`
 `;
 
 export const Title = styled.div`
-  ${({ theme }) => css``}
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  `}
 `;

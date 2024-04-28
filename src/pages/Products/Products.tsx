@@ -1,4 +1,10 @@
-import { BreadCrumb, ProductImages } from 'components';
+import {
+  BreadCrumb,
+  Heading,
+  ProductDetails,
+  ProductImages,
+  ProductStock,
+} from 'components';
 
 import * as S from './Products.styles';
 
@@ -9,7 +15,20 @@ export const Products = () => {
 
       <S.Details>
         <ProductImages />
-        <div style={{ width: '100%' }}>info</div>
+        <ProductDetails>
+          <S.Title>
+            <Heading as="h1" size="xl" transform="capitalize" fontWeight="700">
+              camisa futebol
+            </Heading>
+            <ProductStock inStock />
+          </S.Title>
+
+          <Heading as="h4" transform="capitalize" fontWeight="500">
+            camisa futebol para jogadores
+          </Heading>
+
+          <div>rating</div>
+        </ProductDetails>
       </S.Details>
     </S.Container>
   );
