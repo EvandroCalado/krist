@@ -15,6 +15,7 @@ export * from './MenuMobile';
 export * from './MenuNav';
 export * from './MenuUser';
 export * from './ProductCard';
+export * from './ProductImages';
 export * from './ProductsList';
 export * from './RatingCard';
 export * from './RatingsCarousel';
