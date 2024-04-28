@@ -10,37 +10,46 @@ import { customFetch } from 'utils/custom-fetch';
 
 export const homeLoader = async () => {
   try {
-    const config = await customFetch.get<StrapiConfigType>(
-      '/config?populate=deep,3',
-    );
-    const categories = await customFetch.get<StrapiCategoriesType>(
-      'categories?populate[0]=cover',
-    );
-    const featured = await customFetch.get<StrapiFeaturedType>(
-      '/products?populate=deep,3&filters[isFeatured][$eq]=true',
-    );
-    const flashSale = await customFetch.get<StrapiFlashSaleType>(
-      '/flash-sales?populate=deep,3',
-    );
+    const [config, categories, featured, flashSale] = await Promise.all([
+      customFetch.get<StrapiConfigType>('/config?populate=deep,3'),
+      customFetch.get<StrapiCategoriesType>('categories?populate[0]=cover'),
+      customFetch.get<StrapiFeaturedType>(
+        '/products?populate=deep,3&filters[isFeatured][$eq]=true',
+      ),
+      customFetch.get<StrapiFlashSaleType>('/flash-sales?populate=deep,3'),
+    ]);
+
+    const [configRes, categoriesRes, featuredRes, flashSaleRes] =
+      await Promise.all([config, categories, featured, flashSale]);
 
     if (
-      config.status !== 200 ||
-      categories.status !== 200 ||
-      featured.status !== 200 ||
-      flashSale.status !== 200
+      !configRes?.data ||
+      !categoriesRes?.data ||
+      !featuredRes?.data ||
+      !flashSaleRes?.data
+    ) {
+      throw new Error('not found');
+    }
+
+    if (
+      configRes.status !== 200 ||
+      categoriesRes.status !== 200 ||
+      featuredRes.status !== 200 ||
+      flashSaleRes.status !== 200
     ) {
       throw new Error('not found');
     }
 
     return {
-      config: config.data,
-      categories: categories.data,
-      products: featured.data,
-      flashSale: flashSale.data,
+      config: configRes.data,
+      categories: categoriesRes.data,
+      products: featuredRes.data,
+      flashSale: flashSaleRes.data,
     };
   } catch (error) {
-    if (error instanceof AxiosError) {
-      throw new Error(error.response?.data.error.message);
+    if (error instanceof AxiosError && error.response?.data?.error) {
+      throw new Error(error.response.data.error.message);
     }
+    throw error;
   }
 };
