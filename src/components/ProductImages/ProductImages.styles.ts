@@ -1,17 +1,21 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-import {
-  Splide as splide,
-  SplideSlide as splideSlide,
-} from '@splidejs/react-splide';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${({ theme }) => css`
     flex: 1;
 
+    & .splide {
+      margin-bottom: 2rem;
+    }
+
     & .splide__list {
       width: 100%;
+    }
+
+    & .splide__slide {
+      background-size: contain !important;
+      background-color: ${theme.colors.secondary} !important;
+      border-radius: ${theme.spacings.xs};
     }
 
     & .product-image {
@@ -37,14 +41,4 @@ export const Container = styled.div`
       }
     }
   `}
-`;
-
-export const Splide = styled(splide)`
-  margin-bottom: 2rem;
-`;
-
-export const SplideSlide = styled(splideSlide)`
-  background-size: contain !important;
-  background-color: ${({ theme }) => theme.colors.secondary} !important;
-  border-radius: ${({ theme }) => theme.spacings.xs};
 `;
