@@ -3,6 +3,7 @@ import {
   Heading,
   ProductDetails,
   ProductImages,
+  ProductPrice,
   ProductStock,
 } from 'components';
 
@@ -28,6 +29,13 @@ export const Products = () => {
           </Heading>
 
           <div>rating</div>
+
+          <ProductPrice price={100} discount={15} />
+
+          <div>description</div>
+          <div>colors</div>
+          <div>sizes</div>
+          <div>quantity</div>
         </ProductDetails>
       </S.Details>
     </S.Container>
