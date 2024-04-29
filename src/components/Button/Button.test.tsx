@@ -33,8 +33,8 @@ describe('Button', () => {
     const button = screen.getByRole('button');
 
     expect(button).toHaveStyle({
-      'background-color': theme.colors.white,
-      color: theme.colors.primary,
+      'background-color': theme.colors.primary,
+      color: theme.colors.white,
     });
   });
 
