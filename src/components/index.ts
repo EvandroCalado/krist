@@ -21,6 +21,7 @@ export * from './ProductDescription';
 export * from './ProductDetails';
 export * from './ProductImages';
 export * from './ProductPrice';
+export * from './ProductSizes';
 export * from './ProductStock';
 export * from './ProductsList';
 export * from './RatingCard';
