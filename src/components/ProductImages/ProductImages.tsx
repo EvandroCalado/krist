@@ -4,12 +4,12 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { FC, useEffect, useRef } from 'react';
 
 import '@splidejs/react-splide/css';
-import { StrapiProductType } from 'types';
+import { StrapiProductImage } from 'types';
 
 import * as S from './ProductImages.styles';
 
 export interface ProductImagesProps {
-  currentImagesData: StrapiProductType['data']['attributes']['images'][0];
+  currentImagesData: StrapiProductImage;
 }
 
 export const ProductImages: FC<ProductImagesProps> = ({
@@ -29,7 +29,7 @@ export const ProductImages: FC<ProductImagesProps> = ({
   const renderImages = (classCustom: string) => {
     return assets.data.map((image) => (
       <SplideSlide className={classCustom} key={image.id}>
-        <img src={image.attributes.url} alt={name} />
+        <img src={image.attributes.formats.small.url} alt={name} />
       </SplideSlide>
     ));
   };
