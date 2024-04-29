@@ -18,7 +18,7 @@ export const ProductColors: FC<ProductColorsProps> = ({
 }) => {
   return (
     <S.Container>
-      <Heading fontWeight="700" transform="capitalize">
+      <Heading as="h4" fontWeight="700" transform="capitalize">
         cores
       </Heading>
 
