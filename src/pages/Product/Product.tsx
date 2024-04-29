@@ -58,7 +58,9 @@ export const Product = () => {
 
           <div>rating</div>
 
-          <div>{categories.data[0].attributes.name}</div>
+          <Heading as="h6" transform="uppercase" size="sm">
+            {categories.data[0].attributes.name}
+          </Heading>
 
           <ProductPrice price={price} discount={discountPercentage} />
 
