@@ -24,7 +24,7 @@ interface Attributes5 {
   cover: Cover;
   brand: Brand;
   categories: Categories;
-  sizes: Sizes;
+  sizes: StrapiProductSizesType;
   colors: Colors;
   images: StrapiProductImage[];
 }
@@ -56,7 +56,7 @@ interface Attributes4 {
   publishedAt: string;
 }
 
-interface Sizes {
+export interface StrapiProductSizesType {
   data: Data2[];
 }
 
