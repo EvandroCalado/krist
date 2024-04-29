@@ -6,5 +6,9 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${theme.spacings.md};
+
+    & > h6 {
+      color: ${theme.colors.gray};
+    }
   `}
 `;
