@@ -22,7 +22,6 @@
     ]
   },
   "dependencies": {
-    "@emotion/react": "^11.11.4",
     "@reduxjs/toolkit": "^2.2.3",
     "@splidejs/splide": "^4.1.4",
     "axios": "^1.6.8",
