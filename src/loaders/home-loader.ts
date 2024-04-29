@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios';
+import { LoaderFunction } from 'react-router-dom';
 
 import {
   StrapiCategoriesType,
@@ -8,7 +9,7 @@ import {
 } from 'types';
 import { customFetch } from 'utils/custom-fetch';
 
-export const homeLoader = async () => {
+export const homeLoader: LoaderFunction = async () => {
   try {
     const [config, categories, featured, flashSale] = await Promise.all([
       customFetch.get<StrapiConfigType>('/config?populate=deep,3'),
