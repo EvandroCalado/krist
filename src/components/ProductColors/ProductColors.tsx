@@ -28,7 +28,6 @@ export const ProductColors: FC<ProductColorsProps> = ({
             key={singleColor.id}
             color={singleColor.attributes.color}
             isActive={singleColor.attributes.name === color}
-            disabled
             onClick={() => setColor(singleColor.attributes.name)}
           ></S.Button>
         ))}
