@@ -8,6 +8,6 @@ export interface ProductStockProps {
 
 export const ProductStock: FC<ProductStockProps> = ({ inStock }) => {
   return (
-    <S.Stock inStock={inStock}>{inStock ? 'em estoque' : 'esgotado'}</S.Stock>
+    <S.Stock inStock={inStock}>{inStock ? 'disponível' : 'esgotado'}</S.Stock>
   );
 };
