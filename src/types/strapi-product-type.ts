@@ -26,10 +26,10 @@ interface Attributes5 {
   categories: Categories;
   sizes: Sizes;
   colors: Colors;
-  images: Image[];
+  images: StrapiProductImage[];
 }
 
-interface Image {
+export interface StrapiProductImage {
   id: number;
   name: string;
   assets: Assets;
