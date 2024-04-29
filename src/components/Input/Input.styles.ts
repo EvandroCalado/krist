@@ -22,7 +22,6 @@ export const Input = styled.input`
     padding: ${theme.spacings.md};
     border-radius: ${theme.spacings.xs};
     border: 1px solid ${theme.colors.primary};
-    transition: ${theme.transitions.faster};
 
     &:focus {
       outline: 3px solid ${theme.colors.primary};
