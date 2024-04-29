@@ -28,7 +28,8 @@ const hoverVariant = {
   `,
   secondary: css`
     &:hover {
-      filter: brightness(0.95);
+      color: ${({ theme }) => theme.colors.white};
+      background-color: ${({ theme }) => theme.colors.primary};
     }
   `,
 };
