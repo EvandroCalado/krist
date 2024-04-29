@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { Outlet, useNavigation } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useNavigation } from 'react-router-dom';
 
 import { Footer, Header, MainLoading } from 'components';
 
@@ -17,6 +17,7 @@ export const Home = () => {
       <main
         style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
       >
+        <ScrollRestoration />
         {isPageLoading ? <MainLoading /> : <Outlet />}
       </main>
       <Footer />
