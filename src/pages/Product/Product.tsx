@@ -9,6 +9,7 @@ import {
   ProductDetails,
   ProductImages,
   ProductPrice,
+  ProductSizes,
   ProductStock,
 } from 'components';
 import { StrapiProductType } from 'types';
@@ -37,6 +38,7 @@ export const Product = () => {
   };
 
   const [color, setColor] = useState(images?.[0]?.name);
+  const [size, setSize] = useState(sizes.data[0].attributes.name);
 
   return (
     <S.Container>
@@ -44,6 +46,7 @@ export const Product = () => {
 
       <S.Details>
         <ProductImages currentImagesData={currentImagesData(color)} />
+
         <ProductDetails>
           <S.Title>
             <Heading as="h1" size="xl" transform="capitalize" fontWeight="700">
@@ -68,7 +71,8 @@ export const Product = () => {
 
           <ProductColors colors={colors} color={color} setColor={setColor} />
 
-          <div>sizes</div>
+          <ProductSizes sizes={sizes} size={size} setSize={setSize} />
+
           <div>quantity</div>
         </ProductDetails>
       </S.Details>
