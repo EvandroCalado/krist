@@ -25,7 +25,9 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <img
           src={url}
           alt={title}
-          onClick={() => navigate(`/product/${product.id}`)}
+          onClick={() =>
+            navigate(`/product/${product.id}`, { preventScrollReset: false })
+          }
         />
       </S.ImageContainer>
 
@@ -35,7 +37,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
       <span>
         <Heart />
       </span>
-      <span onClick={() => navigate(`/products/${product.id}`)}>
+      <span onClick={() => navigate(`/product/${product.id}`)}>
         <Eye />
       </span>
       <button>adicionar à sacola</button>
