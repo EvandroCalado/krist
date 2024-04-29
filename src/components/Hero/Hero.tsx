@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { MoveRight } from 'lucide-react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
@@ -16,7 +19,7 @@ export const Hero = () => {
 
   return (
     <S.Section>
-      <S.Carousel
+      <Splide
         options={{
           type: 'loop',
           perMove: 1,
@@ -25,7 +28,7 @@ export const Hero = () => {
         }}
       >
         {hero.map((heroItem) => (
-          <S.CarouselSlide key={heroItem.id}>
+          <SplideSlide key={heroItem.id}>
             <S.Container>
               <S.InfoContainer>
                 <Heading transform="capitalize" size="2xl" as="h2">
@@ -53,9 +56,9 @@ export const Hero = () => {
                 <span className="front"></span>
               </S.ImageContainer>
             </S.Container>
-          </S.CarouselSlide>
+          </SplideSlide>
         ))}
-      </S.Carousel>
+      </Splide>
     </S.Section>
   );
 };

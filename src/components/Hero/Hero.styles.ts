@@ -1,6 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
@@ -185,7 +182,3 @@ export const ImageContainer = styled.div`
     }
   `}
 `;
-
-export const Carousel = styled(Splide)``;
-
-export const CarouselSlide = styled(SplideSlide)``;
