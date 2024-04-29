@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useLoaderData } from 'react-router-dom';
 
 import { CategoryCard, Heading } from 'components';
@@ -18,7 +21,7 @@ export const CategoriesCarousel = () => {
         Categorias
       </Heading>
 
-      <S.Carousel
+      <Splide
         options={{
           type: 'loop',
           perMove: 1,
@@ -39,7 +42,7 @@ export const CategoriesCarousel = () => {
         }}
       >
         {categories.data.map((category) => (
-          <S.CarouselSlide key={category.id}>
+          <SplideSlide key={category.id}>
             <CategoryCard
               title={category.attributes.name}
               image={
@@ -47,9 +50,9 @@ export const CategoriesCarousel = () => {
               }
               buttonLabel={category.attributes.name}
             />
-          </S.CarouselSlide>
+          </SplideSlide>
         ))}
-      </S.Carousel>
+      </Splide>
     </S.Container>
   );
 };

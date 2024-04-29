@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { FC } from 'react';
 
 import { Heading, RatingCard, RatingCardProps } from 'components';
@@ -15,7 +18,7 @@ export const RatingsCarousel: FC<RatingsCarouselProps> = ({ ratings }) => {
         clientes dizem
       </Heading>
 
-      <S.Carousel
+      <Splide
         options={{
           type: 'loop',
           perMove: 1,
@@ -34,11 +37,11 @@ export const RatingsCarousel: FC<RatingsCarouselProps> = ({ ratings }) => {
         }}
       >
         {ratings.map((rating) => (
-          <S.CarouselSlide key={rating.id}>
+          <SplideSlide key={rating.id}>
             <RatingCard {...rating} />
-          </S.CarouselSlide>
+          </SplideSlide>
         ))}
-      </S.Carousel>
+      </Splide>
     </S.Container>
   );
 };

@@ -1,6 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.section`
@@ -18,6 +15,18 @@ export const Container = styled.section`
       @media ${theme.media.lteOrEqMedium} {
         font-size: ${theme.font.sizes.lg};
       }
+    }
+
+    & .splide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    & .splide__slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     & .splide__arrows {
@@ -83,16 +92,4 @@ export const Container = styled.section`
       }
     }
   `}
-`;
-
-export const Carousel = styled(Splide)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const CarouselSlide = styled(SplideSlide)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
