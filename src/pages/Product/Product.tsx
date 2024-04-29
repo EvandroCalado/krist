@@ -1,41 +1,71 @@
+import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+
 import {
   BreadCrumb,
   Heading,
+  ProductColors,
   ProductDescription,
   ProductDetails,
   ProductImages,
   ProductPrice,
   ProductStock,
 } from 'components';
+import { StrapiProductType } from 'types';
 
 import * as S from './Product.styles';
 
 export const Product = () => {
+  const { product } = useLoaderData() as { product: StrapiProductType };
+
+  const {
+    images,
+    title,
+    subTitle,
+    price,
+    discountPercentage,
+    description,
+    categories,
+    colors,
+    sizes,
+  } = product.data.attributes;
+
+  const currentImagesData = (color: string) => {
+    return images
+      .filter((image) => image.name === color)
+      .map((image) => image)[0];
+  };
+
+  const [color, setColor] = useState(images?.[0]?.name);
+
   return (
     <S.Container>
-      <BreadCrumb productName="camiseta" />
+      <BreadCrumb productName={title} />
 
       <S.Details>
-        <ProductImages />
+        <ProductImages currentImagesData={currentImagesData(color)} />
         <ProductDetails>
           <S.Title>
             <Heading as="h1" size="xl" transform="capitalize" fontWeight="700">
-              camisa futebol
+              {title}
             </Heading>
             <ProductStock inStock />
           </S.Title>
 
           <Heading as="h4" transform="capitalize" fontWeight="500">
-            camisa futebol para jogadores
+            {subTitle}
           </Heading>
 
           <div>rating</div>
 
-          <ProductPrice price={100} discount={15} />
+          <div>{categories.data[0].attributes.name}</div>
 
-          <ProductDescription description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis perferendis placeat rem culpa est nulla ab. Dolorem exercitationem ut eaque nobis minima unde, nulla reiciendis, repudiandae amet labore, sit voluptates?" />
+          <ProductPrice price={price} discount={discountPercentage} />
 
-          <div>colors</div>
+          <ProductDescription description={description} />
+
+          <ProductColors colors={colors} color={color} setColor={setColor} />
+
           <div>sizes</div>
           <div>quantity</div>
         </ProductDetails>
