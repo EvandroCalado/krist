@@ -1,14 +1,17 @@
+import { Heart } from 'lucide-react';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 import {
   BreadCrumb,
+  Button,
   Heading,
   ProductColors,
   ProductDescription,
   ProductDetails,
   ProductImages,
   ProductPrice,
+  ProductQuantity,
   ProductSizes,
   ProductStock,
 } from 'components';
@@ -39,6 +42,7 @@ export const Product = () => {
 
   const [color, setColor] = useState(images?.[0]?.name);
   const [size, setSize] = useState(sizes.data[0].attributes.name);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <S.Container>
@@ -73,7 +77,13 @@ export const Product = () => {
 
           <ProductSizes sizes={sizes} size={size} setSize={setSize} />
 
-          <div>quantity</div>
+          <S.CartContainer>
+            <ProductQuantity quantity={quantity} setQuantity={setQuantity} />
+            <Button>Adicionar ao carrinho</Button>
+            <Button variant="secondary">
+              <Heart size={16} />
+            </Button>
+          </S.CartContainer>
         </ProductDetails>
       </S.Details>
     </S.Container>

@@ -25,3 +25,16 @@ export const Title = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const CartContainer = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    gap: ${theme.spacings.lg};
+    margin: ${theme.spacings.xl} 0;
+
+    & > button:first-of-type {
+      padding: ${theme.spacings.md} ${theme.spacings['5xl']};
+    }
+  `}
+`;
