@@ -1,5 +1,6 @@
 import { Heart } from 'lucide-react';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
 
 import {
@@ -12,6 +13,7 @@ import {
   ProductImages,
   ProductPrice,
   ProductQuantity,
+  ProductRating,
   ProductSizes,
   ProductStock,
 } from 'components';
@@ -46,6 +48,11 @@ export const Product = () => {
 
   return (
     <S.Container>
+      <Helmet>
+        <title>Krist | {title}</title>
+        <meta name="description" content="Loja online de roupas" />
+      </Helmet>
+
       <BreadCrumb productName={title} />
 
       <S.Details>
@@ -63,7 +70,7 @@ export const Product = () => {
             {subTitle}
           </Heading>
 
-          <div>rating</div>
+          <ProductRating />
 
           <Heading as="h6" transform="uppercase" size="sm">
             {categories.data[0].attributes.name}
