@@ -25,7 +25,7 @@ interface Attributes5 {
   brand: Brand;
   categories: Categories;
   sizes: StrapiProductSizesType;
-  colors: Colors;
+  colors: StrapiProductColorsType;
   images: StrapiProductImage[];
 }
 
@@ -39,7 +39,7 @@ interface Assets {
   data: Data[];
 }
 
-interface Colors {
+export interface StrapiProductColorsType {
   data: Datum2[];
 }
 
