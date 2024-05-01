@@ -18,8 +18,6 @@ export const ProductImages: FC<ProductImagesProps> = ({
   const mainRef = useRef<Splide | undefined>(null);
   const thumbsRef = useRef<Splide | undefined>(null);
 
-  const { assets, name } = currentImagesData;
-
   useEffect(() => {
     if (mainRef.current && thumbsRef.current && thumbsRef.current.splide) {
       mainRef.current.sync(thumbsRef.current.splide);
@@ -27,9 +25,12 @@ export const ProductImages: FC<ProductImagesProps> = ({
   }, []);
 
   const renderImages = (classCustom: string) => {
-    return assets.data.map((image) => (
+    return currentImagesData.data.map((image) => (
       <SplideSlide className={classCustom} key={image.id}>
-        <img src={image.attributes.formats.small.url} alt={name} />
+        <img
+          src={image.attributes.formats.small.url}
+          alt={image.attributes.alternativeText}
+        />
       </SplideSlide>
     ));
   };

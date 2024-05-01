@@ -40,7 +40,7 @@ export const Button = styled.button<ButtonProps>`
 
     ${isActive &&
     css`
-      outline: 2px solid ${theme.colors.gray};
+      outline: 2px solid ${theme.colors.primary};
       outline-offset: 1px;
     `}
   `}

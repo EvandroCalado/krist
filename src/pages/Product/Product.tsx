@@ -27,28 +27,27 @@ import * as S from './Product.styles';
 export const Product = () => {
   const { product } = useLoaderData() as { product: StrapiProductType };
 
-  const {
-    images,
-    title,
-    subTitle,
-    price,
-    discountPercentage,
-    description,
-    categories,
-    colors,
-    sizes,
-  } = product.data.attributes;
+  const { title, subTitle, description, categories, variants } =
+    product.data.attributes;
 
-  const currentImagesData = (color: string) => {
-    return images
-      .filter((image) => image.name === color)
-      .map((image) => image)[0];
+  const variantData = (color: string) => {
+    return variants.filter((variant) => variant.name === color)[0];
   };
 
-  const [color, setColor] = useState(images?.[0]?.name);
-  const [size, setSize] = useState(sizes.data[0].attributes.name);
-  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState(variants[0].name);
   const [activeTab, setActiveTab] = useState('description');
+
+  const { images, price, discountPercentage, sizes } = variantData(color);
+
+  const [quantity, setQuantity] = useState(1);
+
+  const initialSize = sizes.filter(
+    (singleSize) => singleSize.quantity !== null,
+  )[0];
+
+  const [size, setSize] = useState(initialSize.size);
+
+  const currentSize = sizes.filter((singleSize) => singleSize.size === size)[0];
 
   return (
     <S.Container>
@@ -60,7 +59,7 @@ export const Product = () => {
       <BreadCrumb productName={title} />
 
       <S.Details>
-        <ProductImages currentImagesData={currentImagesData(color)} />
+        <ProductImages currentImagesData={images} />
 
         <ProductDetails>
           <S.Title>
@@ -84,12 +83,26 @@ export const Product = () => {
 
           <ProductDescription description={description} />
 
-          <ProductColors colors={colors} color={color} setColor={setColor} />
+          <ProductColors
+            variants={variants}
+            color={color}
+            setColor={setColor}
+            setSize={setSize}
+          />
 
-          <ProductSizes sizes={sizes} size={size} setSize={setSize} />
+          <ProductSizes
+            sizes={sizes}
+            size={size}
+            setSize={setSize}
+            setQuantity={setQuantity}
+          />
 
           <S.CartContainer>
-            <ProductQuantity quantity={quantity} setQuantity={setQuantity} />
+            <ProductQuantity
+              quantity={quantity}
+              setQuantity={setQuantity}
+              currentSize={currentSize}
+            />
             <Button>Adicionar ao carrinho</Button>
             <Button variant="secondary">
               <Heart size={16} />
@@ -102,7 +115,7 @@ export const Product = () => {
         {activeTab === 'description' && (
           <ProductDescription description={description} />
         )}
-        {activeTab === 'info' && <ProductInfo colors={colors} sizes={sizes} />}
+        {activeTab === 'info' && <ProductInfo variants={variants} />}
         {activeTab === 'reviews' && <ProductReviews />}
       </ProductTabs>
     </S.Container>

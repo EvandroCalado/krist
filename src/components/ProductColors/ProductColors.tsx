@@ -1,21 +1,34 @@
 import { FC } from 'react';
 
 import { Heading } from 'components';
-import { StrapiProductType } from 'types';
+import { StrapiProductVariantType } from 'types';
 
 import * as S from './ProductColors.styles';
 
 export interface ProductColorsProps {
-  colors: StrapiProductType['data']['attributes']['colors'];
+  variants: StrapiProductVariantType[];
   color: string;
   setColor: (color: string) => void;
+  setSize: (size: string) => void;
 }
 
 export const ProductColors: FC<ProductColorsProps> = ({
-  colors,
+  variants,
   color,
   setColor,
+  setSize,
 }) => {
+  const handleOnClick = (color: string) => {
+    const variant = variants.filter((variant) => variant.name === color)[0];
+
+    const initialSize = variant.sizes.filter(
+      (singleSize) => singleSize.quantity !== null,
+    )[0];
+
+    setColor(color);
+    setSize(initialSize.size);
+  };
+
   return (
     <S.Container>
       <Heading as="h4" fontWeight="700" transform="capitalize">
@@ -23,12 +36,12 @@ export const ProductColors: FC<ProductColorsProps> = ({
       </Heading>
 
       <S.ButtonContainer>
-        {colors.data.map((singleColor) => (
+        {variants.map((variant) => (
           <S.Button
-            key={singleColor.id}
-            color={singleColor.attributes.color}
-            isActive={singleColor.attributes.name === color}
-            onClick={() => setColor(singleColor.attributes.name)}
+            key={variant.id}
+            color={variant.color}
+            isActive={variant.name === color}
+            onClick={() => handleOnClick(variant.name)}
           ></S.Button>
         ))}
       </S.ButtonContainer>

@@ -12,6 +12,8 @@ export interface ProductPriceProps {
 export const ProductPrice: FC<ProductPriceProps> = ({ price, discount }) => {
   const hasDiscount = discount ? calcDiscount(price, discount) : price;
 
+  if (!discount) return <S.FinalPrice>R${price}</S.FinalPrice>;
+
   return (
     <S.Container>
       <S.FinalPrice>R${hasDiscount}</S.FinalPrice>
