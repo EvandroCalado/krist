@@ -36,10 +36,9 @@ export const Product = () => {
 
   const [color, setColor] = useState(variants[0].name);
   const [activeTab, setActiveTab] = useState('description');
+  const [quantity, setQuantity] = useState(1);
 
   const { images, price, discountPercentage, sizes } = variantData(color);
-
-  const [quantity, setQuantity] = useState(1);
 
   const initialSize = sizes.filter(
     (singleSize) => singleSize.quantity !== null,
