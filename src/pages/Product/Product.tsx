@@ -11,11 +11,14 @@ import {
   ProductDescription,
   ProductDetails,
   ProductImages,
+  ProductInfo,
   ProductPrice,
   ProductQuantity,
   ProductRating,
+  ProductReviews,
   ProductSizes,
   ProductStock,
+  ProductTabs,
 } from 'components';
 import { StrapiProductType } from 'types';
 
@@ -45,6 +48,7 @@ export const Product = () => {
   const [color, setColor] = useState(images?.[0]?.name);
   const [size, setSize] = useState(sizes.data[0].attributes.name);
   const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState('description');
 
   return (
     <S.Container>
@@ -93,6 +97,14 @@ export const Product = () => {
           </S.CartContainer>
         </ProductDetails>
       </S.Details>
+
+      <ProductTabs setActiveTab={setActiveTab}>
+        {activeTab === 'description' && (
+          <ProductDescription description={description} />
+        )}
+        {activeTab === 'info' && <ProductInfo colors={colors} sizes={sizes} />}
+        {activeTab === 'reviews' && <ProductReviews />}
+      </ProductTabs>
     </S.Container>
   );
 };
