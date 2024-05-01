@@ -7,57 +7,42 @@ interface Meta {}
 
 interface Data3 {
   id: number;
-  attributes: Attributes5;
-}
-
-interface Attributes5 {
-  title: string;
-  subTitle: string;
-  description: string;
-  inStock: boolean;
-  price: number;
-  discountPercentage: number;
-  isFeatured: boolean;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  cover: Cover;
-  brand: Brand;
-  categories: Categories;
-  sizes: StrapiProductSizesType;
-  colors: StrapiProductColorsType;
-  images: StrapiProductImage[];
-}
-
-export interface StrapiProductImage {
-  id: number;
-  name: string;
-  assets: Assets;
-}
-
-interface Assets {
-  data: Data[];
-}
-
-export interface StrapiProductColorsType {
-  data: Datum2[];
-}
-
-interface Datum2 {
-  id: number;
   attributes: Attributes4;
 }
 
 interface Attributes4 {
-  name: string;
-  color: string;
+  title: string;
+  subTitle: string;
+  description: string;
+  discountPercentage: number;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  isFeatured: boolean;
+  cover: Cover;
+  brand: Brand;
+  categories: Categories;
+  variants: StrapiProductVariantType[];
+}
+
+export interface StrapiProductVariantType {
+  id: number;
+  name: string;
+  price: number;
+  discountPercentage: number;
+  color: string;
+  images: StrapiProductImage;
+  sizes: StrapiProductSizesType[];
 }
 
 export interface StrapiProductSizesType {
-  data: Data2[];
+  id: number;
+  size: string;
+  quantity: null | number;
+}
+
+export interface StrapiProductImage {
+  data: Data[];
 }
 
 interface Categories {
