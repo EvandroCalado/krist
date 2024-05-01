@@ -17,7 +17,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const { cover, title, subTitle, price, discountPercentage } =
     product.attributes;
 
-  const { url } = cover.data.attributes.formats.large;
+  const { url } = cover.data.attributes.formats.small;
 
   return (
     <S.Container>
