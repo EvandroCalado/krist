@@ -3,21 +3,23 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Heading } from 'components';
-import { StrapiProduct } from 'types/strapi-featured-type';
+import { StrapiFeaturedType } from 'types';
+import { calcDiscount } from 'utils';
 
 import * as S from './ProductCard.styles';
 
 export interface ProductCardProps {
-  product: StrapiProduct;
+  product: StrapiFeaturedType;
 }
 
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const navigate = useNavigate();
 
-  const { cover, title, subTitle, price, discountPercentage } =
-    product.attributes;
+  const { cover, title, subTitle, variants } = product.attributes;
 
   const { url } = cover.data.attributes.formats.small;
+
+  const { price, discountPercentage } = variants[0];
 
   return (
     <S.Container>
@@ -25,9 +27,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <img
           src={url}
           alt={title}
-          onClick={() =>
-            navigate(`/product/${product.id}`, { preventScrollReset: false })
-          }
+          onClick={() => navigate(`/product/${product.id}`)}
         />
       </S.ImageContainer>
 
@@ -51,8 +51,8 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
       </Heading>
 
       <S.PriceContainer>
-        <S.Price>R${price}</S.Price>
-        <S.Discount>R${discountPercentage}</S.Discount>
+        <S.Price>R${calcDiscount(price, discountPercentage!)}</S.Price>
+        <S.Discount>R${price}</S.Discount>
       </S.PriceContainer>
     </S.Container>
   );
