@@ -17,13 +17,25 @@ export const Details = styled.div`
   ${({ theme }) => css`
     display: flex;
     gap: ${theme.spacings['7xl']};
+
+    @media ${theme.media.lteOrEqXLarge} {
+      flex-direction: column;
+    }
   `}
 `;
 
 export const Title = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media ${theme.media.lteOrEqBig} {
+      & > h1 {
+        font-size: ${theme.font.sizes.lg};
+      }
+    }
+  `}
 `;
 
 export const CartContainer = styled.div`
