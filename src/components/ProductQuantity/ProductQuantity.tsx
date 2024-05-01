@@ -11,6 +11,8 @@ export const ProductQuantity: FC<ProductQuantityProps> = ({
   quantity,
   setQuantity,
 }) => {
+  if (quantity < 1) setQuantity(1);
+
   return (
     <S.Container>
       <button onClick={() => setQuantity(quantity - 1)}>-</button>
