@@ -1,31 +1,13 @@
 export interface StrapiFeaturedType {
-  data: StrapiProduct[];
-  meta: Meta;
-}
-
-interface Meta {
-  pagination: Pagination;
-}
-
-interface Pagination {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
-}
-
-export interface StrapiProduct {
   id: number;
-  attributes: Attributes11;
+  attributes: Attributes4;
 }
 
-interface Attributes11 {
+interface Attributes4 {
   title: string;
   subTitle: string;
   description: string;
-  inStock: boolean;
-  price: number;
-  discountPercentage: null | number;
+  discountPercentage: number;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -33,157 +15,44 @@ interface Attributes11 {
   cover: Cover;
   brand: Brand;
   categories: Categories;
-  sizes: Sizes;
-  colors: Colors;
-  images: Image[];
+  variants: Variant[];
 }
 
-interface Image {
+interface Variant {
   id: number;
   name: string;
-  assets: Assets;
+  price: number;
+  discountPercentage: null | number;
+  color: string;
+  images: Images;
+  sizes: Size[];
 }
 
-interface Assets {
+interface Size {
+  id: number;
+  size: string;
+  quantity: null | number;
+}
+
+interface Images {
   data: Data[];
 }
 
-interface Colors {
-  data: (Datum3 | Data24)[];
-}
-
-interface Data24 {
-  id: number;
-  attributes: Attributes10;
-}
-
-interface Attributes10 {
-  name: string;
-  color: null | string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  product: Product2;
-}
-
-interface Datum3 {
-  id: number;
-  attributes: Attributes9;
-}
-
-interface Attributes9 {
-  name: string;
-  color: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  product: Product;
-}
-
-interface Sizes {
-  data: (Datum2 | Data23)[];
-}
-
-interface Data23 {
-  id: number;
-  attributes: Attributes8;
-}
-
-interface Attributes8 {
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  product: Product;
-}
-
-interface Datum2 {
-  id: number;
-  attributes: Attributes7;
-}
-
-interface Attributes7 {
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  product: Product2;
-}
-
 interface Categories {
-  data: (Datum | Data22)[];
-}
-
-interface Data22 {
-  id: number;
-  attributes: Attributes6;
-}
-
-interface Attributes6 {
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  product: Product2;
-  cover: Cover;
-}
-
-interface Product2 {
-  data: Data4;
-}
-
-interface Data4 {
-  id: number;
-  attributes: Attributes5;
-}
-
-interface Attributes5 {
-  title: string;
-  subTitle: string;
-  description: string;
-  inStock: boolean;
-  price: number;
-  discountPercentage: null;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  isFeatured: boolean;
+  data: Datum[];
 }
 
 interface Datum {
-  id: number;
-  attributes: Attributes4;
-}
-
-interface Attributes4 {
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  product: Product;
-  cover: Cover;
-}
-
-interface Product {
-  data: Data3;
-}
-
-interface Data3 {
   id: number;
   attributes: Attributes3;
 }
 
 interface Attributes3 {
-  title: string;
-  subTitle: string;
-  description: string;
-  inStock: boolean;
-  price: number;
-  discountPercentage: number;
+  name: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  isFeatured: boolean;
+  cover: Cover;
 }
 
 interface Brand {
