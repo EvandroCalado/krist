@@ -11,7 +11,7 @@ export const CartProductsList: FC<CartProductsListProps> = ({ children }) => {
     <S.Table>
       <S.THead>
         <S.Tr>
-          <S.Th scope="col">produtos</S.Th>
+          <S.Th scope="col">produto</S.Th>
           <S.Th scope="col">preço</S.Th>
           <S.Th scope="col">quantidade</S.Th>
           <S.Th scope="col">subtotal</S.Th>
