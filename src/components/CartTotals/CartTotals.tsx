@@ -8,14 +8,14 @@ export interface CartTotalsProps {}
 
 export const CartTotals: FC<CartTotalsProps> = () => {
   return (
-    <S.Container>
+    <S.Container className="totals">
       <S.SubtotalContainer>
         <span>subtotal</span>
         <span>R$200</span>
       </S.SubtotalContainer>
 
       <S.InputContainer>
-        <label htmlFor="cupom">código de desconto</label>
+        <label htmlFor="cupom">cupom de desconto</label>
         <div>
           <input type="text" id="cupom" />
           <button>aplicar</button>
