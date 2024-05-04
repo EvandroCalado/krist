@@ -39,6 +39,10 @@ export const TitleContainer = styled.div`
 export const PriceTd = styled.td`
   ${({ theme }) => css`
     padding-right: ${theme.spacings.xl};
+
+    @media ${theme.media.lteOrEqXLarge} {
+      display: none;
+    }
   `}
 `;
 
