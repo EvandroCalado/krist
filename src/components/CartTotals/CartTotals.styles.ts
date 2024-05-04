@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${({ theme }) => css`
+    height: max-content;
     display: flex;
     flex-direction: column;
     gap: ${theme.spacings.md};
