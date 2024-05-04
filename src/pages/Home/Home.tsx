@@ -14,12 +14,12 @@ export const Home = () => {
         <meta name="description" content="Loja online de roupas" />
       </Helmet>
       <Header />
-      <main
-        style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
-      >
+
+      <main>
         <ScrollRestoration />
         {isPageLoading ? <MainLoading /> : <Outlet />}
       </main>
+
       <Footer />
     </>
   );
