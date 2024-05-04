@@ -1,5 +1,7 @@
 export * from './BreadCrumb';
 export * from './Button';
+export * from './CartModal';
+export * from './CartModalProduct';
 export * from './CartProduct';
 export * from './CartProductsList';
 export * from './CartTotals';
