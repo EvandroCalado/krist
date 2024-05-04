@@ -2,6 +2,7 @@ export * from './BreadCrumb';
 export * from './Button';
 export * from './CartProduct';
 export * from './CartProductsList';
+export * from './CartTotals';
 export * from './CategoriesCarousel';
 export * from './CategoryCard';
 export * from './Checkbox';
