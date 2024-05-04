@@ -8,7 +8,7 @@ export interface CartProductsListProps {
 
 export const CartProductsList: FC<CartProductsListProps> = ({ children }) => {
   return (
-    <S.Table>
+    <S.Table className="table">
       <S.THead>
         <S.Tr>
           <S.Th scope="col">produto</S.Th>
