@@ -7,8 +7,8 @@ export const Container = styled.div`
     align-items: center;
     gap: ${theme.spacings.md};
 
-    @media ${theme.media.lteOrEqMedium} {
-      flex-direction: column;
+    @media ${theme.media.lteOrEqSmall} {
+      gap: 0.5rem;
     }
 
     & .menu-hover {
@@ -55,12 +55,6 @@ export const Container = styled.div`
 
       &:hover {
         background-color: ${theme.colors.secondary};
-      }
-
-      @media ${theme.media.lteOrEqMedium} {
-        &:hover {
-          background-color: ${theme.colors.white};
-        }
       }
     }
   `}

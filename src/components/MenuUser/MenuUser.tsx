@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userLogout } from 'slices/userSlice';
 
-import { Button } from 'components';
+import { Button, CartModal, CartModalProduct } from 'components';
 
 import * as S from './MenuUser.styles';
 
 export const MenuUser = () => {
-  const [open, setOpen] = useState(false);
+  const [openUser, setOpenUser] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
   const { user } = useAppSelector((state) => state.userState);
   const dispatch = useAppDispatch();
 
@@ -24,12 +25,26 @@ export const MenuUser = () => {
     <S.Container className="menu-user">
       <span>Search</span>
       <Heart />
-      <ShoppingBag />
+
+      <>
+        <ShoppingBag onClick={() => setOpenCart(!openCart)} />
+        <CartModal openCart={openCart} setOpenCart={setOpenCart}>
+          <CartModalProduct />
+          <CartModalProduct />
+          <CartModalProduct />
+          <CartModalProduct />
+
+          <div className="subtotal">
+            <span>subtotal</span>
+            <span>R$200.00</span>
+          </div>
+        </CartModal>
+      </>
 
       {user ? (
         <>
-          <User onClick={() => setOpen(!open)} />
-          <div className={`menu-hover ${open ? 'open' : ''}`}>
+          <User onClick={() => setOpenUser(!openUser)} />
+          <div className={`menu-hover ${openUser ? 'open' : ''}`}>
             <button onClick={handleLogout}>sair</button>
           </div>
         </>
