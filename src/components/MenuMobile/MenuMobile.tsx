@@ -1,7 +1,7 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
-import { MenuNav, MenuUser } from 'components';
+import { MenuNav } from 'components';
 
 import * as S from './MenuMobile.styled';
 
@@ -16,7 +16,6 @@ export const MenuMobile = () => {
         <X onClick={() => setOpen(!open)} />
 
         <MenuNav />
-        <MenuUser />
       </S.MenuContainer>
     </S.Container>
   );
