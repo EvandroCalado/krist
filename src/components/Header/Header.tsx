@@ -7,8 +7,11 @@ export const Header = () => {
     <S.Header>
       <Logo />
       <MenuNav />
-      <MenuUser />
-      <MenuMobile />
+
+      <S.InfoMenu>
+        <MenuUser />
+        <MenuMobile />
+      </S.InfoMenu>
     </S.Header>
   );
 };

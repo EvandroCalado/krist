@@ -13,16 +13,24 @@ export const Header = styled.header`
       & > .menu-nav {
         display: none;
       }
-
-      & > .menu-user {
-        display: none;
-      }
     }
 
     @media ${theme.media.gteOrEqMedium} {
       .menu-mobile {
         display: none;
       }
+    }
+  `}
+`;
+
+export const InfoMenu = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    gap: ${theme.spacings.md};
+
+    @media ${theme.media.lteOrEqSmall} {
+      gap: 0.5rem;
     }
   `}
 `;
