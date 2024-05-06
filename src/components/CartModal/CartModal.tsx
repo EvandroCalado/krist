@@ -1,8 +1,9 @@
-import { X } from 'lucide-react';
+import { useAppSelector } from 'hooks/redux-hook';
+import { PackageOpen, X } from 'lucide-react';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Button } from 'components';
+import { Button, Heading } from 'components';
 
 import * as S from './CartModal.styles';
 
@@ -17,22 +18,38 @@ export const CartModal: FC<CartModalProps> = ({
   openCart,
   setOpenCart,
 }) => {
+  const numItemsInCart = useAppSelector(
+    (state) => state.cartState.numItemsInCart,
+  );
   const navigate = useNavigate();
 
   return (
     <S.Container openCart={openCart}>
       <S.HeaderContainer>
-        <span>você tem 3 itens no carrinho</span>
+        <span>você tem {numItemsInCart} itens no carrinho</span>
         <X onClick={() => setOpenCart(!openCart)} />
       </S.HeaderContainer>
-      {children}
-      <Button
-        onClick={() => [navigate('/cart'), setOpenCart(!openCart)]}
-        variant="secondary"
-      >
-        ver carrinho
-      </Button>
-      <Button onClick={() => navigate('/checkout')}>finalizar compra</Button>
+
+      {numItemsInCart === 0 ? (
+        <S.EmptyContainer>
+          <Heading as="h2" size="xl" transform="uppercase">
+            vazio <PackageOpen />
+          </Heading>
+        </S.EmptyContainer>
+      ) : (
+        <>
+          {children}
+          <Button
+            onClick={() => [navigate('/cart'), setOpenCart(!openCart)]}
+            variant="secondary"
+          >
+            ver carrinho
+          </Button>
+          <Button onClick={() => navigate('/checkout')}>
+            finalizar compra
+          </Button>
+        </>
+      )}
     </S.Container>
   );
 };

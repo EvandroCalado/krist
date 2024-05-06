@@ -15,6 +15,7 @@ export const Container = styled.div<Pick<CartModalProps, 'openCart'>>`
     padding: ${theme.spacings.lg};
     background-color: ${theme.colors.white};
     transition: ${theme.transitions.faster};
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 
     ${openCart && 'right: -10.5rem;'}
 
@@ -60,4 +61,16 @@ export const HeaderContainer = styled.div`
       }
     }
   `}
+`;
+
+export const EmptyContainer = styled.div`
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > h2 > svg {
+    width: 3rem;
+    height: 3rem;
+  }
 `;
