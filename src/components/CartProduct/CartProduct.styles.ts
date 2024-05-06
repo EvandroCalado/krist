@@ -80,6 +80,10 @@ export const QuantityTd = styled.td`
 export const SubtotalTd = styled.td`
   ${({ theme }) => css`
     padding-right: ${theme.spacings.xl};
+
+    @media ${theme.media.lteOrEqSmall} {
+      display: none;
+    }
   `}
 `;
 
