@@ -51,7 +51,9 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
       </Heading>
 
       <S.PriceContainer>
-        <S.Price>R${calcDiscount(price, discountPercentage!)}</S.Price>
+        <S.Price>
+          R${calcDiscount(price, discountPercentage!).toFixed(2)}
+        </S.Price>
         <S.Discount>R${price}</S.Discount>
       </S.PriceContainer>
     </S.Container>
