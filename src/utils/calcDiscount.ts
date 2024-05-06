@@ -3,5 +3,5 @@ export const calcDiscount = (value: number, discount: number) => {
 
   if (discount === 0) return value;
 
-  return valueWithDiscount.toFixed(2);
+  return valueWithDiscount;
 };
