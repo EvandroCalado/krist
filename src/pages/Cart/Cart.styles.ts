@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${({ theme }) => css`
+    /* flex: 1; */
     display: flex;
     flex-direction: column;
     gap: ${theme.spacings.md};
@@ -9,6 +10,10 @@ export const Container = styled.div`
 
     @media ${theme.media.lteOrEqMedium} {
       padding: ${theme.spacings.lg};
+
+      & > h1 {
+        font-size: ${theme.font.sizes.xl};
+      }
     }
   `}
 `;
@@ -45,4 +50,16 @@ export const Info = styled.div`
       flex: 1;
     }
   `}
+`;
+
+export const EmptyContainer = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > h2 > svg {
+    width: 5rem;
+    height: 5rem;
+  }
 `;
