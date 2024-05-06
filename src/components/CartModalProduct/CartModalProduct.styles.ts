@@ -5,6 +5,7 @@ export const Tr = styled.tr`
     display: flex;
     align-items: center;
     border-top: 1px solid ${theme.colors.secondary};
+    height: max-content;
   `}
 `;
 
