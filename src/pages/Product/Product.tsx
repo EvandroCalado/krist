@@ -1,7 +1,9 @@
+import { useAppDispatch } from 'hooks/redux-hook';
 import { Heart } from 'lucide-react';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
+import { CartItem, addToCart } from 'slices/cartSlice';
 
 import {
   BreadCrumb,
@@ -21,11 +23,13 @@ import {
   ProductTabs,
 } from 'components';
 import { StrapiProductType } from 'types';
+import { calcDiscount } from 'utils';
 
 import * as S from './Product.styles';
 
 export const Product = () => {
   const { product } = useLoaderData() as { product: StrapiProductType };
+  const dispatch = useAppDispatch();
 
   const { title, subTitle, description, categories, variants } =
     product.data.attributes;
@@ -47,6 +51,22 @@ export const Product = () => {
   const [size, setSize] = useState(initialSize.size);
 
   const currentSize = sizes.filter((singleSize) => singleSize.size === size)[0];
+
+  const cartProduct: CartItem = {
+    cartId: product.data.id + color,
+    productId: product.data.id,
+    image: images.data[0].attributes.formats.thumbnail.url,
+    title: product.data.attributes.title,
+    color,
+    size,
+    quantity,
+    price: calcDiscount(price, discountPercentage),
+    amount: quantity,
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(cartProduct));
+  };
 
   return (
     <S.Container>
@@ -102,7 +122,7 @@ export const Product = () => {
               setQuantity={setQuantity}
               currentSize={currentSize}
             />
-            <Button>Adicionar ao carrinho</Button>
+            <Button onClick={handleAddToCart}>Adicionar ao carrinho</Button>
             <Button variant="secondary">
               <Heart size={16} />
             </Button>
