@@ -11,6 +11,7 @@ import * as S from './MenuUser.styles';
 export const MenuUser = () => {
   const [openUser, setOpenUser] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+  const cart = useAppSelector((state) => state.cartState);
   const { user } = useAppSelector((state) => state.userState);
   const dispatch = useAppDispatch();
 
@@ -29,14 +30,12 @@ export const MenuUser = () => {
       <>
         <ShoppingBag onClick={() => setOpenCart(!openCart)} />
         <CartModal openCart={openCart} setOpenCart={setOpenCart}>
-          <CartModalProduct />
-          <CartModalProduct />
-          <CartModalProduct />
-          <CartModalProduct />
-
+          {cart.cartItems.map((product) => (
+            <CartModalProduct key={product.cartId} product={product} />
+          ))}
           <div className="subtotal">
             <span>subtotal</span>
-            <span>R$200.00</span>
+            <span>R${cart.cartTotal.toFixed(2)}</span>
           </div>
         </CartModal>
       </>
