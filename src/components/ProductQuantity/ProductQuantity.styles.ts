@@ -10,11 +10,19 @@ export const Container = styled.div`
     border-radius: ${theme.spacings.xs};
     font-size: ${theme.font.sizes.md};
 
+    @media ${theme.media.lteOrEqSmall} {
+      gap: 0.5rem;
+    }
+
     & > span {
       width: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @media ${theme.media.lteOrEqSmall} {
+        width: 1;
+      }
     }
 
     & > button {
@@ -24,6 +32,10 @@ export const Container = styled.div`
       background-color: transparent;
       padding: 0.95rem ${theme.font.sizes.md};
       cursor: pointer;
+
+      @media ${theme.media.lteOrEqSmall} {
+        padding: 0.95rem;
+      }
     }
   `}
 `;

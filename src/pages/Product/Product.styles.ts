@@ -45,8 +45,16 @@ export const CartContainer = styled.div`
     gap: ${theme.spacings.lg};
     margin: ${theme.spacings.xl} 0;
 
+    @media ${theme.media.lteOrEqSmall} {
+      gap: ${theme.spacings.sm};
+    }
+
     & > button:first-of-type {
       padding: ${theme.spacings.md} ${theme.spacings['5xl']};
+
+      @media ${theme.media.lteOrEqSmall} {
+        padding: ${theme.spacings.md};
+      }
     }
   `}
 `;
