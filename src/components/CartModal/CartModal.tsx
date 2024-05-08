@@ -24,32 +24,35 @@ export const CartModal: FC<CartModalProps> = ({
   const navigate = useNavigate();
 
   return (
-    <S.Container openCart={openCart}>
-      <S.HeaderContainer>
-        <span>você tem {numItemsInCart} itens no carrinho</span>
-        <X onClick={() => setOpenCart(!openCart)} />
-      </S.HeaderContainer>
+    <>
+      <S.FadeContainer openCart={openCart} onClick={() => setOpenCart(false)} />
+      <S.CartContainer openCart={openCart}>
+        <S.HeaderContainer>
+          <span>você tem {numItemsInCart} itens no carrinho</span>
+          <X onClick={() => setOpenCart(!openCart)} />
+        </S.HeaderContainer>
 
-      {numItemsInCart === 0 ? (
-        <S.EmptyContainer>
-          <Heading as="h2" size="xl" transform="uppercase">
-            vazio <PackageOpen />
-          </Heading>
-        </S.EmptyContainer>
-      ) : (
-        <>
-          {children}
-          <Button
-            onClick={() => [navigate('/cart'), setOpenCart(!openCart)]}
-            variant="secondary"
-          >
-            ver carrinho
-          </Button>
-          <Button onClick={() => navigate('/checkout')}>
-            finalizar compra
-          </Button>
-        </>
-      )}
-    </S.Container>
+        {numItemsInCart === 0 ? (
+          <S.EmptyContainer>
+            <Heading as="h2" size="xl" transform="uppercase">
+              vazio <PackageOpen />
+            </Heading>
+          </S.EmptyContainer>
+        ) : (
+          <>
+            {children}
+            <Button
+              onClick={() => [navigate('/cart'), setOpenCart(!openCart)]}
+              variant="secondary"
+            >
+              ver carrinho
+            </Button>
+            <Button onClick={() => navigate('/checkout')}>
+              finalizar compra
+            </Button>
+          </>
+        )}
+      </S.CartContainer>
+    </>
   );
 };

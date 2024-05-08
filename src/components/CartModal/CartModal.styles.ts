@@ -2,12 +2,38 @@ import styled, { css } from 'styled-components';
 
 import { CartModalProps } from './CartModal';
 
-export const Container = styled.div<Pick<CartModalProps, 'openCart'>>`
+export const Container = styled.div``;
+
+export const FadeContainer = styled.div<Pick<CartModalProps, 'openCart'>>`
   ${({ theme, openCart }) => css`
-    position: absolute;
-    top: -3rem;
-    right: -44rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 33rem;
+    z-index: 30;
+    flex: 1;
+    opacity: 0;
+    visibility: hidden;
+    background-color: ${theme.colors.black};
+    transition: ${theme.transitions.faster};
+
+    ${openCart &&
+    css`
+      opacity: 0.2;
+      visibility: visible;
+    `}
+  `}
+`;
+
+export const CartContainer = styled.div<Pick<CartModalProps, 'openCart'>>`
+  ${({ theme, openCart }) => css`
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -33rem;
     z-index: 60;
+    overflow-y: auto;
     width: 33rem;
     display: flex;
     flex-direction: column;
@@ -16,12 +42,22 @@ export const Container = styled.div<Pick<CartModalProps, 'openCart'>>`
     background-color: ${theme.colors.white};
     transition: ${theme.transitions.faster};
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    scrollbar-width: thin;
+    scrollbar-color: ${theme.colors.primary} ${theme.colors.white};
 
-    ${openCart && 'right: -10.5rem;'}
-
-    @media ${theme.media.lteOrEqMedium} {
-      ${openCart && 'right: -8rem;'}
+    ::-webkit-scrollbar {
+      width: 12px;
     }
+    ::-webkit-scrollbar-track {
+      background: ${theme.colors.white};
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: ${theme.colors.primary};
+      border-radius: 20px;
+      border: 3px solid ${theme.colors.white};
+    }
+
+    ${openCart && 'right: 0;'}
 
     & .subtotal {
       display: flex;
