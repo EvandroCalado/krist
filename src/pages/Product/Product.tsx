@@ -53,7 +53,7 @@ export const Product = () => {
   const currentSize = sizes.filter((singleSize) => singleSize.size === size)[0];
 
   const cartProduct: CartItem = {
-    cartId: product.data.id + color,
+    cartId: product.data.id + color + size,
     productId: product.data.id,
     image: images.data[0].attributes.formats.thumbnail.url,
     title: product.data.attributes.title,
