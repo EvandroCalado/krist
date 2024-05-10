@@ -8,6 +8,7 @@ export const Shop = () => {
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState(0);
   const [color, setColor] = useState('');
+  const [size, setSize] = useState('');
 
   return (
     <S.Container>
@@ -63,7 +64,29 @@ export const Shop = () => {
             <Color color={'azul'} setColor={setColor} colorHex="#428cbe" />
           </ProductFilter>
 
-          <ProductFilter name="tamanhos">size</ProductFilter>
+          <ProductFilter name="tamanhos">
+            <Checkbox
+              label="p"
+              name="p"
+              checked={size === 'p'}
+              value="p"
+              onChange={(e) => setSize(e.target.value)}
+            />
+            <Checkbox
+              label="m"
+              name="m"
+              checked={size === 'm'}
+              value="m"
+              onChange={(e) => setSize(e.target.value)}
+            />
+            <Checkbox
+              label="g"
+              name="g"
+              checked={size === 'g'}
+              value="g"
+              onChange={(e) => setSize(e.target.value)}
+            />
+          </ProductFilter>
         </S.Filters>
 
         <div style={{ flex: 5 }}>products</div>

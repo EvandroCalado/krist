@@ -11,9 +11,7 @@ export const Container = styled.div`
 `;
 
 export const FiltersContainer = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-  `}
+  display: flex;
 `;
 
 export const Filters = styled.div`
