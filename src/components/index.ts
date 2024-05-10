@@ -35,6 +35,7 @@ export * from './ProductSizes';
 export * from './ProductStock';
 export * from './ProductTabs';
 export * from './ProductsList';
+export * from './Range';
 export * from './RatingCard';
 export * from './RatingsCarousel';
 export * from './Services';
