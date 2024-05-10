@@ -12,7 +12,9 @@ export const Color: FC<ColorProps> = ({ color, setColor, colorHex }) => {
   return (
     <S.Container>
       <S.Color colorHex={colorHex}></S.Color>
-      <S.Button onClick={() => setColor(color)}>{color}</S.Button>
+      <S.Button type="button" onClick={() => setColor(color)}>
+        {color}
+      </S.Button>
     </S.Container>
   );
 };
