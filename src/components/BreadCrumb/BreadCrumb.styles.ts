@@ -5,7 +5,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     gap: ${theme.spacings.xs};
-    padding: ${theme.spacings.xs} 0;
+    padding: ${theme.spacings.lg} 0;
     text-transform: capitalize;
     font-size: ${theme.font.sizes.sm};
     font-weight: 600;
