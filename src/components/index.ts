@@ -24,6 +24,7 @@ export * from './ProductCard';
 export * from './ProductColors';
 export * from './ProductDescription';
 export * from './ProductDetails';
+export * from './ProductFilter';
 export * from './ProductImages';
 export * from './ProductInfo';
 export * from './ProductPrice';
