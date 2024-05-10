@@ -10,10 +10,17 @@ export const Container = styled.div`
 
 export const Label = styled.label`
   ${({ theme }) => css`
+    width: 100%;
     font-size: ${theme.font.sizes.md};
     text-transform: capitalize;
     font-size: ${theme.font.sizes.sm};
+    padding: ${theme.spacings.xs} ${theme.spacings.sm};
+    border-radius: 0.5rem;
     cursor: pointer;
+
+    &:hover {
+      background-color: ${theme.colors.secondary};
+    }
   `}
 `;
 
