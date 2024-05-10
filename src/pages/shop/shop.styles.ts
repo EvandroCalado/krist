@@ -1,3 +1,4 @@
+import { Form } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
@@ -11,15 +12,31 @@ export const Container = styled.div`
 `;
 
 export const FiltersContainer = styled.div`
-  display: flex;
+  ${({ theme }) => css`
+    display: flex;
+    gap: ${theme.spacings.xl};
+  `}
 `;
 
-export const Filters = styled.div`
+export const Filters = styled(Form)`
   ${({ theme }) => css`
     width: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: ${theme.spacings.xl};
+  `}
+`;
+
+export const ButtonContainer = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: ${theme.spacings.md};
+
+    & > button {
+      width: 100%;
+    }
   `}
 `;

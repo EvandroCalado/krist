@@ -1,6 +1,13 @@
 import { useState } from 'react';
 
-import { BreadCrumb, Checkbox, Color, ProductFilter, Range } from 'components';
+import {
+  BreadCrumb,
+  Button,
+  Checkbox,
+  Color,
+  ProductFilter,
+  Range,
+} from 'components';
 
 import * as S from './shop.styles';
 
@@ -87,6 +94,13 @@ export const Shop = () => {
               onChange={(e) => setSize(e.target.value)}
             />
           </ProductFilter>
+
+          <S.ButtonContainer>
+            <Button type="submit">aplicar</Button>
+            <Button type="reset" variant="secondary">
+              limpar
+            </Button>
+          </S.ButtonContainer>
         </S.Filters>
 
         <div style={{ flex: 5 }}>products</div>
