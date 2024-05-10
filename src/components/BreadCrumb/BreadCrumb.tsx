@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as S from './BreadCrumb.styles';
 
 export interface BreadCrumbProps {
-  productName: string;
+  productName?: string;
 }
 
 export const BreadCrumb: FC<BreadCrumbProps> = ({ productName }) => {
@@ -15,9 +15,7 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ productName }) => {
         home <ChevronRight />
       </Link>
 
-      <Link to="/shop">
-        shop <ChevronRight />
-      </Link>
+      <Link to="/shop">shop {productName && <ChevronRight />}</Link>
 
       <span>{productName}</span>
     </S.Container>
