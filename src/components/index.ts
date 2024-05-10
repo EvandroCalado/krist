@@ -8,6 +8,7 @@ export * from './CartTotals';
 export * from './CategoriesCarousel';
 export * from './CategoryCard';
 export * from './Checkbox';
+export * from './Color';
 export * from './Countdown';
 export * from './FlashSale';
 export * from './Footer';
