@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-import { BreadCrumb, Checkbox, ProductFilter, Range } from 'components';
+import { BreadCrumb, Checkbox, Color, ProductFilter, Range } from 'components';
 
 import * as S from './shop.styles';
 
 export const Shop = () => {
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState(0);
+  const [color, setColor] = useState('');
 
   return (
     <S.Container>
@@ -56,10 +57,15 @@ export const Shop = () => {
             <Range price={price} setPrice={setPrice} />
           </ProductFilter>
 
-          <ProductFilter name="cores">color</ProductFilter>
+          <ProductFilter name="cores">
+            <Color color={'vermelho'} setColor={setColor} colorHex="#dc6260" />
+            <Color color={'amarelo'} setColor={setColor} colorHex="#e3d14c" />
+            <Color color={'azul'} setColor={setColor} colorHex="#428cbe" />
+          </ProductFilter>
 
           <ProductFilter name="tamanhos">size</ProductFilter>
         </S.Filters>
+
         <div style={{ flex: 5 }}>products</div>
       </S.FiltersContainer>
     </S.Container>
