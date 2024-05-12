@@ -8,10 +8,15 @@ import * as S from './ProductFilter.styles';
 export interface ProductFilterProps {
   children: React.ReactNode;
   name: string;
+  isOpen: boolean;
 }
 
-export const ProductFilter: FC<ProductFilterProps> = ({ children, name }) => {
-  const [open, setOpen] = useState(false);
+export const ProductFilter: FC<ProductFilterProps> = ({
+  children,
+  name,
+  isOpen,
+}) => {
+  const [open, setOpen] = useState(isOpen);
 
   return (
     <S.Container open={open} className="product-categories">
