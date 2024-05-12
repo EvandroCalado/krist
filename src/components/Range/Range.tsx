@@ -16,7 +16,7 @@ export const Range: FC<RangeProps> = ({ price, setPrice, ...rest }) => {
       <S.Input
         {...rest}
         type="range"
-        min="{0}"
+        min={0}
         max={maxPrice}
         step={1}
         value={price}
