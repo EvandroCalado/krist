@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         element: [
           <Hero key={1} />,
           <CategoriesCarousel key={2} />,
-          <ProductsList key={3} />,
+          <ProductsList key={3} title="em destaque" />,
           <FlashSale key={4} />,
           <RatingsCarousel key={5} ratings={ratings} />,
           <Services key={6} />,
