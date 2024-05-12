@@ -1,5 +1,14 @@
 import styled, { css } from 'styled-components';
 
+export const Container = styled.div`
+  ${({ theme }) => css`
+    & > h2 {
+      text-align: center;
+      margin: ${theme.spacings['2xl']} 0;
+    }
+  `}
+`;
+
 export const GridContainer = styled.div`
   ${({ theme }) => css`
     display: grid;
