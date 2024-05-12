@@ -1,8 +1,15 @@
 import { useAppSelector } from 'hooks/redux-hook';
 import { PackageOpen } from 'lucide-react';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { CartProduct, CartProductsList, CartTotals, Heading } from 'components';
+import {
+  Button,
+  CartProduct,
+  CartProductsList,
+  CartTotals,
+  Heading,
+} from 'components';
 
 import * as S from './Cart.styles';
 
@@ -10,6 +17,8 @@ export interface CartProps {}
 
 export const Cart: FC<CartProps> = () => {
   const cart = useAppSelector((state) => state.cartState);
+
+  const navigate = useNavigate();
 
   if (cart.cartItems.length === 0) {
     return (
@@ -36,6 +45,8 @@ export const Cart: FC<CartProps> = () => {
 
         <CartTotals />
       </S.Info>
+
+      <Button onClick={() => navigate('/checkout')}>finalizar compra</Button>
     </S.Container>
   );
 };

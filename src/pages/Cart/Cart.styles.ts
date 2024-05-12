@@ -2,11 +2,14 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    /* flex: 1; */
     display: flex;
     flex-direction: column;
     gap: ${theme.spacings.md};
     padding: 4.6rem ${theme.spacings['10xl']};
+
+    & > button {
+      margin-left: auto;
+    }
 
     @media ${theme.media.lteOrEqMedium} {
       padding: ${theme.spacings.lg};
