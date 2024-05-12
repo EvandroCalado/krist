@@ -1,8 +1,6 @@
 import { useAppSelector } from 'hooks/redux-hook';
 import { FC } from 'react';
 
-import { Button } from 'components/Button';
-
 import * as S from './CartTotals.styles';
 
 export interface CartTotalsProps {}
@@ -36,8 +34,6 @@ export const CartTotals: FC<CartTotalsProps> = () => {
         <span>total</span>
         <span>RS{(cart.cartTotal + deliveryValue).toFixed(2)}</span>
       </S.TotalContainer>
-
-      <Button>finalizar compra</Button>
     </S.Container>
   );
 };
