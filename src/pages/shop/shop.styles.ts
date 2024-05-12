@@ -15,6 +15,10 @@ export const FiltersContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     gap: ${theme.spacings.xl};
+
+    @media ${theme.media.lteOrEqSmall} {
+      flex-direction: column;
+    }
   `}
 `;
 
@@ -38,5 +42,21 @@ export const ButtonContainer = styled.div`
     & > button {
       width: 100%;
     }
+  `}
+`;
+
+export const Products = styled.div`
+  flex: 5;
+`;
+
+export const ProductsHeader = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    gap: ${theme.spacings.sm};
+    text-transform: capitalize;
+    font-size: ${theme.font.sizes.sm};
+    font-weight: 600;
+    margin-bottom: ${theme.spacings.lg};
   `}
 `;
