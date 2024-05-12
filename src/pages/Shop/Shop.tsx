@@ -18,7 +18,7 @@ import {
   StrapiSizesType,
 } from 'types';
 
-import * as S from './shop.styles';
+import * as S from './Shop.styles';
 
 export const Shop = () => {
   const { products, categories, colors, sizes } = useLoaderData() as {
