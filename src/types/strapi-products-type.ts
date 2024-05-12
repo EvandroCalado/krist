@@ -1,11 +1,20 @@
-export interface StrapiProductType {
-  data: Data3;
+export interface StrapiProductsType {
+  data: StrapiProductType[];
   meta: Meta;
 }
 
-interface Meta {}
+interface Meta {
+  pagination: Pagination;
+}
 
-interface Data3 {
+interface Pagination {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
+}
+
+export interface StrapiProductType {
   id: number;
   attributes: Attributes4;
 }
@@ -14,7 +23,7 @@ interface Attributes4 {
   title: string;
   subTitle: string;
   description: string;
-  discountPercentage: number;
+  discountPercentage: null | number;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -22,26 +31,26 @@ interface Attributes4 {
   cover: Cover;
   brand: Brand;
   categories: Categories;
-  variants: StrapiProductVariantType[];
+  variants: Variant[];
 }
 
-export interface StrapiProductVariantType {
+interface Variant {
   id: number;
   name: string;
   price: number;
-  discountPercentage: number;
+  discountPercentage: null | number | number;
   color: string;
-  images: StrapiProductImage;
-  sizes: StrapiProductSizesType[];
+  images: Images;
+  sizes: Size[];
 }
 
-export interface StrapiProductSizesType {
+interface Size {
   id: number;
   size: string;
-  quantity: null | number;
+  quantity: null | null | number | number | number | number;
 }
 
-export interface StrapiProductImage {
+interface Images {
   data: Data[];
 }
 
