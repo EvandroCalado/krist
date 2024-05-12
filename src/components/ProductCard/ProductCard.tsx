@@ -3,13 +3,13 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Heading } from 'components';
-import { StrapiFeaturedType } from 'types';
+import { StrapiProductType } from 'types';
 import { calcDiscount } from 'utils';
 
 import * as S from './ProductCard.styles';
 
 export interface ProductCardProps {
-  product: StrapiFeaturedType;
+  product: StrapiProductType;
 }
 
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
@@ -27,7 +27,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <img
           src={url}
           alt={title}
-          onClick={() => navigate(`shop/product/${product.id}`)}
+          onClick={() => navigate(`product/${product.id}`)}
         />
       </S.ImageContainer>
 
@@ -37,7 +37,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
       <span>
         <Heart />
       </span>
-      <span onClick={() => navigate(`shop/product/${product.id}`)}>
+      <span onClick={() => navigate(`product/${product.id}`)}>
         <Eye />
       </span>
       <button>adicionar à sacola</button>
