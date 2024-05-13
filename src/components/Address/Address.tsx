@@ -20,7 +20,7 @@ export const Address: FC<AddressProps> = ({ children }) => {
         clique em continuar. Se não estiver, clique em adicionar.
       </p>
 
-      {children}
+      <S.CardContainer>{children}</S.CardContainer>
     </S.Container>
   );
 };
