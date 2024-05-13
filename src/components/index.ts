@@ -1,3 +1,5 @@
+export * from './Address';
+export * from './AddressCard';
 export * from './BreadCrumb';
 export * from './Button';
 export * from './CartModal';
@@ -40,3 +42,4 @@ export * from './Range';
 export * from './RatingCard';
 export * from './RatingsCarousel';
 export * from './Services';
+export * from './Steps';
