@@ -4,6 +4,7 @@ export const Container = styled.div`
   ${({ theme }) => css`
     display: flex;
     gap: ${theme.spacings.lg};
+    padding: ${theme.spacings.lg} ${theme.spacings['10xl']};
   `}
 `;
 

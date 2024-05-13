@@ -1,7 +1,7 @@
 import { ClipboardList, CreditCard, Home } from 'lucide-react';
 import { FC, useState } from 'react';
 
-import { Address, Button, CartTotals } from 'components';
+import { Address, AddressCard, Button, CartTotals } from 'components';
 
 import * as S from './Steps.styles';
 
@@ -60,7 +60,16 @@ export const Steps: FC<StepsProps> = () => {
           </S.ButtonContainer>
         </S.ButtonsContainer>
 
-        {step === 'address' && <Address>content</Address>}
+        {step === 'address' && (
+          <>
+            <Address>
+              <AddressCard />
+              <AddressCard />
+            </Address>
+
+            <Button type="button">continuar</Button>
+          </>
+        )}
         {step === 'payment' && <div>pagamento</div>}
         {step === 'review' && <div>revisar</div>}
       </S.Steps>
