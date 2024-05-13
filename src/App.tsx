@@ -1,6 +1,6 @@
 import { loginAction, registerAction } from 'actions';
 import { homeLoader, productLoader, shopLoader } from 'loaders';
-import { Cart, Home, Login, Product, Register, Shop } from 'pages';
+import { Cart, Checkout, Home, Login, Product, Register, Shop } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import {
@@ -51,6 +51,11 @@ const router = createBrowserRouter([
         path: 'cart',
         element: <Cart />,
         errorElement: <div>Cart error</div>,
+      },
+      {
+        path: 'checkout',
+        element: <Checkout />,
+        errorElement: <div>checkout error</div>,
       },
     ],
   },
