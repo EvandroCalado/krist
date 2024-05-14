@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const AddressContainer = styled.div`
   ${({ theme }) => css`
     width: 27rem;
     display: flex;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   `}
 `;
 
-export const TitleContainer = styled.div`
+export const AddressTitle = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
@@ -29,7 +29,14 @@ export const TitleContainer = styled.div`
   `}
 `;
 
-export const AddressContainer = styled.div`
+export const AddressDescription = styled.div`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.sm};
+    text-transform: capitalize;
+  `}
+`;
+
+export const AddressZipcode = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.sm};
     text-transform: capitalize;

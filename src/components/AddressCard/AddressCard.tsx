@@ -1,21 +1,27 @@
 import { FilePenLine, Trash2 } from 'lucide-react';
 import { FC } from 'react';
 
+import { StrapiAddressType } from 'types';
+
 import * as S from './AddressCard.styles';
 
-export interface AddressCardProps {}
+export interface AddressCardProps {
+  address: StrapiAddressType;
+}
 
-export const AddressCard: FC<AddressCardProps> = () => {
+export const AddressCard: FC<AddressCardProps> = ({ address }) => {
   return (
-    <S.Container>
-      <S.TitleContainer>
-        <label htmlFor="address">evandro calado</label>
+    <S.AddressContainer>
+      <S.AddressTitle>
+        <label htmlFor="address">
+          {address.attributes.user.data.attributes.username}
+        </label>
         <input type="checkbox" id="address" name="address" />
-      </S.TitleContainer>
+      </S.AddressTitle>
 
-      <S.AddressContainer>
-        avenida conselheiro joão alfredo, 3, santa luzia, arcoverde, pernambuco
-      </S.AddressContainer>
+      <S.AddressDescription>{address.attributes.address}</S.AddressDescription>
+
+      <S.AddressZipcode>CEP: {address.attributes.zipCode}</S.AddressZipcode>
 
       <S.ButtonContainer>
         <button className="edit">
@@ -26,6 +32,6 @@ export const AddressCard: FC<AddressCardProps> = () => {
           <Trash2 /> apagar
         </button>
       </S.ButtonContainer>
-    </S.Container>
+    </S.AddressContainer>
   );
 };
