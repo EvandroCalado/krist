@@ -1,4 +1,4 @@
-import { loginAction, registerAction } from 'actions';
+import { checkoutAction, loginAction, registerAction } from 'actions';
 import { checkoutLoader, homeLoader, productLoader, shopLoader } from 'loaders';
 import { Cart, Checkout, Home, Login, Product, Register, Shop } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -57,6 +57,7 @@ const router = createBrowserRouter([
         element: <Checkout />,
         errorElement: <div>checkout error</div>,
         loader: checkoutLoader(store),
+        action: checkoutAction(store),
       },
     ],
   },
@@ -64,15 +65,15 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
     errorElement: <div>Login error</div>,
-    action: loginAction(store),
     loader: homeLoader,
+    action: loginAction(store),
   },
   {
     path: '/register',
     element: <Register />,
     errorElement: <div>Register error</div>,
-    action: registerAction,
     loader: homeLoader,
+    action: registerAction,
   },
   {
     path: '*',
