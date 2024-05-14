@@ -1,5 +1,6 @@
 export * from './Address';
 export * from './AddressCard';
+export * from './AddressModal';
 export * from './BreadCrumb';
 export * from './Button';
 export * from './CartModal';
