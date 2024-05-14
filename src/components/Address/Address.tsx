@@ -10,7 +10,7 @@ export interface AddressProps {
 
 export const Address: FC<AddressProps> = ({ children }) => {
   return (
-    <S.Container>
+    <S.AddressContainer>
       <Heading as="h3" transform="capitalize" fontWeight="700">
         selecione um endereço de entrega
       </Heading>
@@ -20,7 +20,7 @@ export const Address: FC<AddressProps> = ({ children }) => {
         clique em continuar. Se não estiver, clique em adicionar.
       </p>
 
-      <S.CardContainer>{children}</S.CardContainer>
-    </S.Container>
+      <S.AddressCard>{children}</S.AddressCard>
+    </S.AddressContainer>
   );
 };
