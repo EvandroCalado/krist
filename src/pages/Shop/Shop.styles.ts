@@ -47,6 +47,10 @@ export const ButtonContainer = styled.div`
 
 export const Products = styled.div`
   flex: 5;
+
+  & .products-list {
+    padding: 0;
+  }
 `;
 
 export const ProductsHeader = styled.div`
