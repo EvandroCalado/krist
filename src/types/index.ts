@@ -1,3 +1,4 @@
+export * from './strapi-addresses.type';
 export * from './strapi-categories-type';
 export * from './strapi-colors-type';
 export * from './strapi-config-type';
