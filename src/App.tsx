@@ -1,5 +1,5 @@
 import { loginAction, registerAction } from 'actions';
-import { homeLoader, productLoader, shopLoader } from 'loaders';
+import { checkoutLoader, homeLoader, productLoader, shopLoader } from 'loaders';
 import { Cart, Checkout, Home, Login, Product, Register, Shop } from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -56,6 +56,7 @@ const router = createBrowserRouter([
         path: 'checkout',
         element: <Checkout />,
         errorElement: <div>checkout error</div>,
+        loader: checkoutLoader,
       },
     ],
   },
