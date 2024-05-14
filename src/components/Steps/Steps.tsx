@@ -1,5 +1,6 @@
-import { ClipboardList, CreditCard, Home } from 'lucide-react';
+import { ClipboardList, CreditCard, Home, Plus } from 'lucide-react';
 import { FC, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 import {
   Address,
@@ -10,12 +11,15 @@ import {
   Payment,
   Review,
 } from 'components';
+import { StrapiAddressesType } from 'types';
 
 import * as S from './Steps.styles';
 
 export interface StepsProps {}
 
 export const Steps: FC<StepsProps> = () => {
+  const { addresses } = useLoaderData() as { addresses: StrapiAddressesType };
+
   const [step, setStep] = useState('address');
 
   return (
@@ -71,8 +75,13 @@ export const Steps: FC<StepsProps> = () => {
         {step === 'address' && (
           <>
             <Address>
-              <AddressCard />
-              <AddressCard />
+              {addresses.data.map((address) => (
+                <AddressCard key={address.id} address={address} />
+              ))}
+
+              <Button variant="secondary">
+                novo endereço <Plus size={16} />
+              </Button>
             </Address>
 
             <Button onClick={() => setStep('payment')} type="button">
