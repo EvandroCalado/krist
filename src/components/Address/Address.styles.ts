@@ -13,6 +13,7 @@ export const AddressCard = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: ${theme.spacings.xl};
     margin: ${theme.spacings.xl} 0;
   `}
