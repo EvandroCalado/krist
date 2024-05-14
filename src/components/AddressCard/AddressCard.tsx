@@ -12,9 +12,15 @@ import * as S from './AddressCard.styles';
 
 export interface AddressCardProps {
   address: StrapiAddressType;
+  zipCode: string;
+  setZipCode: (zipCode: string) => void;
 }
 
-export const AddressCard: FC<AddressCardProps> = ({ address }) => {
+export const AddressCard: FC<AddressCardProps> = ({
+  address,
+  zipCode,
+  setZipCode,
+}) => {
   const [openModal, setOpenModal] = useState(false);
   const [titleInput, setTitleInput] = useState(address.attributes.title);
   const [addressInput, setAddressInput] = useState(address.attributes.address);
@@ -57,10 +63,17 @@ export const AddressCard: FC<AddressCardProps> = ({ address }) => {
   return (
     <S.AddressCardContainer>
       <S.AddressCardTitle>
-        <label htmlFor="address">
+        <label htmlFor={address.attributes.title}>
           {address.attributes.user.data.attributes.username}
         </label>
-        <input type="checkbox" id="address" name="address" />
+        <input
+          type="checkbox"
+          id={address.attributes.title}
+          name="address"
+          checked={zipCode === address.attributes.zipCode}
+          value={address.attributes.zipCode}
+          onChange={() => setZipCode(address.attributes.zipCode)}
+        />
       </S.AddressCardTitle>
 
       <S.AddressCardName>{address.attributes.title}</S.AddressCardName>
