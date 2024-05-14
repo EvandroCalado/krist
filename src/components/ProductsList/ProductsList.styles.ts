@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${({ theme }) => css`
+    padding: ${theme.spacings.lg} ${theme.spacings['10xl']};
+
     & > h2 {
       text-align: center;
       margin: ${theme.spacings['2xl']} 0;

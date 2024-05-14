@@ -15,7 +15,7 @@ export const ProductsList: FC<ProductsListProps> = ({ title }) => {
   const { products } = useLoaderData() as { products: StrapiProductsType };
 
   return (
-    <S.Container>
+    <S.Container className="products-list">
       {title && (
         <Heading as="h2" transform="capitalize" size="2xl" fontWeight="700">
           {title}
