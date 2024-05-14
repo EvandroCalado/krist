@@ -9,8 +9,8 @@ export const AddressCard: FC<AddressCardProps> = () => {
   return (
     <S.Container>
       <S.TitleContainer>
-        <label htmlFor="title">evandro calado</label>
-        <input type="checkbox" id="title" />
+        <label htmlFor="address">evandro calado</label>
+        <input type="checkbox" id="address" name="address" />
       </S.TitleContainer>
 
       <S.AddressContainer>

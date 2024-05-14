@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Tr = styled.tr`
   ${({ theme }) => css`
+    width: 27.8rem;
     display: flex;
     align-items: center;
     border-top: 1px solid ${theme.colors.secondary};
