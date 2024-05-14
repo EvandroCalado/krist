@@ -1,12 +1,21 @@
+import { Store } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
+import { redirect } from 'react-router-dom';
+import { RootState } from 'store';
 
 import { StrapiAddressesType } from 'types';
 import { customFetch } from 'utils';
 
-export const checkoutLoader = async () => {
+export const checkoutLoader = (store: Store) => async () => {
+  const user = (store.getState() as RootState).userState.user;
+
+  if (!user) {
+    return redirect('/login?transfer=/checkout');
+  }
+
   try {
     const addressesResponse = await customFetch.get<StrapiAddressesType>(
-      '/addresses?populate=deep,2',
+      `/addresses?populate=deep,2&filters[user][$eq]=${user?.id}`,
     );
 
     if (addressesResponse.status !== 200) {

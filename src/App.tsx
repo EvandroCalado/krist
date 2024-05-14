@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         path: 'checkout',
         element: <Checkout />,
         errorElement: <div>checkout error</div>,
-        loader: checkoutLoader,
+        loader: checkoutLoader(store),
       },
     ],
   },
