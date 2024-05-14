@@ -11,19 +11,25 @@ export interface AddressCardProps {
 
 export const AddressCard: FC<AddressCardProps> = ({ address }) => {
   return (
-    <S.AddressContainer>
-      <S.AddressTitle>
+    <S.AddressCardContainer>
+      <S.AddressCardTitle>
         <label htmlFor="address">
           {address.attributes.user.data.attributes.username}
         </label>
         <input type="checkbox" id="address" name="address" />
-      </S.AddressTitle>
+      </S.AddressCardTitle>
 
-      <S.AddressDescription>{address.attributes.address}</S.AddressDescription>
+      <S.AddressCardName>{address.attributes.title}</S.AddressCardName>
 
-      <S.AddressZipcode>CEP: {address.attributes.zipCode}</S.AddressZipcode>
+      <S.AddressCardDescription>
+        {address.attributes.address}
+      </S.AddressCardDescription>
 
-      <S.ButtonContainer>
+      <S.AddressCardZipcode>
+        CEP: {address.attributes.zipCode}
+      </S.AddressCardZipcode>
+
+      <S.AddressCardButtons>
         <button className="edit">
           <FilePenLine /> editar
         </button>
@@ -31,7 +37,7 @@ export const AddressCard: FC<AddressCardProps> = ({ address }) => {
         <button className="delete">
           <Trash2 /> apagar
         </button>
-      </S.ButtonContainer>
-    </S.AddressContainer>
+      </S.AddressCardButtons>
+    </S.AddressCardContainer>
   );
 };

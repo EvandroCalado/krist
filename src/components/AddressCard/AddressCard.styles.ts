@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const AddressContainer = styled.div`
+export const AddressCardContainer = styled.div`
   ${({ theme }) => css`
     width: 27rem;
     display: flex;
@@ -9,7 +9,7 @@ export const AddressContainer = styled.div`
   `}
 `;
 
-export const AddressTitle = styled.div`
+export const AddressCardTitle = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
@@ -29,21 +29,23 @@ export const AddressTitle = styled.div`
   `}
 `;
 
-export const AddressDescription = styled.div`
+export const AddressCardName = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.sm};
     text-transform: capitalize;
+    font-weight: 700;
   `}
 `;
 
-export const AddressZipcode = styled.div`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.sm};
-    text-transform: capitalize;
-  `}
+export const AddressCardDescription = styled(AddressCardName)`
+  font-weight: 400;
 `;
 
-export const ButtonContainer = styled.div`
+export const AddressCardZipcode = styled(AddressCardName)`
+  font-weight: 400;
+`;
+
+export const AddressCardButtons = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
