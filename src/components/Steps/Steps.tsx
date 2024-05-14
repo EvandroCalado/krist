@@ -1,10 +1,11 @@
 import { ClipboardList, CreditCard, Home, Plus } from 'lucide-react';
 import { FC, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Form, useLoaderData } from 'react-router-dom';
 
 import {
   Address,
   AddressCard,
+  AddressModal,
   Button,
   CartTotals,
   Input,
@@ -21,6 +22,7 @@ export const Steps: FC<StepsProps> = () => {
   const { addresses } = useLoaderData() as { addresses: StrapiAddressesType };
 
   const [step, setStep] = useState('address');
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <S.Container>
@@ -79,9 +81,18 @@ export const Steps: FC<StepsProps> = () => {
                 <AddressCard key={address.id} address={address} />
               ))}
 
-              <Button variant="secondary">
+              <Button onClick={() => setOpenModal(true)} variant="secondary">
                 novo endereço <Plus size={16} />
               </Button>
+
+              <Form method="post">
+                <AddressModal openModal={openModal} setOpenModal={setOpenModal}>
+                  <Input label="nome" type="text" name="title" />
+                  <Input label="endereço" type="text" name="address" />
+                  <Input label="CEP" type="number" name="zipCode" />
+                  <Button type="submit">salvar</Button>
+                </AddressModal>
+              </Form>
             </Address>
 
             <Button onClick={() => setStep('payment')} type="button">
