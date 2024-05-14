@@ -41,14 +41,8 @@ export const CartModal: FC<CartModalProps> = ({
         ) : (
           <>
             {children}
-            <Button
-              onClick={() => [navigate('/cart'), setOpenCart(!openCart)]}
-              variant="secondary"
-            >
+            <Button onClick={() => [navigate('/cart'), setOpenCart(!openCart)]}>
               ver carrinho
-            </Button>
-            <Button onClick={() => navigate('/checkout')}>
-              finalizar compra
             </Button>
           </>
         )}
