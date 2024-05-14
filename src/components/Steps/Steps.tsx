@@ -1,7 +1,15 @@
 import { ClipboardList, CreditCard, Home } from 'lucide-react';
 import { FC, useState } from 'react';
 
-import { Address, AddressCard, Button, CartTotals } from 'components';
+import {
+  Address,
+  AddressCard,
+  Button,
+  CartTotals,
+  Input,
+  Payment,
+  Review,
+} from 'components';
 
 import * as S from './Steps.styles';
 
@@ -67,15 +75,40 @@ export const Steps: FC<StepsProps> = () => {
               <AddressCard />
             </Address>
 
-            <Button type="button">continuar</Button>
+            <Button onClick={() => setStep('payment')} type="button">
+              continuar
+            </Button>
           </>
         )}
-        {step === 'payment' && <div>pagamento</div>}
-        {step === 'review' && <div>revisar</div>}
+        {step === 'payment' && (
+          <>
+            <Payment>
+              <Input type="number" label="número do cartão" name="number" />
+              <Input type="text" label="nome no cartão" name="name" />
+              <S.StepPayment>
+                <Input
+                  type="text"
+                  pattern="[0-9]{2}\/(0[1-9]|1[0-2])"
+                  placeholder="MM/AA"
+                  label="data de vencimento"
+                  name="date"
+                />
+                <Input type="number" label="CVV" name="cvv" />
+              </S.StepPayment>
+            </Payment>
+
+            <Button onClick={() => setStep('review')} type="button">
+              continuar
+            </Button>
+          </>
+        )}
+        {step === 'review' && <Review>content</Review>}
       </S.Steps>
 
       <S.Totals>
         <CartTotals />
+
+        {step === 'review' && <Button type="button">finalizar</Button>}
       </S.Totals>
     </S.Container>
   );

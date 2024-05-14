@@ -59,5 +59,23 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Totals = styled.div`
-  flex: 1;
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.spacings.xl};
+    flex: 1;
+
+    & > button {
+      width: 100%;
+    }
+  `}
+`;
+
+export const StepPayment = styled.div`
+  ${({ theme }) => css`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: ${theme.spacings.md};
+  `}
 `;
