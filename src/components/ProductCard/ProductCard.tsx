@@ -42,7 +42,6 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
       <span onClick={() => navigate(`/shop/product/${product.id}`)}>
         <Eye />
       </span>
-      <button>adicionar à sacola</button>
 
       <Heading as="h2" transform="capitalize" size="md" fontWeight="800">
         {title}
