@@ -8,6 +8,7 @@ import {
   AddressModal,
   Button,
   CartTotals,
+  Heading,
   Input,
   Payment,
   Review,
@@ -27,6 +28,54 @@ export const Steps: FC<StepsProps> = () => {
     address: '',
     zipCode: '',
   });
+  const [card, setCard] = useState({
+    cardNumber: '',
+    cardName: '',
+    expiry: '',
+    cvc: '',
+  });
+
+  const handleCardNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let { value } = event.target;
+
+    value = value.replace(/\D/g, '');
+    value = value.replace(/(\d{4})/g, '$1 ').trim();
+    value = value.slice(0, 19);
+
+    setCard({
+      ...card,
+      cardNumber: value,
+    });
+  };
+
+  const handleExpiry = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let { value } = event.target;
+
+    value = value.replace(/\D/g, '');
+
+    if (value.length > 2) {
+      value = `${value.slice(0, 2)}/${value.slice(2)}`;
+    }
+
+    value = value.slice(0, 5);
+
+    setCard({
+      ...card,
+      expiry: value,
+    });
+  };
+
+  const handleCvc = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let { value } = event.target;
+
+    value = value.replace(/\D/g, '');
+    value = value.slice(0, 3);
+
+    setCard({
+      ...card,
+      cvc: value,
+    });
+  };
 
   return (
     <S.Container>
@@ -112,17 +161,36 @@ export const Steps: FC<StepsProps> = () => {
         {step === 'payment' && (
           <>
             <Payment>
-              <Input type="number" label="número do cartão" name="number" />
-              <Input type="text" label="nome no cartão" name="name" />
+              <Input
+                type="text"
+                label="número do cartão"
+                name="cardNumber"
+                value={card.cardNumber}
+                onChange={handleCardNumber}
+              />
+              <Input
+                type="text"
+                label="nome no cartão"
+                name="cardName"
+                value={card.cardName}
+                onChange={(e) => setCard({ ...card, cardName: e.target.value })}
+              />
               <S.StepPayment>
                 <Input
                   type="text"
-                  pattern="[0-9]{2}\/(0[1-9]|1[0-2])"
+                  name="expiry"
                   placeholder="MM/AA"
                   label="data de vencimento"
-                  name="date"
+                  value={card.expiry}
+                  onChange={handleExpiry}
                 />
-                <Input type="number" label="CVV" name="cvv" />
+                <Input
+                  type="text"
+                  label="CVC"
+                  name="cvc"
+                  value={card.cvc}
+                  onChange={handleCvc}
+                />
               </S.StepPayment>
             </Payment>
 
@@ -131,7 +199,21 @@ export const Steps: FC<StepsProps> = () => {
             </Button>
           </>
         )}
-        {step === 'review' && <Review>content</Review>}
+        {step === 'review' && (
+          <Review>
+            <Heading as="h3" transform="capitalize" fontWeight="700">
+              endereço de entrega
+            </Heading>
+
+            <p>{currentAddress.address}</p>
+
+            <Heading as="h3" transform="capitalize" fontWeight="700">
+              método de pagamento
+            </Heading>
+
+            <p>crédito - terminado em ({card.cardNumber.slice(-4)})</p>
+          </Review>
+        )}
       </S.Steps>
 
       <S.Totals>

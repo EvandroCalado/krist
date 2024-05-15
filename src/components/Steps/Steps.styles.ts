@@ -5,6 +5,11 @@ export const Container = styled.div`
     display: flex;
     gap: ${theme.spacings.lg};
     padding: ${theme.spacings.lg} ${theme.spacings['10xl']};
+
+    @media ${theme.media.lteOrEqMedium} {
+      padding: ${theme.spacings.md} ${theme.spacings.lg};
+      flex-direction: column;
+    }
   `}
 `;
 
@@ -43,6 +48,10 @@ export const ButtonContainer = styled.div`
     & > button {
       border: none;
 
+      @media ${theme.media.lteOrEqMedium} {
+        padding: 1rem;
+      }
+
       &.active {
         background-color: ${theme.colors.primary};
         color: ${theme.colors.white};
@@ -54,6 +63,11 @@ export const ButtonContainer = styled.div`
       text-align: center;
       font-weight: 600;
       text-transform: capitalize;
+
+      @media ${theme.media.lteOrEqMedium} {
+        width: 4.4rem;
+        font-size: ${theme.font.sizes.sm};
+      }
     }
   `}
 `;
@@ -77,5 +91,13 @@ export const StepPayment = styled.div`
     display: flex;
     align-items: center;
     gap: ${theme.spacings.md};
+
+    & > .input {
+      width: 100%;
+    }
+
+    @media ${theme.media.lteOrEqMedium} {
+      flex-direction: column;
+    }
   `}
 `;
