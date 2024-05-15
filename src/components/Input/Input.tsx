@@ -10,7 +10,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Input: FC<InputProps> = ({ type, label, name, ...rest }) => {
   return (
-    <S.Container>
+    <S.Container className="input">
       <S.Label htmlFor={name}>{label}</S.Label>
       <S.Input type={type} id={name} name={name} {...rest} />
     </S.Container>
