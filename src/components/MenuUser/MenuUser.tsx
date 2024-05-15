@@ -22,6 +22,11 @@ export const MenuUser = () => {
     navigate('/');
   };
 
+  const handleProfileClick = () => {
+    navigate('/profile');
+    setOpenUser(!openUser);
+  };
+
   return (
     <S.Container className="menu-user">
       <span>Search</span>
@@ -44,6 +49,7 @@ export const MenuUser = () => {
         <>
           <User onClick={() => setOpenUser(!openUser)} />
           <div className={`menu-hover ${openUser ? 'open' : ''}`}>
+            <button onClick={handleProfileClick}>conta</button>
             <button onClick={handleLogout}>sair</button>
           </div>
         </>

@@ -12,12 +12,17 @@ export const Container = styled.div`
     }
 
     & .menu-hover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
       opacity: 0;
       visibility: hidden;
       width: 10rem;
       position: absolute;
       right: 0;
-      bottom: -3.5rem;
+      bottom: -5rem;
       background-color: ${theme.colors.white};
       padding: ${theme.spacings.sm};
       box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -27,7 +32,7 @@ export const Container = styled.div`
       &.open {
         opacity: 1;
         visibility: visible;
-        bottom: -4.5rem;
+        bottom: -7rem;
       }
 
       & > button {
