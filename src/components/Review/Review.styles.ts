@@ -6,5 +6,9 @@ export const Container = styled.div`
     flex-direction: column;
     gap: ${theme.spacings.lg};
     margin: ${theme.spacings.lg} 0;
+
+    & > p {
+      text-transform: capitalize;
+    }
   `}
 `;
