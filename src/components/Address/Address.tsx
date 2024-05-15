@@ -16,8 +16,8 @@ export const Address: FC<AddressProps> = ({ children }) => {
       </Heading>
 
       <p>
-        se o endereço de entrega não estiver na lista abaixo, selecione-o e
-        clique em continuar. Se não estiver, clique em adicionar.
+        se o endereço de entrega estiver na lista abaixo, selecione-o e clique
+        em continuar. Se não estiver, adicione um novo.
       </p>
 
       <S.AddressCard>{children}</S.AddressCard>
