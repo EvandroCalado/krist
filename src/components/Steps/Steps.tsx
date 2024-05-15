@@ -23,7 +23,10 @@ export const Steps: FC<StepsProps> = () => {
 
   const [step, setStep] = useState('address');
   const [openModal, setOpenModal] = useState(false);
-  const [zipCode, setZipCode] = useState('');
+  const [currentAddress, setCurrentAddress] = useState({
+    address: '',
+    zipCode: '',
+  });
 
   return (
     <S.Container>
@@ -82,8 +85,8 @@ export const Steps: FC<StepsProps> = () => {
                 <AddressCard
                   key={address.id}
                   address={address}
-                  zipCode={zipCode}
-                  setZipCode={setZipCode}
+                  currentAddress={currentAddress}
+                  setCurrentAddress={setCurrentAddress}
                 />
               ))}
 

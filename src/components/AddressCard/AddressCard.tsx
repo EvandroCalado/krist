@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { FilePenLine, Trash2 } from 'lucide-react';
-import { FC, useState } from 'react';
+import { Dispatch, FC, SetStateAction, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Form } from 'react-router-dom';
 
@@ -12,14 +12,19 @@ import * as S from './AddressCard.styles';
 
 export interface AddressCardProps {
   address: StrapiAddressType;
-  zipCode: string;
-  setZipCode: (zipCode: string) => void;
+  currentAddress: {
+    address: string;
+    zipCode: string;
+  };
+  setCurrentAddress: Dispatch<
+    SetStateAction<{ address: string; zipCode: string }>
+  >;
 }
 
 export const AddressCard: FC<AddressCardProps> = ({
   address,
-  zipCode,
-  setZipCode,
+  currentAddress,
+  setCurrentAddress,
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [titleInput, setTitleInput] = useState(address.attributes.title);
@@ -70,9 +75,14 @@ export const AddressCard: FC<AddressCardProps> = ({
           type="checkbox"
           id={address.attributes.title}
           name="address"
-          checked={zipCode === address.attributes.zipCode}
+          checked={currentAddress.zipCode === address.attributes.zipCode}
           value={address.attributes.zipCode}
-          onChange={() => setZipCode(address.attributes.zipCode)}
+          onChange={() =>
+            setCurrentAddress({
+              address: address.attributes.address,
+              zipCode: address.attributes.zipCode,
+            })
+          }
         />
       </S.AddressCardTitle>
 
