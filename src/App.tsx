@@ -1,6 +1,15 @@
 import { checkoutAction, loginAction, registerAction } from 'actions';
 import { checkoutLoader, homeLoader, productLoader, shopLoader } from 'loaders';
-import { Cart, Checkout, Home, Login, Product, Register, Shop } from 'pages';
+import {
+  Cart,
+  Checkout,
+  Home,
+  Login,
+  Product,
+  Profile,
+  Register,
+  Shop,
+} from 'pages';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import {
@@ -58,6 +67,11 @@ const router = createBrowserRouter([
         errorElement: <div>checkout error</div>,
         loader: checkoutLoader(store),
         action: checkoutAction(store),
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
+        errorElement: <div>profile error</div>,
       },
     ],
   },
