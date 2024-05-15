@@ -14,7 +14,7 @@ export const CategoryCard: FC<CategoryCardProps> = ({
   buttonLabel,
 }) => {
   return (
-    <S.LinkContainer to={`/products/${title}`}>
+    <S.LinkContainer to={`/shop/?category=${title}`}>
       <S.Container>
         <S.Title>{title}</S.Title>
         <S.Image src={image} alt={title} />
