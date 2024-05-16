@@ -37,9 +37,7 @@ export const ProfileSideMenu = styled.div`
 `;
 
 export const ProfileMainMenu = styled.div`
-  ${({ theme }) => css`
-    flex: 4;
-  `}
+  flex: 4;
 `;
 
 export const ProfileInfo = styled.div`
@@ -81,11 +79,22 @@ export const ProfileInfo = styled.div`
   `}
 `;
 
+export const ProfileOrders = styled.div`
+  ${({ theme }) => css`
+    & .order_top {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      gap: ${theme.spacings.sm};
+    }
+  `}
+`;
+
 export const ProfileAvatar = styled.div`
   ${({ theme }) => css`
     display: flex;
     gap: ${theme.spacings.sm};
-    margin-bottom: ${theme.spacings.md};
+    margin-bottom: ${theme.spacings['3xl']};
 
     & > img {
       width: 4rem;

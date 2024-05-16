@@ -1,7 +1,7 @@
-import { FilePenLine, ImagePlus } from 'lucide-react';
+import { FilePenLine, ImagePlus, SlidersHorizontal } from 'lucide-react';
 import { FC, useState } from 'react';
 
-import { Button, Heading, Input } from 'components';
+import { Button, Heading, Input, OrderCard } from 'components';
 import { linksProfileMenu } from 'utils';
 
 import * as S from './Profile.styles';
@@ -59,7 +59,7 @@ export const Profile: FC<ProfileProps> = () => {
                 </div>
 
                 <Button>
-                  <FilePenLine /> editar
+                  <FilePenLine size={16} /> editar
                 </Button>
               </div>
 
@@ -75,9 +75,20 @@ export const Profile: FC<ProfileProps> = () => {
           )}
 
           {menu === 'orders' && (
-            <div>
-              <h1>orders</h1>
-            </div>
+            <S.ProfileOrders>
+              <div className="order_top">
+                <div>search</div>
+                <Button>
+                  <SlidersHorizontal size={16} /> filtrar
+                </Button>
+              </div>
+
+              <div className="order_cards">
+                <OrderCard />
+                <OrderCard />
+                <OrderCard />
+              </div>
+            </S.ProfileOrders>
           )}
 
           {menu === 'wishlist' && (
