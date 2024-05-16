@@ -24,6 +24,7 @@ export * from './MainLoading';
 export * from './MenuMobile';
 export * from './MenuNav';
 export * from './MenuUser';
+export * from './OrderCard';
 export * from './Payment';
 export * from './ProductCard';
 export * from './ProductColors';
