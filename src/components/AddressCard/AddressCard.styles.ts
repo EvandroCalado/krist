@@ -5,7 +5,7 @@ export const AddressCardContainer = styled.div`
     width: 27rem;
     display: flex;
     flex-direction: column;
-    gap: ${theme.spacings.md};
+    gap: ${theme.spacings.xs};
   `}
 `;
 
@@ -38,6 +38,13 @@ export const AddressCardName = styled.div`
 `;
 
 export const AddressCardDescription = styled(AddressCardName)`
+  font-weight: 400;
+`;
+
+export const AddressCardCity = styled(AddressCardName)`
+  font-weight: 400;
+`;
+export const AddressCardState = styled(AddressCardName)`
   font-weight: 400;
 `;
 

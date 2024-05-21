@@ -17,7 +17,12 @@ export interface AddressCardProps {
     zipCode: string;
   };
   setCurrentAddress: Dispatch<
-    SetStateAction<{ address: string; zipCode: string }>
+    SetStateAction<{
+      address: string;
+      city: string;
+      state: string;
+      zipCode: string;
+    }>
   >;
 }
 
@@ -29,6 +34,8 @@ export const AddressCard: FC<AddressCardProps> = ({
   const [openModal, setOpenModal] = useState(false);
   const [titleInput, setTitleInput] = useState(address.attributes.title);
   const [addressInput, setAddressInput] = useState(address.attributes.address);
+  const [cityInput, setCityInput] = useState(address.attributes.city);
+  const [stateInput, setStateInput] = useState(address.attributes.state);
   const [zipCodeInput, setZipCodeInput] = useState(address.attributes.zipCode);
 
   const handleDelete = async (id: number) => {
@@ -51,6 +58,8 @@ export const AddressCard: FC<AddressCardProps> = ({
         data: {
           title: titleInput,
           address: addressInput,
+          city: cityInput,
+          state: stateInput,
           zipCode: zipCodeInput,
         },
       });
@@ -80,6 +89,8 @@ export const AddressCard: FC<AddressCardProps> = ({
           onChange={() =>
             setCurrentAddress({
               address: address.attributes.address,
+              city: address.attributes.city,
+              state: address.attributes.state,
               zipCode: address.attributes.zipCode,
             })
           }
@@ -91,6 +102,10 @@ export const AddressCard: FC<AddressCardProps> = ({
       <S.AddressCardDescription>
         {address.attributes.address}
       </S.AddressCardDescription>
+
+      <S.AddressCardCity>{address.attributes.city}</S.AddressCardCity>
+
+      <S.AddressCardState>{address.attributes.state}</S.AddressCardState>
 
       <S.AddressCardZipcode>
         CEP: {address.attributes.zipCode}
@@ -120,6 +135,20 @@ export const AddressCard: FC<AddressCardProps> = ({
               name="address"
               value={addressInput}
               onChange={(e) => setAddressInput(e.target.value)}
+            />
+            <Input
+              label="cidade"
+              type="text"
+              name="city"
+              value={cityInput}
+              onChange={(e) => setCityInput(e.target.value)}
+            />
+            <Input
+              label="estado"
+              type="text"
+              name="state"
+              value={stateInput}
+              onChange={(e) => setStateInput(e.target.value)}
             />
             <Input
               label="CEP"
