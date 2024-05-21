@@ -2,16 +2,16 @@ import { AxiosError } from 'axios';
 import { FilePenLine, Trash2 } from 'lucide-react';
 import { Dispatch, FC, SetStateAction, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Form } from 'react-router-dom';
 
 import { AddressModal, Button, Input } from 'components';
-import { StrapiAddressType } from 'types';
+import { StrapiAddressType, StrapiAddressesType } from 'types';
 import { customFetch } from 'utils';
 
 import * as S from './AddressCard.styles';
 
 export interface AddressCardProps {
   address: StrapiAddressType;
+  setInitialAddresses: Dispatch<SetStateAction<StrapiAddressesType>>;
   currentAddress: {
     address: string;
     zipCode: string;
@@ -28,6 +28,7 @@ export interface AddressCardProps {
 
 export const AddressCard: FC<AddressCardProps> = ({
   address,
+  setInitialAddresses,
   currentAddress,
   setCurrentAddress,
 }) => {
@@ -45,6 +46,11 @@ export const AddressCard: FC<AddressCardProps> = ({
       if (addressesResponse.status !== 200) {
         toast.error('Erro ao deletar endereço');
       }
+
+      setInitialAddresses((prevAddresses) => ({
+        ...prevAddresses,
+        data: prevAddresses.data.filter((address) => address.id !== id),
+      }));
     } catch (error) {
       if (error instanceof AxiosError && error.response?.data?.error) {
         throw new Error(error.response.data.error.message);
@@ -67,6 +73,27 @@ export const AddressCard: FC<AddressCardProps> = ({
       if (addressesResponse.status !== 200) {
         toast.error('Erro ao editar endereço');
       }
+
+      setInitialAddresses((prevAddresses) => ({
+        ...prevAddresses,
+        data: prevAddresses.data.map((address) =>
+          address.id === id
+            ? {
+                ...address,
+                attributes: {
+                  ...address.attributes,
+                  title: titleInput,
+                  address: addressInput,
+                  city: cityInput,
+                  state: stateInput,
+                  zipCode: zipCodeInput,
+                },
+              }
+            : address,
+        ),
+      }));
+
+      setOpenModal(false);
     } catch (error) {
       if (error instanceof AxiosError && error.response?.data?.error) {
         throw new Error(error.response.data.error.message);
@@ -78,7 +105,7 @@ export const AddressCard: FC<AddressCardProps> = ({
     <S.AddressCardContainer>
       <S.AddressCardTitle>
         <label htmlFor={address.attributes.title}>
-          {address.attributes.user.data.attributes.username}
+          {address.attributes?.user?.data?.attributes?.username}
         </label>
         <input
           type="checkbox"
@@ -111,62 +138,60 @@ export const AddressCard: FC<AddressCardProps> = ({
         CEP: {address.attributes.zipCode}
       </S.AddressCardZipcode>
 
-      <Form method="get">
-        <S.AddressCardButtons>
-          <button
-            type="button"
-            onClick={() => setOpenModal(true)}
-            className="edit"
-          >
-            <FilePenLine /> editar
-          </button>
+      <S.AddressCardButtons>
+        <button
+          type="button"
+          onClick={() => setOpenModal(true)}
+          className="edit"
+        >
+          <FilePenLine /> editar
+        </button>
 
-          <AddressModal openModal={openModal} setOpenModal={setOpenModal}>
-            <Input
-              label="nome"
-              type="text"
-              name="title"
-              value={titleInput}
-              onChange={(e) => setTitleInput(e.target.value)}
-            />
-            <Input
-              label="endereço"
-              type="text"
-              name="address"
-              value={addressInput}
-              onChange={(e) => setAddressInput(e.target.value)}
-            />
-            <Input
-              label="cidade"
-              type="text"
-              name="city"
-              value={cityInput}
-              onChange={(e) => setCityInput(e.target.value)}
-            />
-            <Input
-              label="estado"
-              type="text"
-              name="state"
-              value={stateInput}
-              onChange={(e) => setStateInput(e.target.value)}
-            />
-            <Input
-              label="CEP"
-              type="number"
-              name="zipCode"
-              value={zipCodeInput}
-              onChange={(e) => setZipCodeInput(e.target.value)}
-            />
-            <Button onClick={() => handleUpdate(address.id)} type="submit">
-              salvar
-            </Button>
-          </AddressModal>
+        <AddressModal openModal={openModal} setOpenModal={setOpenModal}>
+          <Input
+            label="nome"
+            type="text"
+            name="title"
+            value={titleInput}
+            onChange={(e) => setTitleInput(e.target.value)}
+          />
+          <Input
+            label="endereço"
+            type="text"
+            name="address"
+            value={addressInput}
+            onChange={(e) => setAddressInput(e.target.value)}
+          />
+          <Input
+            label="cidade"
+            type="text"
+            name="city"
+            value={cityInput}
+            onChange={(e) => setCityInput(e.target.value)}
+          />
+          <Input
+            label="estado"
+            type="text"
+            name="state"
+            value={stateInput}
+            onChange={(e) => setStateInput(e.target.value)}
+          />
+          <Input
+            label="CEP"
+            type="number"
+            name="zipCode"
+            value={zipCodeInput}
+            onChange={(e) => setZipCodeInput(e.target.value)}
+          />
+          <Button onClick={() => handleUpdate(address.id)} type="submit">
+            salvar
+          </Button>
+        </AddressModal>
 
-          <button onClick={() => handleDelete(address.id)} className="delete">
-            <Trash2 /> apagar
-          </button>
-        </S.AddressCardButtons>
-      </Form>
+        <button onClick={() => handleDelete(address.id)} className="delete">
+          <Trash2 /> apagar
+        </button>
+      </S.AddressCardButtons>
     </S.AddressCardContainer>
   );
 };
