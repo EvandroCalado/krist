@@ -16,6 +16,7 @@ import {
   Input,
   Payment,
   Review,
+  SuccessModal,
 } from 'components';
 import { StrapiAddressesType } from 'types';
 import { customFetch } from 'utils';
@@ -33,6 +34,8 @@ export const Steps: FC<StepsProps> = () => {
   const dispatch = useAppDispatch();
   const { addresses } = useLoaderData() as { addresses: StrapiAddressesType };
 
+  const [initialAddresses, setInitialAddresses] =
+    useState<StrapiAddressesType>(addresses);
   const [step, setStep] = useState('address');
   const [openModal, setOpenModal] = useState(false);
   const [currentAddress, setCurrentAddress] = useState({
@@ -44,6 +47,7 @@ export const Steps: FC<StepsProps> = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('');
+  const [successModal, setSuccessModal] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -89,6 +93,7 @@ export const Steps: FC<StepsProps> = () => {
       } else if (paymentIntent.status === 'succeeded') {
         setIsProcessing(false);
         dispatch(clearCart());
+        setSuccessModal(true);
       }
     } catch (error) {
       if (error instanceof AxiosError && error.response?.data?.error) {
@@ -101,6 +106,8 @@ export const Steps: FC<StepsProps> = () => {
 
   return (
     <S.StepsContainer>
+      <SuccessModal successModal={successModal} />
+
       <S.Steps>
         <S.StepsButtons>
           <S.StepsButton>
@@ -152,19 +159,20 @@ export const Steps: FC<StepsProps> = () => {
         {step === 'address' && (
           <>
             <Address>
-              {addresses.data.map((address) => (
-                <AddressCard
-                  key={address.id}
-                  address={address}
-                  currentAddress={currentAddress}
-                  setCurrentAddress={setCurrentAddress}
-                />
-              ))}
+              {initialAddresses.data.length > 0 &&
+                initialAddresses.data.map((address) => (
+                  <AddressCard
+                    key={address.id}
+                    address={address}
+                    setInitialAddresses={setInitialAddresses}
+                    currentAddress={currentAddress}
+                    setCurrentAddress={setCurrentAddress}
+                  />
+                ))}
 
               <Button onClick={() => setOpenModal(true)} variant="secondary">
                 novo endereço <Plus size={16} />
               </Button>
-
               <Form method="post">
                 <AddressModal openModal={openModal} setOpenModal={setOpenModal}>
                   <Input

@@ -6,7 +6,7 @@ export const StepsContainer = styled.div`
     gap: ${theme.spacings.lg};
     padding: ${theme.spacings.lg} ${theme.spacings['10xl']};
 
-    @media ${theme.media.lteOrEqMedium} {
+    @media ${theme.media.lteOrEqLarge} {
       padding: ${theme.spacings.md} ${theme.spacings.lg};
       flex-direction: column;
     }
