@@ -25,6 +25,8 @@ interface Attributes2 {
   publishedAt: string;
   title: string;
   address: string;
+  city: string;
+  state: string;
   zipCode: string;
   user: User;
 }
