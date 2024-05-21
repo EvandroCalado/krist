@@ -23,6 +23,7 @@ export const Container = styled.div`
       position: absolute;
       right: 0;
       bottom: -5rem;
+      z-index: 30;
       background-color: ${theme.colors.white};
       padding: ${theme.spacings.sm};
       box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
