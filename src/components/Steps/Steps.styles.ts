@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const StepsContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     gap: ${theme.spacings.lg};
@@ -14,10 +14,10 @@ export const Container = styled.div`
 `;
 
 export const Steps = styled.div`
-  flex: 3;
+  flex: 2;
 `;
 
-export const ButtonsContainer = styled.div`
+export const StepsButtons = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
@@ -36,7 +36,7 @@ export const ButtonsContainer = styled.div`
   `}
 `;
 
-export const ButtonContainer = styled.div`
+export const StepsButton = styled.div`
   ${({ theme }) => css`
     width: 10rem;
     display: flex;
@@ -72,32 +72,46 @@ export const ButtonContainer = styled.div`
   `}
 `;
 
-export const Totals = styled.div`
+export const StepsPayment = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    gap: ${theme.spacings.md};
+    border: 2px solid ${theme.colors.primary};
+    padding: ${theme.spacings.md} ${theme.spacings.lg};
+
+    & > label {
+      width: 100%;
+      text-transform: capitalize;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    & > input {
+      accent-color: ${theme.colors.primary};
+    }
+
+    @media ${theme.media.lteOrEqMedium} {
+      flex-direction: column;
+    }
+  `}
+`;
+
+export const StepsTotals = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
     gap: ${theme.spacings.xl};
     flex: 1;
 
-    & > button {
-      width: 100%;
-    }
-  `}
-`;
-
-export const StepPayment = styled.div`
-  ${({ theme }) => css`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: ${theme.spacings.md};
-
-    & > .input {
-      width: 100%;
+    & > form > .StripeElement {
+      padding: ${theme.spacings.lg};
+      border: 1px solid ${theme.colors.secondary};
     }
 
-    @media ${theme.media.lteOrEqMedium} {
-      flex-direction: column;
+    & > form > button {
+      margin: ${theme.spacings.xl} 0;
+      width: 100%;
     }
   `}
 `;

@@ -1,6 +1,10 @@
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { AxiosError } from 'axios';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hook';
 import { ClipboardList, CreditCard, Home, Plus } from 'lucide-react';
 import { FC, useState } from 'react';
 import { Form, useLoaderData } from 'react-router-dom';
+import { clearCart } from 'slices/cartSlice';
 
 import {
   Address,
@@ -14,74 +18,92 @@ import {
   Review,
 } from 'components';
 import { StrapiAddressesType } from 'types';
+import { customFetch } from 'utils';
 
 import * as S from './Steps.styles';
 
 export interface StepsProps {}
 
 export const Steps: FC<StepsProps> = () => {
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const { user } = useAppSelector((state) => state.userState);
+  const { cartTotal } = useAppSelector((state) => state.cartState);
+  const dispatch = useAppDispatch();
   const { addresses } = useLoaderData() as { addresses: StrapiAddressesType };
 
   const [step, setStep] = useState('address');
   const [openModal, setOpenModal] = useState(false);
   const [currentAddress, setCurrentAddress] = useState({
     address: '',
+    city: '',
+    state: '',
     zipCode: '',
   });
-  const [card, setCard] = useState({
-    cardNumber: '',
-    cardName: '',
-    expiry: '',
-    cvc: '',
-  });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState('');
 
-  const handleCardNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let { value } = event.target;
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    value = value.replace(/\D/g, '');
-    value = value.replace(/(\d{4})/g, '$1 ').trim();
-    value = value.slice(0, 19);
-
-    setCard({
-      ...card,
-      cardNumber: value,
-    });
-  };
-
-  const handleExpiry = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let { value } = event.target;
-
-    value = value.replace(/\D/g, '');
-
-    if (value.length > 2) {
-      value = `${value.slice(0, 2)}/${value.slice(2)}`;
+    if (!stripe || !elements) {
+      return;
     }
 
-    value = value.slice(0, 5);
+    setIsProcessing(true);
 
-    setCard({
-      ...card,
-      expiry: value,
-    });
-  };
+    const cardElement = elements.getElement(CardElement);
 
-  const handleCvc = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let { value } = event.target;
+    try {
+      const response = await customFetch.post('/orders', {
+        amount: Math.round((cartTotal + 5) * 100),
+      });
 
-    value = value.replace(/\D/g, '');
-    value = value.slice(0, 3);
+      const { clientSecret } = response.data;
 
-    setCard({
-      ...card,
-      cvc: value,
-    });
+      const { paymentIntent, error } = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: {
+            card: cardElement!,
+            billing_details: {
+              name: user.username,
+              email: user.email,
+              address: {
+                line1: currentAddress.address,
+                city: currentAddress.city,
+                state: currentAddress.state,
+                postal_code: currentAddress.zipCode,
+                country: 'BR',
+              },
+            },
+          },
+        },
+      );
+
+      if (error) {
+        setErrorMessage(error.message ?? 'Erro ao processar o pagamento');
+        setIsProcessing(false);
+      } else if (paymentIntent.status === 'succeeded') {
+        setIsProcessing(false);
+        dispatch(clearCart());
+      }
+    } catch (error) {
+      if (error instanceof AxiosError && error.response?.data?.error) {
+        setErrorMessage(error.response?.data?.error);
+      }
+    }
+
+    setIsProcessing(false);
   };
 
   return (
-    <S.Container>
+    <S.StepsContainer>
       <S.Steps>
-        <S.ButtonsContainer>
-          <S.ButtonContainer>
+        <S.StepsButtons>
+          <S.StepsButton>
             <Button
               onClick={() => setStep('address')}
               className={
@@ -94,13 +116,13 @@ export const Steps: FC<StepsProps> = () => {
               <Home />
             </Button>
             <span>endereço</span>
-          </S.ButtonContainer>
+          </S.StepsButton>
 
           <hr
             className={step === 'payment' || step === 'review' ? 'active' : ''}
           />
 
-          <S.ButtonContainer>
+          <S.StepsButton>
             <Button
               onClick={() => setStep('payment')}
               className={
@@ -111,11 +133,11 @@ export const Steps: FC<StepsProps> = () => {
               <CreditCard />
             </Button>
             <span>pagamento</span>
-          </S.ButtonContainer>
+          </S.StepsButton>
 
           <hr className={step === 'review' ? 'active' : ''} />
 
-          <S.ButtonContainer>
+          <S.StepsButton>
             <Button
               onClick={() => setStep('review')}
               className={step === 'review' ? 'active' : ''}
@@ -124,8 +146,8 @@ export const Steps: FC<StepsProps> = () => {
               <ClipboardList />
             </Button>
             <span>revisar</span>
-          </S.ButtonContainer>
-        </S.ButtonsContainer>
+          </S.StepsButton>
+        </S.StepsButtons>
 
         {step === 'address' && (
           <>
@@ -145,8 +167,15 @@ export const Steps: FC<StepsProps> = () => {
 
               <Form method="post">
                 <AddressModal openModal={openModal} setOpenModal={setOpenModal}>
-                  <Input label="nome" type="text" name="title" />
+                  <Input
+                    label="nome"
+                    type="text"
+                    name="title"
+                    placeholder="ex: casa"
+                  />
                   <Input label="endereço" type="text" name="address" />
+                  <Input label="cidade" type="text" name="city" />
+                  <Input label="estado" type="text" name="state" />
                   <Input label="CEP" type="number" name="zipCode" />
                   <Button type="submit">salvar</Button>
                 </AddressModal>
@@ -161,37 +190,28 @@ export const Steps: FC<StepsProps> = () => {
         {step === 'payment' && (
           <>
             <Payment>
-              <Input
-                type="text"
-                label="número do cartão"
-                name="cardNumber"
-                value={card.cardNumber}
-                onChange={handleCardNumber}
-              />
-              <Input
-                type="text"
-                label="nome no cartão"
-                name="cardName"
-                value={card.cardName}
-                onChange={(e) => setCard({ ...card, cardName: e.target.value })}
-              />
-              <S.StepPayment>
-                <Input
-                  type="text"
-                  name="expiry"
-                  placeholder="MM/AA"
-                  label="data de vencimento"
-                  value={card.expiry}
-                  onChange={handleExpiry}
+              <S.StepsPayment>
+                <input
+                  type="radio"
+                  name="payment"
+                  id="cartão"
+                  checked={paymentMethod === 'cartão'}
+                  value="cartão"
+                  onChange={() => setPaymentMethod('cartão')}
                 />
-                <Input
-                  type="text"
-                  label="CVC"
-                  name="cvc"
-                  value={card.cvc}
-                  onChange={handleCvc}
+                <label htmlFor="cartão">cartão</label>
+              </S.StepsPayment>
+              <S.StepsPayment>
+                <input
+                  type="radio"
+                  name="payment"
+                  id="boleto"
+                  checked={paymentMethod === 'boleto'}
+                  value="boleto"
+                  onChange={() => setPaymentMethod('boleto')}
                 />
-              </S.StepPayment>
+                <label htmlFor="boleto">boleto</label>
+              </S.StepsPayment>
             </Payment>
 
             <Button onClick={() => setStep('review')} type="button">
@@ -205,22 +225,36 @@ export const Steps: FC<StepsProps> = () => {
               endereço de entrega
             </Heading>
 
-            <p>{currentAddress.address}</p>
+            <div>
+              <p>{currentAddress.address}</p>
+              <p>{currentAddress.city}</p>
+              <p>{currentAddress.state}</p>
+              <p>{currentAddress.zipCode}</p>
+            </div>
 
             <Heading as="h3" transform="capitalize" fontWeight="700">
               método de pagamento
             </Heading>
 
-            <p>crédito - terminado em ({card.cardNumber.slice(-4)})</p>
+            <p>{paymentMethod}</p>
           </Review>
         )}
       </S.Steps>
 
-      <S.Totals>
+      <S.StepsTotals>
         <CartTotals />
+        {step === 'review' && paymentMethod === 'cartão' && (
+          <form onSubmit={handleSubmit}>
+            <CardElement />
+            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+            <Button type="submit" disabled={!stripe || isProcessing}>
+              {isProcessing ? 'Processando...' : 'Pagar'}
+            </Button>
+          </form>
+        )}
 
-        {step === 'review' && <Button type="button">finalizar</Button>}
-      </S.Totals>
-    </S.Container>
+        {step === 'review' && paymentMethod === 'boleto' && <div>boleto</div>}
+      </S.StepsTotals>
+    </S.StepsContainer>
   );
 };
