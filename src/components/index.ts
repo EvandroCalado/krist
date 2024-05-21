@@ -47,3 +47,4 @@ export * from './RatingsCarousel';
 export * from './Review';
 export * from './Services';
 export * from './Steps';
+export * from './SuccessModal';
