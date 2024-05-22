@@ -6,4 +6,5 @@ export * from './strapi-featured-type';
 export * from './strapi-flashsale-type';
 export * from './strapi-products-type';
 export * from './strapi-sizes-type';
+export * from './strapi-user-type';
 export * from './styled-components';
