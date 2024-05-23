@@ -1,5 +1,11 @@
 import { checkoutAction, loginAction, registerAction } from 'actions';
-import { checkoutLoader, homeLoader, productLoader, shopLoader } from 'loaders';
+import {
+  checkoutLoader,
+  homeLoader,
+  productLoader,
+  profileLoader,
+  shopLoader,
+} from 'loaders';
 import {
   Cart,
   Checkout,
@@ -72,6 +78,7 @@ const router = createBrowserRouter([
         path: 'profile',
         element: <Profile />,
         errorElement: <div>profile error</div>,
+        loader: profileLoader(store),
       },
     ],
   },
