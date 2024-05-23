@@ -29,8 +29,8 @@ export const Input = styled.input`
     }
 
     &:disabled {
-      opacity: 0.1;
-      cursor: not-allowed;
+      opacity: 0.3;
+      pointer-events: none;
     }
   `}
 `;
