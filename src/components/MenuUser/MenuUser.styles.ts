@@ -43,6 +43,7 @@ export const Container = styled.div`
         outline: none;
         padding: 0.4rem ${theme.spacings.sm};
         border-radius: 0.2rem;
+        text-transform: capitalize;
         cursor: pointer;
 
         &:hover {
