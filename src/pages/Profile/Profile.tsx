@@ -1,15 +1,91 @@
+import { AxiosError } from 'axios';
 import { FilePenLine, ImagePlus, SlidersHorizontal } from 'lucide-react';
 import { FC, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useLoaderData } from 'react-router-dom';
 
 import { Button, Heading, Input, OrderCard } from 'components';
-import { linksProfileMenu } from 'utils';
+import { StrapiUserType } from 'types';
+import { customFetch, formatDate, linksProfileMenu } from 'utils';
 
 import * as S from './Profile.styles';
 
 export interface ProfileProps {}
 
 export const Profile: FC<ProfileProps> = () => {
+  const { user } = useLoaderData() as { user: StrapiUserType };
   const [menu, setMenu] = useState('profile');
+
+  const [userName, setUserName] = useState(user.username);
+  const [userPhone, setUserPhone] = useState(user?.phone || '');
+  const [userAvatar, setUserAvatar] = useState(
+    user?.avatar?.formats?.thumbnail?.url || '/avatar.jpg',
+  );
+
+  function formatPhone(value: string) {
+    let phone = value.replace(/\D/g, '');
+
+    if (phone.length > 2) {
+      phone = phone.replace(/^(\d{2})(\d)/, '$1 $2');
+    }
+
+    if (phone.length > 8) {
+      phone = phone.replace(/(\d{5})(\d)/, '$1-$2');
+    }
+
+    return phone;
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formattedPhone = formatPhone(e.target.value);
+    setUserPhone(formattedPhone);
+  };
+
+  const handleAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+
+    const image = e.target.files[0];
+
+    if (!image) return;
+
+    setUserAvatar(URL.createObjectURL(e.target.files[0]));
+
+    try {
+      const data = new FormData();
+
+      data.append('ref', 'plugin::users-permissions.user');
+      data.append('refId', user.id.toString());
+      data.append('field', 'avatar');
+      data.append('files', image);
+
+      const avatarResponse = await customFetch.post('/upload', data);
+
+      if (avatarResponse.status !== 200) {
+        toast.error('Erro ao alterar imagem');
+      }
+
+      toast.success('Alterado com sucesso');
+    } catch (error) {
+      if (error instanceof AxiosError && error.response?.data?.error) {
+        toast.error('Erro ao alterar imagem');
+      }
+    }
+  };
+
+  const handleUpdate = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const userResponse = await customFetch.put(`/users/${user.id}`, {
+      username: userName,
+      phone: userPhone,
+    });
+
+    if (userResponse.status !== 200) {
+      toast.error('Erro ao alterar perfil');
+    }
+
+    toast.success('Alterado com sucesso');
+  };
 
   return (
     <S.ProfileContainer>
@@ -20,58 +96,86 @@ export const Profile: FC<ProfileProps> = () => {
       <S.ProfileMenus>
         <S.ProfileSideMenu>
           <S.ProfileAvatar>
-            <img
-              src="https://img.freepik.com/free-psd/3d-render-avatar-character_23-2150611762.jpg?w=826&t=st=1713491585~exp=1713492185~hmac=08ba90f79cafc9a795e191d5f3833a9f1f73184a0d936d5a6e0187a4c100d8fe"
-              alt="avatar"
-            />
+            <img src={userAvatar} alt="avatar" />
 
             <div>
               <span>olá 👋</span>
-              <span>evandro calado</span>
+              <span>{user.username}</span>
             </div>
           </S.ProfileAvatar>
 
           {linksProfileMenu.map((link) => (
             <Button
+              type="button"
               onClick={() => setMenu(link.path)}
               variant="secondary"
               key={link.id}
               className={link.path === menu ? 'active' : ''}
             >
-              {link.icon} {link.label}
+              {link.icon} <span>{link.label}</span>
             </Button>
           ))}
         </S.ProfileSideMenu>
 
         <S.ProfileMainMenu>
           {menu === 'profile' && (
-            <S.ProfileInfo>
-              <div className="avatar">
-                <div className="avatar_img">
-                  <img
-                    src="https://img.freepik.com/free-psd/3d-render-avatar-character_23-2150611762.jpg?w=826&t=st=1713491585~exp=1713492185~hmac=08ba90f79cafc9a795e191d5f3833a9f1f73184a0d936d5a6e0187a4c100d8fe"
-                    alt="avatar"
-                  />
+            <form onSubmit={handleUpdate}>
+              <S.ProfileInfo>
+                <div className="avatar">
+                  <div className="avatar_img">
+                    <img src={userAvatar} alt="avatar" />
 
-                  <Button>
-                    <ImagePlus size={12} />
+                    <label htmlFor="avatar">
+                      <ImagePlus size={12} />
+                    </label>
+                    <input
+                      type="file"
+                      id="avatar"
+                      onChange={handleAvatar}
+                      hidden
+                    />
+                  </div>
+
+                  <Button type="submit">
+                    <FilePenLine size={16} /> editar
                   </Button>
                 </div>
 
-                <Button>
-                  <FilePenLine size={16} /> editar
-                </Button>
-              </div>
-
-              <div className="inputs">
-                <Input type="text" label="nome" name="username" />
-                <Input type="email" label="email" name="email" />
-              </div>
-              <div className="inputs">
-                <Input type="password" label="senha" name="password" />
-                <Input type="number" label="telefone" name="phone" />
-              </div>
-            </S.ProfileInfo>
+                <div className="inputs">
+                  <Input
+                    type="text"
+                    label="nome"
+                    name="username"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                  <Input
+                    type="email"
+                    label="email"
+                    name="email"
+                    disabled
+                    value={user.email}
+                  />
+                </div>
+                <div className="inputs">
+                  <Input
+                    type="text"
+                    label="criado em"
+                    name="createdAt"
+                    disabled
+                    value={formatDate(user.createdAt)}
+                  />
+                  <Input
+                    type="text"
+                    label="telefone"
+                    name="phone"
+                    value={userPhone}
+                    onChange={handleInputChange}
+                    maxLength={13}
+                  />
+                </div>
+              </S.ProfileInfo>
+            </form>
           )}
 
           {menu === 'orders' && (

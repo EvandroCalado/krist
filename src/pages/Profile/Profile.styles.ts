@@ -15,6 +15,10 @@ export const ProfileMenus = styled.div`
     display: flex;
     gap: ${theme.spacings.xl};
     margin: ${theme.spacings['2xl']} 0;
+
+    @media ${theme.media.lteOrEqMedium} {
+      gap: ${theme.spacings.sm};
+    }
   `}
 `;
 
@@ -31,6 +35,14 @@ export const ProfileSideMenu = styled.div`
       &.active {
         background-color: ${theme.colors.primary};
         color: ${theme.colors.white};
+      }
+
+      @media ${theme.media.lteOrEqMedium} {
+        width: max-content;
+
+        & > span {
+          display: none;
+        }
       }
     }
   `}
@@ -55,18 +67,33 @@ export const ProfileInfo = styled.div`
           width: 6rem;
           height: 6rem;
           border-radius: 50%;
+          object-fit: cover;
         }
 
-        & > button {
+        & > label {
+          width: 2.5rem;
+          height: 2.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           padding: 0.5rem;
           position: absolute;
           bottom: 0;
           right: 0;
+          background-color: ${theme.colors.primary};
+          color: ${theme.colors.white};
+          border-radius: 0.5rem;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.85;
+          }
         }
       }
     }
 
     & > .inputs {
+      width: 100%;
       display: flex;
       align-items: center;
       gap: ${theme.spacings.md};
@@ -74,6 +101,10 @@ export const ProfileInfo = styled.div`
 
       & .input {
         width: 100%;
+      }
+
+      @media ${theme.media.lteOrEqMedium} {
+        flex-direction: column;
       }
     }
   `}
@@ -100,6 +131,7 @@ export const ProfileAvatar = styled.div`
       width: 4rem;
       height: 4rem;
       border-radius: 50%;
+      object-fit: cover;
     }
 
     & > div {
@@ -110,6 +142,11 @@ export const ProfileAvatar = styled.div`
       & :nth-child(2) {
         font-weight: 700;
       }
+    }
+
+    @media ${theme.media.lteOrEqMedium} {
+      flex-direction: column;
+      font-size: ${theme.font.sizes.sm};
     }
   `}
 `;
