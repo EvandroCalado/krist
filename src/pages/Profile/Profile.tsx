@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 import { FilePenLine, ImagePlus, SlidersHorizontal } from 'lucide-react';
 import { FC, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 
 import { Button, Heading, Input, OrderCard } from 'components';
 import { StrapiUserType } from 'types';
@@ -14,8 +14,11 @@ export interface ProfileProps {}
 
 export const Profile: FC<ProfileProps> = () => {
   const { user } = useLoaderData() as { user: StrapiUserType };
-  const [menu, setMenu] = useState('profile');
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  const [menu, setMenu] = useState(queryParams.get('step') || 'profile');
   const [userName, setUserName] = useState(user.username);
   const [userPhone, setUserPhone] = useState(user?.phone || '');
   const [userAvatar, setUserAvatar] = useState(
@@ -75,16 +78,22 @@ export const Profile: FC<ProfileProps> = () => {
   const handleUpdate = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const userResponse = await customFetch.put(`/users/${user.id}`, {
-      username: userName,
-      phone: userPhone,
-    });
+    try {
+      const userResponse = await customFetch.put(`/users/${user.id}`, {
+        username: userName,
+        phone: userPhone,
+      });
 
-    if (userResponse.status !== 200) {
-      toast.error('Erro ao alterar perfil');
+      if (userResponse.status !== 200) {
+        toast.error('Erro ao alterar perfil');
+      }
+
+      toast.success('Alterado com sucesso');
+    } catch (error) {
+      if (error instanceof AxiosError && error.response?.data?.error) {
+        toast.error('Erro ao alterar imagem');
+      }
     }
-
-    toast.success('Alterado com sucesso');
   };
 
   return (
@@ -188,9 +197,9 @@ export const Profile: FC<ProfileProps> = () => {
               </div>
 
               <div className="order_cards">
-                <OrderCard />
-                <OrderCard />
-                <OrderCard />
+                {user.orders.map((order) => (
+                  <OrderCard key={order.id} order={order} />
+                ))}
               </div>
             </S.ProfileOrders>
           )}
