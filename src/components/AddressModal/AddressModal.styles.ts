@@ -5,7 +5,7 @@ type AddressProps = {
 };
 
 export const AddressContainer = styled.div<AddressProps>`
-  ${({ theme, openModal }) => css`
+  ${({ openModal }) => css`
     position: absolute;
     inset: 0;
     z-index: 10;
@@ -14,14 +14,12 @@ export const AddressContainer = styled.div<AddressProps>`
 `;
 
 export const AddressModalBackground = styled.div`
-  ${({ theme }) => css`
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `}
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const AddressModalForm = styled.div`
