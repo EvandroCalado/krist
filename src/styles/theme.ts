@@ -3,7 +3,7 @@ export default {
     primary: '#131118',
     secondary: '#f0f0f0',
     warning: '#e11d48',
-    success: '#16a34a',
+    success: '#3CD139',
     info: '#3b82f6',
     white: '#ffffff',
     black: '#000000',
