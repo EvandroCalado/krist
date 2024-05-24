@@ -10,7 +10,7 @@ export interface StrapiUserType {
   phone: string;
   role: Role;
   addresses: Address[];
-  orders: Order[];
+  orders: StrapiOrderType[];
   avatar: Avatar;
 }
 
@@ -57,7 +57,7 @@ interface Providermetadata {
   resource_type: string;
 }
 
-interface Order {
+export interface StrapiOrderType {
   id: number;
   products: Product[];
   createdAt: string;
