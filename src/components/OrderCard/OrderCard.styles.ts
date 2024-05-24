@@ -3,6 +3,63 @@ import styled, { css } from 'styled-components';
 export const OrderCardContainer = styled.div`
   ${({ theme }) => css`
     margin: ${theme.spacings.xl} 0;
+
+    & .order_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    & > hr {
+      margin: ${theme.spacings.md} 0;
+      border: 1px solid ${theme.colors.secondary};
+    }
+  `}
+`;
+
+export const OrderCardRating = styled.div``;
+
+export const OrderCardStars = styled.div`
+  ${({ theme }) => css`
+    & > label {
+      font-size: ${theme.font.sizes.sm};
+      text-transform: capitalize;
+    }
+  `}
+`;
+
+export const OrderCardStar = styled.div`
+  ${({ theme }) => css`
+    margin: ${theme.spacings.xs} 0;
+
+    & > svg {
+      margin-right: ${theme.spacings.xs};
+      cursor: pointer;
+    }
+  `}
+`;
+
+export const OrderCardModalInfo = styled.div`
+  ${({ theme }) => css`
+    & > label {
+      font-size: ${theme.font.sizes.sm};
+      text-transform: capitalize;
+    }
+
+    & > textarea {
+      width: 100%;
+      height: 10rem;
+      border-radius: ${theme.spacings.xs};
+      border: 1px solid ${theme.colors.primary};
+      outline: none;
+      margin-top: ${theme.spacings.xs};
+      padding: ${theme.spacings.md};
+
+      &:focus {
+        outline: 3px solid ${theme.colors.primary};
+        outline-offset: 1px;
+      }
+    }
   `}
 `;
 
@@ -10,22 +67,22 @@ export const OrderCardDetails = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
+    margin: ${theme.spacings.md} 0;
 
     & > img {
       width: 10rem;
-      height: 11rem;
+      height: 8rem;
       margin-right: ${theme.spacings.md};
+      object-fit: contain;
     }
   `}
 `;
 
 export const OrderCardInfo = styled.div`
-  ${({ theme }) => css`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    text-transform: capitalize;
-  `}
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
 `;
 
 export const OrderCardProduct = styled.div`
@@ -38,9 +95,7 @@ export const OrderCardProduct = styled.div`
 `;
 
 export const OrderCardPrice = styled.span`
-  ${({ theme }) => css`
-    font-weight: 600;
-  `}
+  font-weight: 600;
 `;
 
 export const OrderCardButtons = styled.div`
@@ -50,7 +105,7 @@ export const OrderCardButtons = styled.div`
     gap: ${theme.spacings.sm};
 
     & > button {
-      width: 100%;
+      width: 17rem;
     }
   `}
 `;
