@@ -32,7 +32,9 @@ export const SuccessModal: FC<SuccessModalProps> = ({ successModal }) => {
         </Heading>
 
         <S.SuccessModalButtons>
-          <Button onClick={() => navigate('/orders')}>ver pedido</Button>
+          <Button onClick={() => navigate('/profile?step=orders')}>
+            meus pedidos
+          </Button>
           <Button onClick={() => navigate('/')} variant="secondary">
             voltar para home
           </Button>
