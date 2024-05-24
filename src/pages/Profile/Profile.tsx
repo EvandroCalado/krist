@@ -197,9 +197,9 @@ export const Profile: FC<ProfileProps> = () => {
               </div>
 
               <div className="order_cards">
-                {user.orders.map((order) => (
-                  <OrderCard key={order.id} order={order} />
-                ))}
+                {user.orders
+                  .map((order) => <OrderCard key={order.id} order={order} />)
+                  .reverse()}
               </div>
             </S.ProfileOrders>
           )}
