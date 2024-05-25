@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 
 import { Button, Heading, OrderCardModal } from 'components';
-import { StrapiOrderType, StrapiRatingsType, StrapiUserType } from 'types';
+import { StrapiOrderType, StrapiUserType } from 'types';
 import { customFetch } from 'utils';
 
 import * as S from './OrderCard.styles';
@@ -16,11 +16,8 @@ export interface OrderCardProps {
 
 export const OrderCard: FC<OrderCardProps> = ({ order }) => {
   const { user } = useLoaderData() as { user: StrapiUserType };
-  const { ratings } = useLoaderData() as { ratings: StrapiRatingsType };
 
-  const ratingsIds = ratings.data.map(
-    (rating) => rating.attributes.product.data.id,
-  );
+  const ratingsIds = user.ratings.map((rating) => rating.product.id);
 
   const [openModal, setOpenModal] = useState(false);
   const [isRating, setIsRating] = useState(ratingsIds);
