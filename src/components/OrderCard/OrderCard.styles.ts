@@ -8,6 +8,22 @@ export const OrderCardContainer = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      @media ${theme.media.lteOrEqLarge} {
+        & :nth-child(2) {
+          display: none;
+        }
+      }
+
+      @media ${theme.media.lteOrEqMedium} {
+        & > h3 {
+          font-size: ${theme.font.sizes.sm};
+        }
+
+        & :nth-child(2) {
+          display: none;
+        }
+      }
     }
 
     & > hr {
@@ -79,10 +95,16 @@ export const OrderCardDetails = styled.div`
 `;
 
 export const OrderCardInfo = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  text-transform: capitalize;
+  ${({ theme }) => css`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+
+    @media ${theme.media.lteOrEqMedium} {
+      flex-direction: column;
+    }
+  `}
 `;
 
 export const OrderCardProduct = styled.div`
@@ -91,11 +113,24 @@ export const OrderCardProduct = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: ${theme.spacings.sm};
+
+    @media ${theme.media.lteOrEqMedium} {
+      font-size: ${theme.font.sizes.sm};
+      & > h4 {
+        font-size: ${theme.font.sizes.sm};
+      }
+    }
   `}
 `;
 
 export const OrderCardPrice = styled.span`
-  font-weight: 600;
+  ${({ theme }) => css`
+    font-weight: 600;
+
+    @media ${theme.media.lteOrEqLarge} {
+      display: none;
+    }
+  `}
 `;
 
 export const OrderCardButtons = styled.div`
@@ -105,7 +140,11 @@ export const OrderCardButtons = styled.div`
     gap: ${theme.spacings.sm};
 
     & > button {
-      width: 17rem;
+      width: 14rem;
+
+      @media ${theme.media.lteOrEqMedium} {
+        margin-top: ${theme.spacings.md};
+      }
     }
   `}
 `;
@@ -127,6 +166,10 @@ export const OrderCardStatus = styled.div`
 
     & > span {
       text-transform: capitalize;
+    }
+
+    @media ${theme.media.lteOrEqMedium} {
+      font-size: ${theme.font.sizes.sm};
     }
   `}
 `;

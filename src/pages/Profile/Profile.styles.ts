@@ -112,11 +112,20 @@ export const ProfileInfo = styled.div`
 
 export const ProfileOrders = styled.div`
   ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+
     & .order_top {
       display: flex;
       align-items: center;
       justify-content: end;
       gap: ${theme.spacings.sm};
+    }
+
+    @media ${theme.media.lteOrEqMedium} {
+      & .order_cards {
+        width: 20.5rem;
+      }
     }
   `}
 `;

@@ -139,7 +139,7 @@ export const OrderCard: FC<OrderCardProps> = ({ order }) => {
 
       <div className="order_header">
         <Heading as="h3" transform="capitalize" fontWeight="600">
-          número no pedido: {order.id}
+          pedido: {order.id}
         </Heading>
 
         <Heading as="h3" transform="capitalize" fontWeight="600">
@@ -147,7 +147,7 @@ export const OrderCard: FC<OrderCardProps> = ({ order }) => {
         </Heading>
 
         <Heading as="h3" transform="capitalize" fontWeight="600">
-          valor total: R$
+          total: R$
           {order.amount.slice(0, -2) + '.' + order.amount.slice(-2)}
         </Heading>
       </div>
@@ -178,7 +178,7 @@ export const OrderCard: FC<OrderCardProps> = ({ order }) => {
                     setRatingProductId(product.productId),
                   ]}
                 >
-                  adicionar avaliação
+                  avaliar
                 </Button>
               )}
             </S.OrderCardButtons>
