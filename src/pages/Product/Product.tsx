@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hook';
-import { Heart } from 'lucide-react';
+import { Heart, Star } from 'lucide-react';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
@@ -18,25 +18,26 @@ import {
   ProductInfo,
   ProductPrice,
   ProductQuantity,
-  ProductRating,
   ProductReviews,
   ProductSizes,
   ProductStock,
   ProductTabs,
 } from 'components';
-import { StrapiProductType } from 'types';
+import { StrapiProductType, StrapiRatingsType } from 'types';
 import { calcDiscount, customFetch } from 'utils';
 
 import * as S from './Product.styles';
 
 export const Product = () => {
   const { user } = useAppSelector((state) => state.userState);
-  const { product } = useLoaderData() as { product: StrapiProductType };
+  const { product, ratings } = useLoaderData() as {
+    product: StrapiProductType;
+    ratings: StrapiRatingsType;
+  };
   const dispatch = useAppDispatch();
-
   const navigate = useNavigate();
 
-  const { title, subTitle, description, categories, variants } =
+  const { title, subTitle, description, categories, variants, wishlists } =
     product.data.attributes;
 
   const variantData = (color: string) => {
@@ -44,7 +45,7 @@ export const Product = () => {
   };
 
   const isInWishlist = () => {
-    return product.data.attributes.wishlists.data.some(
+    return wishlists.data.some(
       (wishlist) => wishlist.attributes.product.data.id === product.data.id,
     );
   };
@@ -132,6 +133,27 @@ export const Product = () => {
     }
   };
 
+  const avgRating = () => {
+    const allRatings = ratings?.data?.map((rating) => {
+      if (rating.attributes.rating === 'one1') return 1;
+      if (rating.attributes.rating === 'two2') return 2;
+      if (rating.attributes.rating === 'three3') return 3;
+      if (rating.attributes.rating === 'four4') return 4;
+      if (rating.attributes.rating === 'five5') return 5;
+    });
+    const total = allRatings.reduce((sum, rating) => sum + rating!, 0);
+    const avg = total / allRatings.length;
+
+    const ratingStars = Array.from(
+      {
+        length: Number(avg),
+      },
+      (_, i) => <Star key={i} size={18} color="#F59E0B" fill="#F59E0B" />,
+    );
+
+    return ratingStars;
+  };
+
   return (
     <S.Container>
       <Helmet>
@@ -156,7 +178,10 @@ export const Product = () => {
             {subTitle}
           </Heading>
 
-          <ProductRating />
+          <div className="rating">
+            <span>{avgRating()}</span>{' '}
+            <span>{avgRating().length.toFixed(1)}</span>
+          </div>
 
           <Heading as="h6" transform="uppercase" size="sm">
             {categories.data[0].attributes.name}
@@ -205,7 +230,9 @@ export const Product = () => {
         {activeTab === 'description' && (
           <ProductDescription description={description} />
         )}
+
         {activeTab === 'info' && <ProductInfo variants={variants} />}
+
         {activeTab === 'reviews' && <ProductReviews />}
       </ProductTabs>
     </S.Container>

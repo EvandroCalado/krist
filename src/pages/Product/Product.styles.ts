@@ -18,6 +18,19 @@ export const Details = styled.div`
     display: flex;
     gap: ${theme.spacings['7xl']};
 
+    & .rating {
+      display: flex;
+      align-items: center;
+
+      & > span {
+        margin-right: ${theme.spacings.sm};
+      }
+
+      & > span:last-of-type {
+        color: ${theme.colors.gray};
+      }
+    }
+
     @media ${theme.media.lteOrEqXLarge} {
       flex-direction: column;
     }
