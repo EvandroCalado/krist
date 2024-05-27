@@ -6,7 +6,7 @@ import * as S from './ProductPrice.styles';
 
 export interface ProductPriceProps {
   price: number;
-  discount?: number;
+  discount?: number | null;
 }
 
 export const ProductPrice: FC<ProductPriceProps> = ({ price, discount }) => {
