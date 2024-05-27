@@ -8,16 +8,20 @@ export const productLoader: LoaderFunction = async ({ params }) => {
   const id = params.id;
 
   try {
-    const response = await customFetch.get<StrapiProductType>(
+    const productsResponse = await customFetch.get<StrapiProductType>(
       `/products/${id}?populate=deep,3`,
     );
+    const ratingsResponse = await customFetch.get(
+      `/ratings?populate=deep,3&filters[product][$eq]=${id}`,
+    );
 
-    if (response.status !== 200) {
+    if (productsResponse.status !== 200 || ratingsResponse.status !== 200) {
       throw new Error('not found');
     }
 
     return {
-      product: response.data,
+      product: productsResponse.data,
+      ratings: ratingsResponse.data,
     };
   } catch (error) {
     if (error instanceof AxiosError && error.response?.data?.error) {
