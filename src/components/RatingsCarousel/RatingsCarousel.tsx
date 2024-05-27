@@ -40,11 +40,13 @@ export const RatingsCarousel: FC<RatingsCarouselProps> = () => {
           },
         }}
       >
-        {ratings.data.map((rating) => (
-          <SplideSlide key={rating.id}>
-            <RatingCard rating={rating} />
-          </SplideSlide>
-        ))}
+        {ratings.data
+          .map((rating) => (
+            <SplideSlide key={rating.id}>
+              <RatingCard rating={rating} />
+            </SplideSlide>
+          ))
+          .reverse()}
       </Splide>
     </S.Container>
   );
