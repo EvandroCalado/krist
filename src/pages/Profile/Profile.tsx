@@ -4,7 +4,7 @@ import { FC, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useLocation } from 'react-router-dom';
 
-import { Button, Heading, Input, OrderCard } from 'components';
+import { Button, Heading, Input, OrderCard, Wishlist } from 'components';
 import { StrapiUserType } from 'types';
 import { customFetch, formatDate, linksProfileMenu } from 'utils';
 
@@ -204,11 +204,7 @@ export const Profile: FC<ProfileProps> = () => {
             </S.ProfileOrders>
           )}
 
-          {menu === 'wishlist' && (
-            <div>
-              <h1>wishlist</h1>
-            </div>
-          )}
+          {menu === 'wishlist' && <Wishlist wishlists={user.wishlists} />}
 
           {menu === 'addresses' && (
             <div>
