@@ -26,7 +26,6 @@ import {
   RatingsCarousel,
   Services,
 } from 'components';
-import { ratings } from 'components/RatingsCarousel/RatingsCarousel.stories';
 
 import { store } from './store';
 
@@ -44,7 +43,7 @@ const router = createBrowserRouter([
           <CategoriesCarousel key={2} />,
           <ProductsList key={3} title="em destaque" />,
           <FlashSale key={4} />,
-          <RatingsCarousel key={5} ratings={ratings} />,
+          <RatingsCarousel key={5} />,
           <Services key={6} />,
         ],
         errorElement: <div>Home error</div>,
