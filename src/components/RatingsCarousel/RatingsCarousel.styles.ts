@@ -15,4 +15,8 @@ export const Container = styled(CategoriesContainer)`
       padding: 0 ${({ theme }) => theme.spacings.xl};
     }
   }
+
+  & .splide__slide {
+    justify-content: start;
+  }
 `;

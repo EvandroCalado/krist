@@ -2,16 +2,20 @@
 // @ts-ignore
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { FC } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-import { Heading, RatingCard, RatingCardProps } from 'components';
+import { Heading, RatingCard } from 'components';
+import { StrapiRatingsType } from 'types';
 
 import * as S from './RatingsCarousel.styles';
 
-export interface RatingsCarouselProps {
-  ratings: RatingCardProps[];
-}
+export interface RatingsCarouselProps {}
 
-export const RatingsCarousel: FC<RatingsCarouselProps> = ({ ratings }) => {
+export const RatingsCarousel: FC<RatingsCarouselProps> = () => {
+  const { ratings } = useLoaderData() as {
+    ratings: StrapiRatingsType;
+  };
+
   return (
     <S.Container>
       <Heading as="h2" transform="capitalize" size="2xl" fontWeight="700">
@@ -36,9 +40,9 @@ export const RatingsCarousel: FC<RatingsCarouselProps> = ({ ratings }) => {
           },
         }}
       >
-        {ratings.map((rating) => (
+        {ratings.data.map((rating) => (
           <SplideSlide key={rating.id}>
-            <RatingCard {...rating} />
+            <RatingCard rating={rating} />
           </SplideSlide>
         ))}
       </Splide>
