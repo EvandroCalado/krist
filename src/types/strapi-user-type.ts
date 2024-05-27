@@ -13,10 +13,10 @@ export interface StrapiUserType {
   orders: StrapiOrderType[];
   avatar: Avatar;
   ratings: Rating2[];
-  wishlists: Wishlist2[];
+  wishlists: StrapiWishlistType[];
 }
 
-interface Wishlist2 {
+export interface StrapiWishlistType {
   id: number;
   createdAt: string;
   updatedAt: string;
@@ -88,7 +88,7 @@ interface Product2 {
   brand: Brand;
   categories: Brand[];
   variants: Variant[];
-  wishlists: Wishlist2[];
+  wishlists: StrapiWishlistType[];
 }
 
 interface Variant {
