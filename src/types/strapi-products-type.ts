@@ -14,7 +14,7 @@ interface Pagination {
   total: number;
 }
 
-export interface StrapiProductType {
+interface StrapiProductType {
   id: number;
   attributes: Attributes4;
 }
