@@ -21,22 +21,26 @@ export const AvatarContainer = styled.div`
     gap: ${theme.spacings.sm};
   `}
 `;
+
 export const Avatar = styled.img`
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
 `;
+
 export const ClientContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
 `;
+
 export const Name = styled.span`
   font-weight: 800;
   text-transform: capitalize;
 `;
-export const Profession = styled.span`
+
+export const Date = styled.span`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.sm};
     text-transform: capitalize;
