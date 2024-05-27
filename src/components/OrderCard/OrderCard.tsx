@@ -67,54 +67,54 @@ export const OrderCard: FC<OrderCardProps> = ({ order }) => {
 
             <S.OrderCardStar>
               <Star
-                onClick={() => setRatingStar('one')}
+                onClick={() => setRatingStar('one1')}
                 fill={
-                  ratingStar === 'one' ||
-                  ratingStar === 'two' ||
-                  ratingStar === 'three' ||
-                  ratingStar === 'four' ||
-                  ratingStar === 'five'
+                  ratingStar === 'one1' ||
+                  ratingStar === 'two2' ||
+                  ratingStar === 'three3' ||
+                  ratingStar === 'four4' ||
+                  ratingStar === 'five5'
                     ? '#F59E0B'
                     : '#131118'
                 }
                 color="transparent"
               />
               <Star
-                onClick={() => setRatingStar('two')}
+                onClick={() => setRatingStar('two2')}
                 fill={
-                  ratingStar === 'two' ||
-                  ratingStar === 'three' ||
-                  ratingStar === 'four' ||
-                  ratingStar === 'five'
+                  ratingStar === 'two2' ||
+                  ratingStar === 'three3' ||
+                  ratingStar === 'four4' ||
+                  ratingStar === 'five5'
                     ? '#F59E0B'
                     : '#131118'
                 }
                 color="transparent"
               />
               <Star
-                onClick={() => setRatingStar('three')}
+                onClick={() => setRatingStar('three3')}
                 color="transparent"
                 fill={
-                  ratingStar === 'three' ||
-                  ratingStar === 'four' ||
-                  ratingStar === 'five'
+                  ratingStar === 'three3' ||
+                  ratingStar === 'four4' ||
+                  ratingStar === 'five5'
                     ? '#F59E0B'
                     : '#131118'
                 }
               />
               <Star
-                onClick={() => setRatingStar('four')}
+                onClick={() => setRatingStar('four4')}
                 color="transparent"
                 fill={
-                  ratingStar === 'four' || ratingStar === 'five'
+                  ratingStar === 'four4' || ratingStar === 'five5'
                     ? '#F59E0B'
                     : '#131118'
                 }
               />
               <Star
-                onClick={() => setRatingStar('five')}
+                onClick={() => setRatingStar('five5')}
                 color="transparent"
-                fill={ratingStar === 'five' ? '#F59E0B' : '#131118'}
+                fill={ratingStar === 'five5' ? '#F59E0B' : '#131118'}
               />
             </S.OrderCardStar>
           </S.OrderCardStars>
