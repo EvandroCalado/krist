@@ -101,6 +101,7 @@ interface Attributes4 {
   createdAt: string;
   updatedAt: string;
   phone: string;
+  avatar: Cover;
 }
 
 interface Variant {
