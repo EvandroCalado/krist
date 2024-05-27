@@ -30,7 +30,8 @@ export const MenuUser = () => {
   return (
     <S.Container className="menu-user">
       <span>Search</span>
-      <Heart />
+
+      <Heart onClick={() => navigate('/profile?step=wishlist')} />
 
       <>
         <ShoppingBag onClick={() => setOpenCart(!openCart)} />
