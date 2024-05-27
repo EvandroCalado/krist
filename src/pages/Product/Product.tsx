@@ -1,8 +1,10 @@
-import { useAppDispatch } from 'hooks/redux-hook';
+import { AxiosError } from 'axios';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hook';
 import { Heart } from 'lucide-react';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLoaderData } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { CartItem, addToCart } from 'slices/cartSlice';
 
 import {
@@ -23,13 +25,16 @@ import {
   ProductTabs,
 } from 'components';
 import { StrapiProductType } from 'types';
-import { calcDiscount } from 'utils';
+import { calcDiscount, customFetch } from 'utils';
 
 import * as S from './Product.styles';
 
 export const Product = () => {
+  const { user } = useAppSelector((state) => state.userState);
   const { product } = useLoaderData() as { product: StrapiProductType };
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const { title, subTitle, description, categories, variants } =
     product.data.attributes;
@@ -38,9 +43,21 @@ export const Product = () => {
     return variants.filter((variant) => variant.name === color)[0];
   };
 
+  const isInWishlist = () => {
+    return product.data.attributes.wishlists.data.some(
+      (wishlist) => wishlist.attributes.product.data.id === product.data.id,
+    );
+  };
+
   const [color, setColor] = useState(variants[0].name);
   const [activeTab, setActiveTab] = useState('description');
   const [quantity, setQuantity] = useState(1);
+  const [isWishlisted, setIsWishlisted] = useState(
+    user ? isInWishlist() : false,
+  );
+  const [wishlistId, setWishlistId] = useState(
+    product?.data?.attributes?.wishlists?.data?.[0]?.id || null,
+  );
 
   const { images, price, discountPercentage, sizes } = variantData(color);
 
@@ -66,6 +83,53 @@ export const Product = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(cartProduct));
+  };
+
+  const handleAddWishlist = async () => {
+    if (!user) {
+      navigate(`/login?transfer=/shop/product/${product.data.id}`);
+      return;
+    }
+
+    try {
+      const wishlistResponse = await customFetch.post('/wishlists', {
+        data: {
+          user: user?.id,
+          product: product.data.id,
+        },
+      });
+
+      if (wishlistResponse.status !== 200) {
+        toast.error('Erro ao adicionar item na lista de desejos');
+      }
+
+      toast.success('Adicionado a lista de desejos');
+      setIsWishlisted(true);
+      setWishlistId(wishlistResponse.data.data.id);
+    } catch (error) {
+      if (error instanceof AxiosError && error.response?.data?.error) {
+        throw new Error(error.response.data.error.message);
+      }
+    }
+  };
+
+  const handleDeleteWishlist = async () => {
+    try {
+      const wishlistResponse = await customFetch.delete(
+        `/wishlists/${wishlistId}`,
+      );
+
+      if (wishlistResponse.status !== 200) {
+        toast.error('Erro ao deletar item da lista de desejos');
+      }
+
+      toast.success('Removido da lista de desejos');
+      setIsWishlisted(false);
+    } catch (error) {
+      if (error instanceof AxiosError && error.response?.data?.error) {
+        throw new Error(error.response.data.error.message);
+      }
+    }
   };
 
   return (
@@ -123,9 +187,16 @@ export const Product = () => {
               currentSize={currentSize}
             />
             <Button onClick={handleAddToCart}>Adicionar ao carrinho</Button>
-            <Button variant="secondary">
-              <Heart size={16} />
-            </Button>
+
+            {isWishlisted ? (
+              <Button variant="secondary" onClick={handleDeleteWishlist}>
+                <Heart size={16} fill="#000" />
+              </Button>
+            ) : (
+              <Button variant="secondary" onClick={handleAddWishlist}>
+                <Heart size={16} />
+              </Button>
+            )}
           </S.CartContainer>
         </ProductDetails>
       </S.Details>
