@@ -48,3 +48,4 @@ export * from './RatingsCarousel';
 export * from './Review';
 export * from './Services';
 export * from './SuccessModal';
+export * from './Wishlist';
