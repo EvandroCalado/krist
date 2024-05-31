@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 import { FilePenLine, ImagePlus, SlidersHorizontal } from 'lucide-react';
 import { FC, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 
 import {
   Addresses,
@@ -22,6 +22,7 @@ export interface ProfileProps {}
 export const Profile: FC<ProfileProps> = () => {
   const { user } = useLoaderData() as { user: StrapiUserType };
 
+  const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
@@ -123,7 +124,10 @@ export const Profile: FC<ProfileProps> = () => {
           {linksProfileMenu.map((link) => (
             <Button
               type="button"
-              onClick={() => setMenu(link.path)}
+              onClick={() => {
+                setMenu(link.path);
+                navigate(`/profile?step=${link.path}`);
+              }}
               variant="secondary"
               key={link.id}
               className={link.path === menu ? 'active' : ''}
@@ -213,7 +217,7 @@ export const Profile: FC<ProfileProps> = () => {
 
           {menu === 'wishlist' && <Wishlist wishlists={user.wishlists} />}
 
-          {menu === 'addresses' && <Addresses addresses={user.addresses} />}
+          {menu === 'addresses' && <Addresses />}
 
           {menu === 'settings' && (
             <div>
