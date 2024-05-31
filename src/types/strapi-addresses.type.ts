@@ -43,6 +43,7 @@ interface Data {
 interface Attributes {
   username: string;
   email: string;
+  phone: string;
   provider: string;
   confirmed: boolean;
   blocked: boolean;
