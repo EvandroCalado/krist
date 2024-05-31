@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Addresses = styled.div`
-  ${({ theme }) => css``}
-`;
+export const Addresses = styled.div``;
 
 export const AddressCard = styled.div`
   ${({ theme }) => css`
@@ -37,6 +35,7 @@ export const AddressButtons = styled.div`
     gap: ${theme.spacings.lg};
 
     & > button {
+      color: ${theme.colors.primary};
       background-color: transparent;
       border: none;
 
@@ -45,12 +44,14 @@ export const AddressButtons = styled.div`
       }
     }
 
-    & > button:first-child {
-      color: ${theme.colors.primary};
-    }
-
-    & > button:last-child {
+    & > form > button:last-child {
+      background-color: transparent;
       color: ${theme.colors.warning};
+      border: none;
+
+      &:hover {
+        background-color: ${theme.colors.secondary};
+      }
     }
   `}
 `;

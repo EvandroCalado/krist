@@ -6,7 +6,7 @@ type AddressProps = {
 
 export const AddressContainer = styled.div<AddressProps>`
   ${({ openModal }) => css`
-    position: absolute;
+    position: fixed;
     inset: 0;
     z-index: 10;
     display: ${openModal ? 'block' : 'none'};

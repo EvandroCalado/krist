@@ -1,60 +1,144 @@
 import { Phone, Plus, SquarePen, Trash2 } from 'lucide-react';
-import { FC, useState } from 'react';
-import { Form } from 'react-router-dom';
+import { useState } from 'react';
+import { Form, FormMethod, useLoaderData } from 'react-router-dom';
 
 import { AddressModal, Button, Heading, Input } from 'components';
-import { StrapiUserType } from 'types';
+import { StrapiAddressesType } from 'types';
 
 import * as S from './Addresses.styles';
 
-export interface AddressesProps {
-  addresses: StrapiUserType['addresses'];
+interface Address {
+  title: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
 }
 
-export const Addresses: FC<AddressesProps> = ({ addresses }) => {
-  const [openModal, setOpenModal] = useState(false);
+export const Addresses = () => {
+  const { addresses } = useLoaderData() as { addresses: StrapiAddressesType };
+
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [methodType, setMethodType] = useState<FormMethod>('post');
+  const [formData, setFormData] = useState<Address>({
+    title: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData({ ...formData, [name]: value });
+  };
 
   return (
     <S.Addresses>
-      <Form method="post">
-        <AddressModal openModal={openModal} setOpenModal={setOpenModal}>
-          <Input label="nome" type="text" name="title" placeholder="ex: casa" />
-          <Input label="endereço" type="text" name="address" />
-          <Input label="cidade" type="text" name="city" />
-          <Input label="estado" type="text" name="state" />
-          <Input label="CEP" type="number" name="zipCode" />
-          <Button type="submit">salvar</Button>
-        </AddressModal>
-      </Form>
-
-      <Button onClick={() => setOpenModal(!openModal)}>
+      <Button
+        onClick={() => {
+          setOpenModal(true),
+            setMethodType('post'),
+            setFormData({
+              title: '',
+              address: '',
+              city: '',
+              state: '',
+              zipCode: '',
+            });
+        }}
+      >
         <Plus /> Adicionar endereço
       </Button>
 
-      {addresses.map((address) => (
+      {addresses.data.map((address) => (
         <S.AddressCard key={address.id}>
           <S.Address>
             <Heading as="h3" transform="capitalize" fontWeight="600">
-              {address.user.username}
+              {address.attributes.title}
             </Heading>
 
-            <p>{address.address}</p>
-            <p>{address.city}</p>
-            <p>{address.state}</p>
-            <p>{address.zipCode}</p>
+            <p>{address.attributes.address}</p>
+            <p>{address.attributes.city}</p>
+            <p>{address.attributes.state}</p>
+            <p>{address.attributes.zipCode}</p>
 
             <span>
-              <Phone /> {address.user.phone}
+              <Phone /> {address.attributes.user.data.attributes.phone}
             </span>
           </S.Address>
 
+          <Form method={methodType}>
+            <AddressModal openModal={openModal} setOpenModal={setOpenModal}>
+              <Input
+                label="nome"
+                type="text"
+                name="title"
+                placeholder="ex: casa"
+                value={formData.title}
+                onChange={handleChange}
+              />
+              <Input
+                label="endereço"
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+              />
+              <Input
+                label="cidade"
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+              />
+              <Input
+                label="estado"
+                type="text"
+                name="state"
+                value={formData.state}
+                onChange={handleChange}
+              />
+              <Input
+                label="CEP"
+                type="number"
+                name="zipCode"
+                value={formData.zipCode}
+                onChange={handleChange}
+              />
+              {methodType === 'put' && (
+                <input type="hidden" name="id" value={address.id} />
+              )}
+              <Button type="submit" onClick={() => setOpenModal(false)}>
+                salvar
+              </Button>
+            </AddressModal>
+          </Form>
+
           <S.AddressButtons>
-            <Button>
+            <Button
+              onClick={() => {
+                setOpenModal(true),
+                  setMethodType('put'),
+                  setFormData({
+                    title: address.attributes.title,
+                    address: address.attributes.address,
+                    city: address.attributes.city,
+                    state: address.attributes.state,
+                    zipCode: address.attributes.zipCode,
+                  });
+              }}
+            >
               <SquarePen /> Editar
             </Button>
-            <Button>
-              <Trash2 /> Delete
-            </Button>
+
+            <Form method="delete">
+              <input type="hidden" name="id" value={address.id} />
+              <Button type="submit">
+                <Trash2 /> Delete
+              </Button>
+            </Form>
           </S.AddressButtons>
         </S.AddressCard>
       ))}
