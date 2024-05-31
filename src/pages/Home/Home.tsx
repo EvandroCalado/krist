@@ -17,7 +17,7 @@ export const Home = () => {
 
       <main
         style={{
-          minHeight: '50.5vh',
+          minHeight: '90vh',
           display: 'flex',
           flexDirection: 'column',
         }}
