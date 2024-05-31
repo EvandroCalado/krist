@@ -1,4 +1,9 @@
-import { checkoutAction, loginAction, registerAction } from 'actions';
+import {
+  checkoutAction,
+  loginAction,
+  profileAction,
+  registerAction,
+} from 'actions';
 import {
   checkoutLoader,
   homeLoader,
@@ -78,6 +83,7 @@ const router = createBrowserRouter([
         element: <Profile />,
         errorElement: <div>profile error</div>,
         loader: profileLoader(store),
+        action: profileAction(store),
       },
     ],
   },
