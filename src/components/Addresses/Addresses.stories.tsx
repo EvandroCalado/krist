@@ -1,6 +1,6 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
-import { Addresses, AddressesProps } from '.';
+import { Addresses } from '.';
 
 export default {
   title: 'Components/Addresses',
@@ -10,4 +10,4 @@ export default {
   },
 } as Meta;
 
-export const Default: StoryFn<AddressesProps> = () => <Addresses />;
+export const Default = () => <Addresses />;
