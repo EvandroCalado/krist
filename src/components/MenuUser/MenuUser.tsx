@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hook';
-import { Heart, ShoppingBag, User } from 'lucide-react';
+import { ShoppingBag, User } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userLogout } from 'slices/userSlice';
@@ -30,8 +30,6 @@ export const MenuUser = () => {
   return (
     <S.Container className="menu-user">
       <span>Search</span>
-
-      <Heart onClick={() => navigate('/profile?step=wishlist')} />
 
       <>
         <ShoppingBag onClick={() => setOpenCart(!openCart)} />
