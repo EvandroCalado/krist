@@ -26,8 +26,9 @@ export const shopLoader = async ({ request }: { request: Request }) => {
   const sizeFilter = params.size
     ? `&filters[variants][sizes][size]=${params.size}`
     : '';
+  const pagination = `&pagination[page]=${params.page || 1}&pagination[pageSize]=8`;
 
-  const url = `/products?populate=deep,3${categoryFilter}${priceFilter}${colorFilter}${sizeFilter}`;
+  const url = `/products?populate=deep,3${categoryFilter}${priceFilter}${colorFilter}${sizeFilter}${pagination}`;
 
   try {
     const productsResponse = await customFetch.get<StrapiProductsType>(url);
