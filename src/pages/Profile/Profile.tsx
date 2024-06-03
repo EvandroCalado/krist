@@ -218,12 +218,6 @@ export const Profile: FC<ProfileProps> = () => {
           {menu === 'wishlist' && <Wishlist wishlists={user.wishlists} />}
 
           {menu === 'addresses' && <Addresses />}
-
-          {menu === 'settings' && (
-            <div>
-              <h1>settings</h1>
-            </div>
-          )}
         </S.ProfileMainMenu>
       </S.ProfileMenus>
     </S.ProfileContainer>

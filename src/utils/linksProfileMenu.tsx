@@ -1,4 +1,4 @@
-import { Heart, MapPin, Package, Settings, UserRound } from 'lucide-react';
+import { Heart, MapPin, Package, UserRound } from 'lucide-react';
 
 export const linksProfileMenu = [
   {
@@ -24,11 +24,5 @@ export const linksProfileMenu = [
     label: 'meus endereços',
     path: 'addresses',
     icon: <MapPin size={16} />,
-  },
-  {
-    id: 5,
-    label: 'configurar',
-    path: 'settings',
-    icon: <Settings size={16} />,
   },
 ];
