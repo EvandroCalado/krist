@@ -27,6 +27,7 @@ export * from './MenuNav';
 export * from './MenuUser';
 export * from './OrderCard';
 export * from './OrderCardModal';
+export * from './Pagination';
 export * from './Payment';
 export * from './ProductCard';
 export * from './ProductColors';
