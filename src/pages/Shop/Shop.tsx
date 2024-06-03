@@ -7,6 +7,7 @@ import {
   Button,
   Checkbox,
   Color,
+  Pagination,
   ProductFilter,
   ProductsList,
   Range,
@@ -102,12 +103,14 @@ export const Shop = () => {
 
         <S.Products>
           <S.ProductsHeader>
-            <LayoutGrid size={16} /> total de produtos {products.data.length}
+            <LayoutGrid size={16} /> total de produtos{' '}
+            {products.meta.pagination.total}
           </S.ProductsHeader>
 
           <ProductsList />
         </S.Products>
       </S.FiltersContainer>
+      <Pagination />
     </S.Container>
   );
 };
