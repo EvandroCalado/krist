@@ -1,11 +1,4 @@
 export interface StrapiProductType {
-  data: Data5;
-  meta: Meta;
-}
-
-interface Meta {}
-
-interface Data5 {
   id: number;
   attributes: Attributes8;
 }
@@ -14,7 +7,7 @@ interface Attributes8 {
   title: string;
   subTitle: string;
   description: string;
-  discountPercentage: number;
+  discountPercentage: number | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -23,8 +16,8 @@ interface Attributes8 {
   brand: Brand;
   categories: Categories;
   variants: Variant[];
-  ratings: Ratings;
-  wishlists: Wishlists;
+  ratings?: Ratings;
+  wishlists?: Wishlists;
 }
 
 interface Wishlists {
@@ -76,7 +69,7 @@ interface Attributes5 {
   title: string;
   subTitle: string;
   description: string;
-  discountPercentage: number;
+  discountPercentage: number | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
