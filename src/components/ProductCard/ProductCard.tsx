@@ -53,7 +53,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
 
       <S.PriceContainer>
         <S.Price>
-          R${calcDiscount(price, discountPercentage!).toFixed(2)}
+          R${calcDiscount(price, discountPercentage).toFixed(2)}
         </S.Price>
         <S.Discount>R${price}</S.Discount>
       </S.PriceContainer>
