@@ -149,7 +149,7 @@ interface User3 {
   wishlists: Wishlist[];
 }
 
-export interface StrapiOrderType {
+interface StrapiOrderType {
   id: number;
   products: Product[];
   createdAt: string;
