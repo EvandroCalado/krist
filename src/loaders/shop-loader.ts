@@ -13,6 +13,9 @@ export const shopLoader = async ({ request }: { request: Request }) => {
     ...new URL(request.url).searchParams.entries(),
   ]);
 
+  const searchFilter = params.q
+    ? `&filters[title][$containsi]=${params.q}`
+    : '';
   const categoryFilter = params.category
     ? `&filters[categories][name][$eq]=${params.category}`
     : '';
@@ -28,7 +31,7 @@ export const shopLoader = async ({ request }: { request: Request }) => {
     : '';
   const pagination = `&pagination[page]=${params.page || 1}&pagination[pageSize]=8`;
 
-  const url = `/products?populate=deep,3${categoryFilter}${priceFilter}${colorFilter}${sizeFilter}${pagination}`;
+  const url = `/products?populate=deep,3${searchFilter}${categoryFilter}${priceFilter}${colorFilter}${sizeFilter}${pagination}`;
 
   try {
     const productsResponse = await customFetch.get<StrapiProductsType>(url);
