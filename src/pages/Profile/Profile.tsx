@@ -10,9 +10,10 @@ import {
   Heading,
   Input,
   OrderCard,
+  Pagination,
   Wishlist,
 } from 'components';
-import { StrapiUserType } from 'types';
+import { StrapiOrdersType, StrapiUserType } from 'types';
 import { customFetch, formatDate, linksProfileMenu } from 'utils';
 
 import * as S from './Profile.styles';
@@ -20,7 +21,10 @@ import * as S from './Profile.styles';
 export interface ProfileProps {}
 
 export const Profile: FC<ProfileProps> = () => {
-  const { user } = useLoaderData() as { user: StrapiUserType };
+  const { user, orders } = useLoaderData() as {
+    user: StrapiUserType;
+    orders: StrapiOrdersType;
+  };
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -208,10 +212,12 @@ export const Profile: FC<ProfileProps> = () => {
               </div>
 
               <div className="order_cards">
-                {user.orders
+                {orders.data
                   .map((order) => <OrderCard key={order.id} order={order} />)
                   .reverse()}
               </div>
+
+              <Pagination />
             </S.ProfileOrders>
           )}
 
