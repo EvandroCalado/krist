@@ -22,8 +22,13 @@ import {
   ProductSizes,
   ProductStock,
   ProductTabs,
+  RelatedProducts,
 } from 'components';
-import { StrapiProductType, StrapiRatingsType } from 'types';
+import {
+  StrapiProductDetailsType,
+  StrapiProductsByCategoriesType,
+  StrapiRatingsType,
+} from 'types';
 import { calcDiscount, customFetch } from 'utils';
 
 import * as S from './Product.styles';
@@ -31,9 +36,11 @@ import * as S from './Product.styles';
 export const Product = () => {
   const { user } = useAppSelector((state) => state.userState);
   const { product, ratings } = useLoaderData() as {
-    product: StrapiProductType;
+    product: StrapiProductDetailsType;
     ratings: StrapiRatingsType;
+    byCategories: StrapiProductsByCategoriesType;
   };
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -235,6 +242,8 @@ export const Product = () => {
 
         {activeTab === 'reviews' && <ProductReviews />}
       </ProductTabs>
+
+      <RelatedProducts />
     </S.Container>
   );
 };
