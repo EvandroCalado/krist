@@ -10,11 +10,11 @@ import * as S from './Pagination.styles';
 export interface PaginationProps {}
 
 export const Pagination: FC<PaginationProps> = () => {
-  const { products } = useLoaderData() as {
-    products: StrapiProductsType;
+  const { meta } = useLoaderData() as {
+    meta: StrapiProductsType['meta'];
   };
 
-  const { page, pageCount } = products.meta.pagination;
+  const { page, pageCount } = meta.pagination;
 
   const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
 

@@ -49,6 +49,7 @@ export const shopLoader = async ({ request }: { request: Request }) => {
       colors: colorsResponse.data ?? [],
       categories: categoriesResponse.data ?? [],
       sizes: sizesResponse.data ?? [],
+      meta: productsResponse.data.meta,
     };
   } catch (error) {
     if (error instanceof AxiosError && error.response?.data?.error) {
