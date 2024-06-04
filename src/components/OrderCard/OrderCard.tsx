@@ -145,11 +145,13 @@ export const OrderCard: FC<OrderCardProps> = ({ order }) => {
 
         <Heading as="h3" transform="capitalize" fontWeight="600">
           total: R$
-          {order.amount.slice(0, -2) + '.' + order.amount.slice(-2)}
+          {order.attributes.amount.slice(0, -2) +
+            '.' +
+            order.attributes.amount.slice(-2)}
         </Heading>
       </div>
 
-      {order.products.map((product) => (
+      {order.attributes.products.map((product) => (
         <S.OrderCardDetails key={product.cartId}>
           <img src={product.image} alt={product.title} />
 
