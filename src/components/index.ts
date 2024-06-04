@@ -49,6 +49,7 @@ export * from './RatingCard';
 export * from './RatingsCarousel';
 export * from './RelatedProducts';
 export * from './Review';
+export * from './Search';
 export * from './Services';
 export * from './SuccessModal';
 export * from './Wishlist';
