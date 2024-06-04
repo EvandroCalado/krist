@@ -1,4 +1,3 @@
-import { Eye, Heart, Star } from 'lucide-react';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,16 +31,6 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
           }
         />
       </S.ImageContainer>
-
-      <span>
-        <Star />
-      </span>
-      <span>
-        <Heart />
-      </span>
-      <span onClick={() => navigate(`/shop/product/${product.id}`)}>
-        <Eye />
-      </span>
 
       <Heading as="h2" transform="capitalize" size="md" fontWeight="800">
         {title}
