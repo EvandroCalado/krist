@@ -52,8 +52,8 @@ interface Attributes6 {
   publishedAt: string;
   rating: string;
   description: string;
-  user: User;
-  product: Product;
+  user?: User;
+  product?: Product;
 }
 
 interface Product {
@@ -93,8 +93,8 @@ interface Attributes4 {
   blocked: boolean;
   createdAt: string;
   updatedAt: string;
-  phone: string;
-  avatar: Cover;
+  phone?: string | null;
+  avatar?: Cover;
 }
 
 interface Variant {
