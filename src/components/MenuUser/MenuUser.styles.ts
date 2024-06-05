@@ -7,6 +7,12 @@ export const Container = styled.div`
     align-items: center;
     gap: ${theme.spacings.md};
 
+    @media ${theme.media.lteOrEqMedium} {
+      & .search {
+        display: none;
+      }
+    }
+
     @media ${theme.media.lteOrEqSmall} {
       gap: 0.5rem;
     }
@@ -81,6 +87,10 @@ export const Container = styled.div`
       position: absolute;
       top: -0.6rem;
       right: 5rem;
+
+      @media ${theme.media.lteOrEqSmall} {
+        right: 4rem;
+      }
     }
   `}
 `;
