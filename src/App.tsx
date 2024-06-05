@@ -14,6 +14,7 @@ import {
 import {
   Cart,
   Checkout,
+  Error,
   Home,
   Login,
   Product,
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
-    errorElement: <div>Home error</div>,
+    errorElement: <Error />,
     loader: homeLoader,
     children: [
       {
@@ -51,60 +52,65 @@ const router = createBrowserRouter([
           <RatingsCarousel key={5} />,
           <Services key={6} />,
         ],
-        errorElement: <div>Home error</div>,
+        errorElement: <Error />,
         loader: homeLoader,
       },
       {
         path: 'shop',
         element: <Shop />,
-        errorElement: <div>Shop error</div>,
+        errorElement: <Error />,
         loader: shopLoader,
       },
       {
         path: 'shop/product/:id',
         element: <Product />,
-        errorElement: <div>Products error</div>,
+        errorElement: <Error />,
         loader: productLoader,
       },
       {
         path: 'cart',
         element: <Cart />,
-        errorElement: <div>Cart error</div>,
+        errorElement: <Error />,
       },
       {
         path: 'checkout',
         element: <Checkout />,
-        errorElement: <div>checkout error</div>,
+        errorElement: <Error />,
         loader: checkoutLoader(store),
         action: checkoutAction(store),
       },
       {
         path: 'profile',
         element: <Profile />,
-        errorElement: <div>profile error</div>,
+        errorElement: <Error />,
         loader: profileLoader(store),
         action: profileAction(store),
+      },
+      {
+        path: '*',
+        element: <Error />,
+        errorElement: <Error />,
       },
     ],
   },
   {
     path: '/login',
     element: <Login />,
-    errorElement: <div>Login error</div>,
+    errorElement: <Error />,
     loader: homeLoader,
     action: loginAction(store),
   },
   {
     path: '/register',
     element: <Register />,
-    errorElement: <div>Register error</div>,
+    errorElement: <Error />,
     loader: homeLoader,
     action: registerAction,
   },
   {
     path: '*',
     element: <div>Not found</div>,
-    errorElement: <div>Not found error</div>,
+    errorElement: <Error />,
   },
 ]);
 
