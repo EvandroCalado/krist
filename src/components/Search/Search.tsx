@@ -14,7 +14,7 @@ export const Search: FC<SearchProps> = ({ ...rest }) => {
   const query = useSearchParams()[0].get('q');
 
   return (
-    <S.SearchContainer action="/shop" method="get">
+    <S.SearchContainer className="search" action="/shop" method="get">
       <input type="search" name="q" defaultValue={query || ''} {...rest} />
 
       <SearchIcon size={18} />
