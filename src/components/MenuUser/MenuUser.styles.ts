@@ -78,7 +78,7 @@ export const Container = styled.div`
       border-radius: 50%;
       font-size: 1.4rem;
       font-weight: 600;
-      background-color: ${theme.colors.warning};
+      background-color: ${theme.colors.primary};
       color: ${theme.colors.white};
       border: 1px solid ${theme.colors.white};
       display: flex;
