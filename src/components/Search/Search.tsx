@@ -15,13 +15,7 @@ export const Search: FC<SearchProps> = ({ ...rest }) => {
 
   return (
     <S.SearchContainer action="/shop" method="get">
-      <input
-        type="search"
-        name="q"
-        placeholder="Pesquisar"
-        defaultValue={query || ''}
-        {...rest}
-      />
+      <input type="search" name="q" defaultValue={query || ''} {...rest} />
 
       <SearchIcon size={18} />
     </S.SearchContainer>
