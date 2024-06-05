@@ -111,23 +111,31 @@ export const ProfileInfo = styled.div`
 `;
 
 export const ProfileOrders = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ProfileOrderSearch = styled.div`
   ${({ theme }) => css`
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 
-    & .order_top {
-      display: flex;
-      align-items: center;
-      justify-content: end;
-      gap: ${theme.spacings.sm};
-    }
+    & > input {
+      padding: 1.65rem;
+      border-radius: ${theme.spacings.xs} 0 0 ${theme.spacings.xs};
+      border: 1px solid ${theme.colors.primary};
 
-    @media ${theme.media.lteOrEqMedium} {
-      & .order_cards {
-        width: 20.5rem;
+      &:focus {
+        outline: 3px solid ${theme.colors.primary};
+        outline-offset: -3px;
       }
     }
-  `}
+
+    & > button {
+      border-radius: 0 ${theme.spacings.xs} ${theme.spacings.xs} 0;
+    }
+  `};
 `;
 
 export const ProfileAvatar = styled.div`

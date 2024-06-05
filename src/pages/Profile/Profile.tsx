@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { FilePenLine, ImagePlus, SlidersHorizontal } from 'lucide-react';
+import { FilePenLine, Filter, FilterX, ImagePlus } from 'lucide-react';
 import { FC, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
@@ -27,14 +27,17 @@ export const Profile: FC<ProfileProps> = () => {
   };
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
+  const { search, pathname } = useLocation();
+  const queryParams = new URLSearchParams(search);
 
   const [menu, setMenu] = useState(queryParams.get('step') || 'profile');
   const [userName, setUserName] = useState(user.username);
   const [userPhone, setUserPhone] = useState(user?.phone || '');
   const [userAvatar, setUserAvatar] = useState(
     user?.avatar?.formats?.thumbnail?.url || '/avatar.jpg',
+  );
+  const [currentSearch, setCurrentSearch] = useState(
+    queryParams.get('search') || '',
   );
 
   function formatPhone(value: string) {
@@ -106,6 +109,11 @@ export const Profile: FC<ProfileProps> = () => {
         toast.error('Erro ao alterar imagem');
       }
     }
+  };
+
+  const handleSearch = () => {
+    queryParams.set('search', currentSearch);
+    navigate(`${pathname}?${queryParams.toString()}`);
   };
 
   return (
@@ -205,16 +213,31 @@ export const Profile: FC<ProfileProps> = () => {
           {menu === 'orders' && (
             <S.ProfileOrders>
               <div className="order_top">
-                <div>search</div>
-                <Button>
-                  <SlidersHorizontal size={16} /> filtrar
-                </Button>
+                <S.ProfileOrderSearch>
+                  <input
+                    type="number"
+                    name="search"
+                    placeholder="Número do pedido"
+                    value={currentSearch}
+                    onChange={(e) => setCurrentSearch(e.target.value)}
+                  />
+
+                  {queryParams.get('search') ? (
+                    <Button onClick={() => navigate('/profile?step=orders')}>
+                      <FilterX size={16} /> apagar
+                    </Button>
+                  ) : (
+                    <Button onClick={handleSearch}>
+                      <Filter size={16} /> filtrar
+                    </Button>
+                  )}
+                </S.ProfileOrderSearch>
               </div>
 
               <div className="order_cards">
-                {orders.data
-                  .map((order) => <OrderCard key={order.id} order={order} />)
-                  .reverse()}
+                {orders.data.map((order) => (
+                  <OrderCard key={order.id} order={order} />
+                ))}
               </div>
 
               <Pagination />
