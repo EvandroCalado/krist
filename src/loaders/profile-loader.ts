@@ -19,6 +19,10 @@ export const profileLoader =
       return redirect('/login?transfer=/checkout');
     }
 
+    const searchFilter = params.search
+      ? `&filters[user][$eq]=1&filters[id][$eq]=${params.search}`
+      : '';
+
     try {
       const userResponse = await customFetch.get<StrapiUserType>(
         `users/${user?.id}?populate=deep,4`,
@@ -27,7 +31,7 @@ export const profileLoader =
         `/addresses?populate=deep,3&filters[user][$eq]=${user?.id}`,
       );
       const ordersResponse = await customFetch.get(
-        `/orders?populate=deep,3&filters[user][$eq]=${user?.id}&pagination[page]=${params.page || 1}&pagination[pageSize]=2`,
+        `/orders?populate=deep,3&filters[user][$eq]=${user?.id}${searchFilter}&pagination[page]=${params.page || 1}&pagination[pageSize]=2&sort=id:desc`,
       );
 
       if (
