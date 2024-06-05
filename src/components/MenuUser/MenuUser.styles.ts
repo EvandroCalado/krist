@@ -64,5 +64,23 @@ export const Container = styled.div`
         background-color: ${theme.colors.secondary};
       }
     }
+
+    & > span {
+      width: 2rem;
+      height: 2rem;
+      padding: 1rem;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      font-weight: 600;
+      background-color: ${theme.colors.warning};
+      color: ${theme.colors.white};
+      border: 1px solid ${theme.colors.white};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -0.6rem;
+      right: 5rem;
+    }
   `}
 `;

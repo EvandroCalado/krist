@@ -32,7 +32,8 @@ export const MenuUser = () => {
       <Search placeholder="Pesquisar" />
 
       <>
-        <ShoppingBag onClick={() => setOpenCart(!openCart)} />
+        <ShoppingBag className="bag" onClick={() => setOpenCart(!openCart)} />
+        {cart.numItemsInCart > 0 && <span>{cart.numItemsInCart}</span>}
         <CartModal openCart={openCart} setOpenCart={setOpenCart}>
           {cart.cartItems.map((product) => (
             <CartModalProduct key={product.cartId} product={product} />
