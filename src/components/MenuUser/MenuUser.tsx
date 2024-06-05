@@ -29,7 +29,7 @@ export const MenuUser = () => {
 
   return (
     <S.Container className="menu-user">
-      <Search />
+      <Search placeholder="Pesquisar" />
 
       <>
         <ShoppingBag onClick={() => setOpenCart(!openCart)} />
