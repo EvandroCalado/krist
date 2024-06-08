@@ -234,11 +234,15 @@ export const Profile: FC<ProfileProps> = () => {
                 </S.ProfileOrderSearch>
               </div>
 
-              <div className="order_cards">
-                {orders.data.map((order) => (
+              {orders.data.length > 0 ? (
+                orders.data.map((order) => (
                   <OrderCard key={order.id} order={order} />
-                ))}
-              </div>
+                ))
+              ) : (
+                <Heading as={'h3'} fontWeight="700" transform="capitalize">
+                  Nenhum pedido encontrado
+                </Heading>
+              )}
 
               <Pagination />
             </S.ProfileOrders>

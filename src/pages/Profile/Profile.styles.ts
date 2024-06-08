@@ -111,8 +111,15 @@ export const ProfileInfo = styled.div`
 `;
 
 export const ProfileOrders = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+
+    & > h3 {
+      text-align: center;
+      margin: ${theme.spacings['10xl']} 0;
+    }
+  `}
 `;
 
 export const ProfileOrderSearch = styled.div`
