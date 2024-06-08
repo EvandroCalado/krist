@@ -21,9 +21,19 @@ export const Login = () => {
 
           <p>acessar conta</p>
 
-          <Input type="email" label="email" name="identifier" />
+          <Input
+            type="email"
+            label="email"
+            name="identifier"
+            defaultValue="guest@gmail.com"
+          />
 
-          <Input type="password" label="senha" name="password" />
+          <Input
+            type="password"
+            label="senha"
+            name="password"
+            defaultValue="123456"
+          />
 
           <span>
             Não tem conta?
