@@ -1,9 +1,10 @@
 import { screen } from '@testing-library/react';
 
+import { customRender } from 'utils/test-utils';
+
 import theme from 'styles/theme';
 
 import { Button } from '.';
-import { customRender } from '../../utils/test-utils';
 
 describe('Button', () => {
   it('should render default', () => {
