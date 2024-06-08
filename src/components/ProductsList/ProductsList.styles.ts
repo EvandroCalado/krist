@@ -8,6 +8,10 @@ export const Container = styled.div`
       text-align: center;
       margin: ${theme.spacings['2xl']} 0;
     }
+
+    @media ${theme.media.lteOrEqMedium} {
+      padding: ${theme.spacings.lg} ${theme.spacings.md};
+    }
   `}
 `;
 
