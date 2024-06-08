@@ -11,6 +11,7 @@ import {
   ProductFilter,
   ProductsList,
   Range,
+  Search,
 } from 'components';
 import {
   StrapiCategoriesType,
@@ -44,6 +45,8 @@ export const Shop = () => {
 
       <S.FiltersContainer>
         <S.Filters method="get">
+          <Search placeholder="Pesquisar..." />
+
           <ProductFilter name="categorias" isOpen={!!category}>
             {categories.data.map((currentCategory) => (
               <Checkbox
