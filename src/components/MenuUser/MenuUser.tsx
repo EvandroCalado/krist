@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userLogout } from 'slices/userSlice';
 
-import { Button, CartModal, CartModalProduct, Search } from 'components';
+import { Button, CartModal, CartModalProduct } from 'components';
 
 import * as S from './MenuUser.styles';
 
@@ -29,8 +29,6 @@ export const MenuUser = () => {
 
   return (
     <S.Container className="menu-user">
-      <Search placeholder="Pesquisar" />
-
       <>
         <ShoppingBag className="bag" onClick={() => setOpenCart(!openCart)} />
         {cart.numItemsInCart > 0 && <span>{cart.numItemsInCart}</span>}

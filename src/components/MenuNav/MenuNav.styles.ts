@@ -7,16 +7,8 @@ export const Nav = styled.nav`
     align-items: center;
     gap: ${theme.spacings.md};
 
-    & .search {
-      display: none;
-    }
-
     @media ${theme.media.lteOrEqMedium} {
       flex-direction: column;
-
-      & .search {
-        display: flex;
-      }
     }
   `}
 `;

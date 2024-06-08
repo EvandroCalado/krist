@@ -1,5 +1,3 @@
-import { Search } from 'components';
-
 import * as S from './MenuNav.styles';
 
 const navLinks = [
@@ -28,8 +26,6 @@ export const MenuNav = () => {
           {link.name}
         </S.Navlink>
       ))}
-
-      <Search />
     </S.Nav>
   );
 };
