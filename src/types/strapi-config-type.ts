@@ -15,8 +15,28 @@ interface Attributes3 {
   updatedAt: string;
   publishedAt: string;
   logo: Logo;
-  navLinks: NavLink[];
   hero: Hero[];
+  footer: Footer;
+  footerMenu: FooterMenu[];
+}
+
+interface FooterMenu {
+  id: number;
+  title: string;
+  links: Link[];
+}
+
+interface Link {
+  id: number;
+  name: string;
+  link: string;
+}
+
+interface Footer {
+  id: number;
+  phone: string;
+  email: string;
+  address: string;
 }
 
 interface Hero {
@@ -85,15 +105,8 @@ interface Small {
   provider_metadata: Providermetadata;
 }
 
-interface NavLink {
-  id: number;
-  name: string;
-  link: string;
-}
-
 interface Logo {
   id: number;
-  isBlack: boolean;
   black: Black;
   white: Black;
 }
