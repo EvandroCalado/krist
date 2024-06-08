@@ -1,7 +1,6 @@
-import { Form } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-export const SearchContainer = styled(Form)`
+export const SearchContainer = styled.div`
   ${({ theme }) => css`
     position: relative;
     display: flex;
