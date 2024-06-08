@@ -7,49 +7,51 @@ import {
   Phone,
   Twitter,
 } from 'lucide-react';
+import { Link, useLoaderData } from 'react-router-dom';
 
 import { Heading, Logo } from 'components';
+import { StrapiConfigType } from 'types';
 
 import * as S from './Footer.styles';
 
 export const Footer = () => {
+  const { config } = useLoaderData() as {
+    config: StrapiConfigType;
+  };
+
+  const { footerMenu } = config.data.attributes;
+  const { address, email, phone } = config.data.attributes.footer;
+
   return (
     <S.Footer>
       <S.FooterTop>
         <S.ShopContainer>
-          <Logo isWhite />
+          <Logo isBlack={false} />
           <span>
-            <Phone /> +55 11 99999-9999
+            <Phone /> +55 {phone}
           </span>
           <span>
-            <Mail /> krist@exemplo.com
+            <Mail /> {email}
           </span>
           <span>
-            <MapPin /> Rua dos exemplos, 0, São Paulo
+            <MapPin /> {address}
           </span>
         </S.ShopContainer>
-        <S.InfosContainer>
-          <Heading as="h3" fontWeight="700" transform="capitalize">
-            informações
-          </Heading>
 
-          <span>minha conta</span>
-          <span>login</span>
-          <span>carrinho</span>
-          <span>favoritos</span>
-          <span>checkout</span>
-        </S.InfosContainer>
-        <S.ServicesContainer>
-          <Heading as="h3" fontWeight="700" transform="capitalize">
-            serviços
-          </Heading>
+        {footerMenu.map((footerItem) => (
+          <S.InfosContainer key={footerItem.id}>
+            <Heading as="h3" fontWeight="700" transform="capitalize">
+              {footerItem.title}
+            </Heading>
 
-          <span>sobre nós</span>
-          <span>carreira</span>
-          <span>informações sobre o entrega</span>
-          <span>politica de privacidade</span>
-          <span>termos & condições</span>
-        </S.ServicesContainer>
+            {footerItem.links.map((item) => (
+              <Link key={item.id} to={item.link}>
+                {item.name}
+              </Link>
+            ))}
+          </S.InfosContainer>
+        ))}
+
         <S.SubsContainer>
           <Heading as="h3" fontWeight="700" transform="capitalize">
             newsletter

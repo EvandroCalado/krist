@@ -49,8 +49,12 @@ export const InfosContainer = styled.div`
       margin-bottom: ${theme.spacings.md};
     }
 
-    & > span {
+    & > a {
       text-transform: capitalize;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   `}
 `;
