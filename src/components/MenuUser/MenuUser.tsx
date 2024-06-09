@@ -11,7 +11,9 @@ import * as S from './MenuUser.styles';
 export const MenuUser = () => {
   const [openUser, setOpenUser] = useState(false);
   const [openCart, setOpenCart] = useState(false);
-  const cart = useAppSelector((state) => state.cartState);
+  const { numItemsInCart, cartItems, cartTotal } = useAppSelector(
+    (state) => state.cartState,
+  );
   const { user } = useAppSelector((state) => state.userState);
   const dispatch = useAppDispatch();
 
@@ -31,14 +33,14 @@ export const MenuUser = () => {
     <S.Container className="menu-user">
       <>
         <ShoppingBag className="bag" onClick={() => setOpenCart(!openCart)} />
-        {cart.numItemsInCart > 0 && <span>{cart.numItemsInCart}</span>}
+        {numItemsInCart > 0 && <span>{numItemsInCart}</span>}
         <CartModal openCart={openCart} setOpenCart={setOpenCart}>
-          {cart.cartItems.map((product) => (
+          {cartItems.map((product) => (
             <CartModalProduct key={product.cartId} product={product} />
           ))}
           <div className="subtotal">
             <span>subtotal</span>
-            <span>R${cart.cartTotal.toFixed(2)}</span>
+            <span>R${cartTotal.toFixed(2)}</span>
           </div>
         </CartModal>
       </>
