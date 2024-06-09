@@ -4,6 +4,7 @@ export const MainLoading = () => {
   return (
     <S.Container>
       <svg
+        data-testid="svg"
         id="SVGRoot"
         width="100"
         height="100"
