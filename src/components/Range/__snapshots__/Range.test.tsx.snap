@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Range should render a snapshot 1`] = `
+.c0 {
+  width: 100%;
+  accent-color: #131118;
+  margin-bottom: .8rem;
+  cursor: pointer;
+}
+
+.c1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+<div>
+  <div
+    class=""
+  >
+    <input
+      class="c0"
+      max="1000"
+      min="0"
+      step="1"
+      type="range"
+      value="0"
+    />
+    <div
+      class="c1"
+    >
+      <span>
+        R$
+        0
+      </span>
+      <span>
+        R$1000
+      </span>
+    </div>
+  </div>
+</div>
+`;
