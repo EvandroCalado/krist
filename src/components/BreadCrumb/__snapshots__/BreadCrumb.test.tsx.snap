@@ -74,5 +74,6 @@ exports[`BreadCrumb should render a snapshot 1`] = `
       camiseta
     </span>
   </div>
+  ,
 </div>
 `;

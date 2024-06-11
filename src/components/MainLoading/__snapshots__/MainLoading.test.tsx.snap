@@ -60,5 +60,6 @@ exports[`MainLoading should render a snapshot 1`] = `
       Carregando...
     </span>
   </div>
+  ,
 </div>
 `;

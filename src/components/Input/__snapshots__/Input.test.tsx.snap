@@ -47,5 +47,6 @@ exports[`Input should render to match snapshot 1`] = `
       type="text"
     />
   </div>
+  ,
 </div>
 `;

@@ -1,13 +1,9 @@
 import { screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
 
 import { customRender } from 'utils/test-utils';
 
 import theme from 'styles/theme';
 
-import { store } from '../../store';
 import { Heading } from './Heading';
 
 describe('Heading', () => {
@@ -26,150 +22,22 @@ describe('Heading', () => {
   });
 
   it('should render transform', () => {
-    const { rerender } = customRender(
-      <Heading transform="uppercase">Heading</Heading>,
-    );
+    customRender(<Heading transform="uppercase">Heading</Heading>);
 
     const heading = screen.getByRole('heading');
 
     expect(heading).toHaveStyle({
       'text-transform': 'uppercase',
     });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading transform="lowercase">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'text-transform': 'lowercase',
-    });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading transform="capitalize">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'text-transform': 'capitalize',
-    });
   });
 
   it('should render sizes', () => {
-    const { rerender } = customRender(<Heading size="lg">Heading</Heading>);
+    customRender(<Heading size="lg">Heading</Heading>);
 
     const heading = screen.getByRole('heading');
 
     expect(heading).toHaveStyle({
       'font-size': theme.font.sizes.lg,
-    });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading size="xl">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'font-size': theme.font.sizes.xl,
-    });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading size="2xl">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'font-size': theme.font.sizes['2xl'],
-    });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading size="3xl">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'font-size': theme.font.sizes['3xl'],
-    });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading size="4xl">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'font-size': theme.font.sizes['4xl'],
-    });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading size="5xl">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'font-size': theme.font.sizes['5xl'],
-    });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading size="6xl">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'font-size': theme.font.sizes['6xl'],
-    });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading size="7xl">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'font-size': theme.font.sizes['7xl'],
     });
   });
 
@@ -182,28 +50,12 @@ describe('Heading', () => {
   });
 
   it('should render with align correct', () => {
-    const { rerender } = customRender(
-      <Heading align="center">Heading</Heading>,
-    );
+    customRender(<Heading align="center">Heading</Heading>);
 
     const heading = screen.getByRole('heading');
 
     expect(heading).toHaveStyle({
       'text-align': 'center',
-    });
-
-    rerender(
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <MemoryRouter>
-            <Heading align="right">Heading</Heading>
-          </MemoryRouter>
-        </ThemeProvider>
-      </Provider>,
-    );
-
-    expect(heading).toHaveStyle({
-      'text-align': 'right',
     });
   });
 

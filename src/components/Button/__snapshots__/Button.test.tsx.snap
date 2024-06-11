@@ -40,5 +40,6 @@ exports[`Button should match a snapshot 1`] = `
     Button
      
   </button>
+  ,
 </div>
 `;

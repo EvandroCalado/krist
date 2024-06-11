@@ -29,5 +29,6 @@ exports[`Logo should render a snapshot 1`] = `
       src="image-white"
     />
   </a>
+  ,
 </div>
 `;

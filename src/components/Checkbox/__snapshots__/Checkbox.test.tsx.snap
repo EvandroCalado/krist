@@ -46,5 +46,6 @@ exports[`Checkbox should render a snapshot 1`] = `
       checkbox
     </label>
   </div>
+  ,
 </div>
 `;

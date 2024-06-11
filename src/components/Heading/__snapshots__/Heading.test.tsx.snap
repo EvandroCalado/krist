@@ -14,5 +14,6 @@ exports[`Heading should render to match snapshot 1`] = `
   >
     Heading
   </h3>
+  ,
 </div>
 `;

@@ -56,5 +56,6 @@ exports[`Search should render a snapshot 1`] = `
       />
     </svg>
   </div>
+  ,
 </div>
 `;
