@@ -13,10 +13,11 @@ export const Color: FC<ColorProps> = ({ color, label, colorHex, ...rest }) => {
   return (
     <S.Container>
       <S.Color
+        data-testid="color"
         colorHex={colorHex}
         className={color === label ? 'active' : ''}
       ></S.Color>
-      <S.Input type="checkbox" id={label} {...rest} />
+      <S.Input data-testid="checkbox" type="checkbox" id={label} {...rest} />
       <S.Label htmlFor={label}>{label}</S.Label>
     </S.Container>
   );
