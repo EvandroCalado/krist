@@ -11,11 +11,6 @@ const navLinks = [
     name: 'loja',
     link: '/shop',
   },
-  {
-    id: 3,
-    name: 'contato',
-    link: '/contact',
-  },
 ];
 
 export const MenuNav = () => {
