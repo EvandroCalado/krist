@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes, FC } from 'react';
+import { useNavigation } from 'react-router-dom';
 
 import * as S from './Button.styles';
 
@@ -16,9 +17,13 @@ export const Button: FC<ButtonProps> = ({
   width,
   ...rest
 }) => {
+  const navigation = useNavigation();
+
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
-    <S.Button width={width} variant={variant} {...rest}>
-      {children} {icon}
+    <S.Button width={width} variant={variant} disabled={isSubmitting} {...rest}>
+      {isSubmitting ? 'Carregando...' : children} {icon}
     </S.Button>
   );
 };
