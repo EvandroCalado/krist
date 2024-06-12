@@ -5,7 +5,7 @@ type OrderProps = {
 };
 
 export const OrderCardModalContainer = styled.div<OrderProps>`
-  ${({ theme, openModal }) => css`
+  ${({ openModal }) => css`
     position: absolute;
     inset: 0;
     z-index: 10;
@@ -14,14 +14,12 @@ export const OrderCardModalContainer = styled.div<OrderProps>`
 `;
 
 export const OrderCardModalBackground = styled.div`
-  ${({ theme }) => css`
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `}
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const OrderCardModalForm = styled.div`
