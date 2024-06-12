@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
 import { Button, Heading } from 'components';
-import { StrapiProductSizesType } from 'types';
+import { StrapiProductType } from 'types';
 
 import * as S from './ProductSizes.styles';
 
 export interface ProductSizesProps {
-  sizes: StrapiProductSizesType[];
+  sizes: StrapiProductType['attributes']['variants'][0]['sizes'];
   size: string;
   setSize: (size: string) => void;
   setQuantity: (quantity: number) => void;

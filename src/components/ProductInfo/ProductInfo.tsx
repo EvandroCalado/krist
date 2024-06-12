@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { StrapiProductVariantType } from 'types';
+import { StrapiProductType } from 'types';
 
 import * as S from './ProductInfo.styles';
 
 export interface ProductInfoProps {
-  variants: StrapiProductVariantType[];
+  variants: StrapiProductType['attributes']['variants'];
 }
 
 export const ProductInfo: FC<ProductInfoProps> = ({ variants }) => {

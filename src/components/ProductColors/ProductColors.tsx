@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
 import { Heading } from 'components';
-import { StrapiProductVariantType } from 'types';
+import { StrapiProductType } from 'types';
 
 import * as S from './ProductColors.styles';
 
 export interface ProductColorsProps {
-  variants: StrapiProductVariantType[];
+  variants: StrapiProductType['attributes']['variants'];
   color: string;
   setColor: (color: string) => void;
   setSize: (size: string) => void;

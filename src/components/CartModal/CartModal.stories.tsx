@@ -1,7 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
 
-import { CartModalProduct } from 'components';
-
 import { CartModal, CartModalProps } from '.';
 
 export default {
@@ -10,9 +8,7 @@ export default {
   args: {
     children: (
       <>
-        <CartModalProduct />
-        <CartModalProduct />
-        <CartModalProduct />
+        <div>cart item</div>
 
         <div className="subtotal">
           <span>subtotal</span>

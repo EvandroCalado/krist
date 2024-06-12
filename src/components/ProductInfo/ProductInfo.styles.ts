@@ -8,11 +8,9 @@ export const Container = styled.div`
   `}
 `;
 export const ItemContainer = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    align-items: center;
-    text-transform: capitalize;
-  `}
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
 `;
 
 export const ItemTitle = styled.span`

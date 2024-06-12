@@ -1,13 +1,13 @@
 import { FC } from 'react';
 
-import { StrapiProductSizesType } from 'types';
-
 import * as S from './ProductQuantity.styles';
 
 export interface ProductQuantityProps {
   quantity: number;
   setQuantity: (number: number) => void;
-  currentSize: StrapiProductSizesType;
+  currentSize: {
+    quantity: number | null;
+  };
 }
 
 export const ProductQuantity: FC<ProductQuantityProps> = ({
