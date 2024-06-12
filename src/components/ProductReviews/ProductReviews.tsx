@@ -24,8 +24,8 @@ export const ProductReviews: FC<ProductReviewsProps> = () => {
             <S.AvatarContainer>
               <img
                 src={
-                  rating.attributes.user.data.attributes.avatar.data.attributes
-                    .formats.thumbnail.url
+                  rating.attributes.user.data.attributes.avatar.data?.attributes
+                    ?.formats?.thumbnail?.url || '/avatar.jpg'
                 }
                 alt="avatar"
               />
@@ -56,7 +56,7 @@ export const ProductReviews: FC<ProductReviewsProps> = () => {
               </S.AvatarInfo>
             </S.AvatarContainer>
 
-            <Heading as="h6" fontWeight="400" transform="capitalize" size="sm">
+            <Heading as="h6" fontWeight="400" size="sm">
               {rating.attributes.description}
             </Heading>
 
