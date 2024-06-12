@@ -32,7 +32,7 @@ export const FlashSale = () => {
         <S.Description>{description}</S.Description>
         <Countdown date={date} setIsFinish={setIsFinish} />
         <Button
-          onClick={() => navigate(`/product/${product.data.id}`)}
+          onClick={() => navigate(`/shop/product/${product.data.id}`)}
           icon={isIcon}
           disabled={isFinish}
         >
