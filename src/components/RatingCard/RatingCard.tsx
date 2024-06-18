@@ -27,9 +27,8 @@ export const RatingCard: FC<RatingCardProps> = ({ rating }) => {
       <S.AvatarContainer>
         <S.Avatar
           src={
-            '/avatar.jpg' ||
-            rating.attributes.user.data.attributes.avatar.data.attributes
-              .formats.thumbnail.url
+            rating.attributes.user.data.attributes.avatar.data?.attributes
+              ?.formats?.thumbnail?.url || '/avatar.jpg'
           }
           alt="avatar"
         />
