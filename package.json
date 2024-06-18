@@ -13,13 +13,12 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint-staged": "lint-staged",
-    "prepare": "husky install || true"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "src/**/*": [
-      "npm run prepare",
       "npm run lint -- --fix",
-      "npm test -- --findRelatedTests --passWithNoTests --bail"
+      "npm test -- --findRelatedTests --passWithNoTests --bail=0"
     ]
   },
   "dependencies": {
